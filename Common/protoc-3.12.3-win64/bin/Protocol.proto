@@ -1,0 +1,14 @@
+syntax = "proto3";
+package Protocol;
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Google.Protobuf.Protocol"; //C#파일의 네임스페이스 이름\
+
+enum MsgId{
+	TEST = 0;
+}
+
+message Test{
+	string testStr = 1;
+}
