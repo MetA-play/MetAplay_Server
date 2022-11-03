@@ -5,10 +5,60 @@ import "google/protobuf/timestamp.proto";
 
 option csharp_namespace = "Google.Protobuf.Protocol"; //C#파일의 네임스페이스 이름\
 
-enum MsgId{
-	TEST = 0;
+
+
+enum ObjectState {
+  IDLE = 0;
+  MOVE = 1;
+  JUMP = 2;
+  STUN = 3;
+  DIE = 4;
 }
 
-message Test{
-	string testStr = 1;
+enum GameObjectType {
+  NONE = 0;
+  PLAYER = 1;
 }
+
+enum MoveDir{
+	FRONT = 0;
+	LEFT = 1;
+	RIGHT = 2;
+	BACK = 3;
+}
+message Vector{
+	float X = 1;
+	float Y = 2;
+	float Z = 3;
+}
+
+message TransformInfo{
+	MoveDir Dir = 1;
+	Vector Pos = 2;
+	Vector Rot = 3;
+	Vector Scale = 4;
+}
+
+message ObjectInfo{
+	int32 Id = 1;
+	ObjectState State = 2;
+	TransformInfo Transform = 3;
+}
+
+
+enum MsgId{
+	C_MOVE = 0;
+	S_MOVE = 1;
+}
+
+message C_Move{
+	ObjectState State = 1;
+	TransformInfo Transform = 2;
+}
+
+message S_Move{
+	int32 Id = 1;
+	ObjectState State = 2;
+	TransformInfo Transform = 3;
+}
+

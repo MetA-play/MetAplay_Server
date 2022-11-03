@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2RqwfsJ6jqi3BkzWusG0X/FZthO559u/ssF01DKERnqA7hpdaXCzxeTwk9Xxjhps+pl/8wVlN5dZ6Hpk3urnZA==",
+  "dgSpecHash": "Mo7vKiBJ09gEnK0hcHktHrus5HVWl5I5Vctke8Byp4GBOL7eWuNMjqOyA3NzVPVi3eJv7SVQYMVoqvr4GZiRFQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\eunseong\\Documents\\GitHub\\MetAplay\\MetAplay_Server\\MetAplay\\MetAplay\\MetAplay.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\eunseong\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512"
+  ],
   "logs": []
 }
