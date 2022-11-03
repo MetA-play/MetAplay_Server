@@ -1,4 +1,5 @@
-﻿using MetAplay.Object;
+﻿using Google.Protobuf;
+using MetAplay.Object;
 using Server.Game;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,14 @@ namespace MetAplay
         public virtual void LeaveGame(int gameObjectId)
         {
 
+        }
+
+        public void Broadcast(IMessage packet)
+        {
+            foreach (Player p in _players.Values)
+            {
+                p.Session.Send(packet);
+            }
         }
     }
 }
