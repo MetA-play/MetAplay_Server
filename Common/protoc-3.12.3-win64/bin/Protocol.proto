@@ -6,6 +6,26 @@ import "google/protobuf/timestamp.proto";
 option csharp_namespace = "Google.Protobuf.Protocol"; //C#파일의 네임스페이스 이름\
 
 
+// ---------------------------------------------------- Room Info --------------------------------------------------------------- \\
+message RoomSetting{
+  string Name = 1;
+  int32 maxPlayer =2;
+}
+
+message RoomInfo{
+	int32 Id = 1;
+	RoomSetting Setting = 2;
+}
+
+// ---------------------------------------------------- Scene Type --------------------------------------------------------------- \\
+
+enum SceneType{
+	MAIN = 0;
+	LOBBY = 1;
+	GAME = 2;
+}
+
+// ---------------------------------------------------- Object --------------------------------------------------------------- \\
 
 enum ObjectState {
   IDLE = 0;
@@ -26,6 +46,7 @@ enum MoveDir{
 	RIGHT = 2;
 	BACK = 3;
 }
+
 message Vector{
 	float X = 1;
 	float Y = 2;
@@ -45,16 +66,46 @@ message ObjectInfo{
 	TransformInfo Transform = 3;
 }
 
+// ---------------------------------------------------- message Id--------------------------------------------------------------- \\
 
 enum MsgId{
-	S_ENTER_GAME = 0;
-	S_SPAWN = 1;
-	S_DESPAWN = 2;
-	S_LEAVE_GAME = 3;
-	C_MOVE = 4;
-	S_MOVE = 5;
+	C_CREATEROOM_REQ = 0;
+	S_CREATEROOM_RES = 1;
+	C_JOINROOM_REQ = 2;
+	S_JOINROOM_RES = 3;
+	S_ROOMPERSONNEL_CHANGE = 4;
+	S_ENTER_GAME = 5;
+	S_SPAWN = 6;
+	S_DESPAWN = 7;
+	S_LEAVE_GAME = 8;
+	C_MOVE = 9;
+	S_MOVE = 10;
+}
+// ------------------------------------------------------ Packet ----------------------------------------------------------------- \\
+
+
+// -------------------------------------- Ingame ----------------------------------- \\
+
+message C_CreateroomReq{
+  RoomSetting Setting = 1;
 }
 
+message S_CreateroomRes{
+	int32 roomId =1;
+}
+
+message C_JoinroomReq{
+  int32 roomId = 1;
+}
+
+message S_JoinroomRes{
+  int32 roomId = 1;
+}
+
+message S_RoompersonnelChange{
+  repeated UserInfo Users = 1;
+}
+// -------------------------------------- Ingame ----------------------------------- \\
 message S_EnterGame{
 	ObjectInfo player = 1;
 }
