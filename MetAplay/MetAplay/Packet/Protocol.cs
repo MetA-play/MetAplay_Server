@@ -27,43 +27,44 @@ namespace Google.Protobuf.Protocol {
             "Cg5Qcm90b2NvbC5wcm90bxIIUHJvdG9jb2waH2dvb2dsZS9wcm90b2J1Zi90",
             "aW1lc3RhbXAucHJvdG8iHAoIVXNlckluZm8SEAoIbmlja05hbWUYASABKAki",
             "LgoLUm9vbVNldHRpbmcSDAoETmFtZRgBIAEoCRIRCgltYXhQbGF5ZXIYAiAB",
-            "KAUiPgoIUm9vbUluZm8SCgoCSWQYASABKAUSJgoHU2V0dGluZxgCIAEoCzIV",
-            "LlByb3RvY29sLlJvb21TZXR0aW5nIikKBlZlY3RvchIJCgFYGAEgASgCEgkK",
-            "AVkYAiABKAISCQoBWhgDIAEoAiKOAQoNVHJhbnNmb3JtSW5mbxIeCgNEaXIY",
-            "ASABKA4yES5Qcm90b2NvbC5Nb3ZlRGlyEh0KA1BvcxgCIAEoCzIQLlByb3Rv",
-            "Y29sLlZlY3RvchIdCgNSb3QYAyABKAsyEC5Qcm90b2NvbC5WZWN0b3ISHwoF",
-            "U2NhbGUYBCABKAsyEC5Qcm90b2NvbC5WZWN0b3IiagoKT2JqZWN0SW5mbxIK",
-            "CgJJZBgBIAEoBRIkCgVTdGF0ZRgCIAEoDjIVLlByb3RvY29sLk9iamVjdFN0",
-            "YXRlEioKCVRyYW5zZm9ybRgDIAEoCzIXLlByb3RvY29sLlRyYW5zZm9ybUlu",
-            "Zm8iOQoPQ19DcmVhdGVyb29tUmVxEiYKB1NldHRpbmcYASABKAsyFS5Qcm90",
-            "b2NvbC5Sb29tU2V0dGluZyIhCg9TX0NyZWF0ZXJvb21SZXMSDgoGcm9vbUlk",
-            "GAEgASgFIh8KDUNfSm9pbnJvb21SZXESDgoGcm9vbUlkGAEgASgFIh8KDVNf",
-            "Sm9pbnJvb21SZXMSDgoGcm9vbUlkGAEgASgFIjoKFVNfUm9vbXBlcnNvbm5l",
-            "bENoYW5nZRIhCgVVc2VycxgBIAMoCzISLlByb3RvY29sLlVzZXJJbmZvIjMK",
-            "C1NfRW50ZXJHYW1lEiQKBnBsYXllchgBIAEoCzIULlByb3RvY29sLk9iamVj",
-            "dEluZm8iMAoHU19TcGF3bhIlCgdPYmplY3RzGAEgAygLMhQuUHJvdG9jb2wu",
-            "T2JqZWN0SW5mbyIdCglTX0Rlc3Bhd24SEAoIb2JqZWN0SWQYASADKAUiDQoL",
-            "U19MZWF2ZUdhbWUiWgoGQ19Nb3ZlEiQKBVN0YXRlGAEgASgOMhUuUHJvdG9j",
-            "b2wuT2JqZWN0U3RhdGUSKgoJVHJhbnNmb3JtGAIgASgLMhcuUHJvdG9jb2wu",
-            "VHJhbnNmb3JtSW5mbyJmCgZTX01vdmUSCgoCSWQYASABKAUSJAoFU3RhdGUY",
+            "KAUiVwoIUm9vbUluZm8SCgoCSWQYASABKAUSFwoPQ3VycmVudFBlcnNubmVs",
+            "GAIgASgFEiYKB1NldHRpbmcYAyABKAsyFS5Qcm90b2NvbC5Sb29tU2V0dGlu",
+            "ZyIpCgZWZWN0b3ISCQoBWBgBIAEoAhIJCgFZGAIgASgCEgkKAVoYAyABKAIi",
+            "jgEKDVRyYW5zZm9ybUluZm8SHgoDRGlyGAEgASgOMhEuUHJvdG9jb2wuTW92",
+            "ZURpchIdCgNQb3MYAiABKAsyEC5Qcm90b2NvbC5WZWN0b3ISHQoDUm90GAMg",
+            "ASgLMhAuUHJvdG9jb2wuVmVjdG9yEh8KBVNjYWxlGAQgASgLMhAuUHJvdG9j",
+            "b2wuVmVjdG9yImoKCk9iamVjdEluZm8SCgoCSWQYASABKAUSJAoFU3RhdGUY",
             "AiABKA4yFS5Qcm90b2NvbC5PYmplY3RTdGF0ZRIqCglUcmFuc2Zvcm0YAyAB",
-            "KAsyFy5Qcm90b2NvbC5UcmFuc2Zvcm1JbmZvKioKCVNjZW5lVHlwZRIICgRN",
-            "QUlOEAASCQoFTE9CQlkQARIICgRHQU1FEAIqPgoLT2JqZWN0U3RhdGUSCAoE",
-            "SURMRRAAEggKBE1PVkUQARIICgRKVU1QEAISCAoEU1RVThADEgcKA0RJRRAE",
-            "KiYKDkdhbWVPYmplY3RUeXBlEggKBE5PTkUQABIKCgZQTEFZRVIQASozCgdN",
-            "b3ZlRGlyEgkKBUZST05UEAASCAoETEVGVBABEgkKBVJJR0hUEAISCAoEQkFD",
-            "SxADKs8BCgVNc2dJZBIUChBDX0NSRUFURVJPT01fUkVREAASFAoQU19DUkVB",
-            "VEVST09NX1JFUxABEhIKDkNfSk9JTlJPT01fUkVREAISEgoOU19KT0lOUk9P",
-            "TV9SRVMQAxIaChZTX1JPT01QRVJTT05ORUxfQ0hBTkdFEAQSEAoMU19FTlRF",
-            "Ul9HQU1FEAUSCwoHU19TUEFXThAGEg0KCVNfREVTUEFXThAHEhAKDFNfTEVB",
-            "VkVfR0FNRRAIEgoKBkNfTU9WRRAJEgoKBlNfTU9WRRAKQhuqAhhHb29nbGUu",
-            "UHJvdG9idWYuUHJvdG9jb2xiBnByb3RvMw=="));
+            "KAsyFy5Qcm90b2NvbC5UcmFuc2Zvcm1JbmZvIjkKD0NfQ3JlYXRlcm9vbVJl",
+            "cRImCgdTZXR0aW5nGAEgASgLMhUuUHJvdG9jb2wuUm9vbVNldHRpbmciIQoP",
+            "U19DcmVhdGVyb29tUmVzEg4KBnJvb21JZBgBIAEoBSIfCg1DX0pvaW5yb29t",
+            "UmVxEg4KBnJvb21JZBgBIAEoBSIfCg1TX0pvaW5yb29tUmVzEg4KBnJvb21J",
+            "ZBgBIAEoBSI6ChVTX1Jvb21wZXJzb25uZWxDaGFuZ2USIQoFVXNlcnMYASAD",
+            "KAsyEi5Qcm90b2NvbC5Vc2VySW5mbyIzCgtTX0VudGVyR2FtZRIkCgZwbGF5",
+            "ZXIYASABKAsyFC5Qcm90b2NvbC5PYmplY3RJbmZvIjAKB1NfU3Bhd24SJQoH",
+            "T2JqZWN0cxgBIAMoCzIULlByb3RvY29sLk9iamVjdEluZm8iHQoJU19EZXNw",
+            "YXduEhAKCG9iamVjdElkGAEgAygFIg0KC1NfTGVhdmVHYW1lIloKBkNfTW92",
+            "ZRIkCgVTdGF0ZRgBIAEoDjIVLlByb3RvY29sLk9iamVjdFN0YXRlEioKCVRy",
+            "YW5zZm9ybRgCIAEoCzIXLlByb3RvY29sLlRyYW5zZm9ybUluZm8iZgoGU19N",
+            "b3ZlEgoKAklkGAEgASgFEiQKBVN0YXRlGAIgASgOMhUuUHJvdG9jb2wuT2Jq",
+            "ZWN0U3RhdGUSKgoJVHJhbnNmb3JtGAMgASgLMhcuUHJvdG9jb2wuVHJhbnNm",
+            "b3JtSW5mbyoqCglTY2VuZVR5cGUSCAoETUFJThAAEgkKBUxPQkJZEAESCAoE",
+            "R0FNRRACKj4KC09iamVjdFN0YXRlEggKBElETEUQABIICgRNT1ZFEAESCAoE",
+            "SlVNUBACEggKBFNUVU4QAxIHCgNESUUQBComCg5HYW1lT2JqZWN0VHlwZRII",
+            "CgROT05FEAASCgoGUExBWUVSEAEqMwoHTW92ZURpchIJCgVGUk9OVBAAEggK",
+            "BExFRlQQARIJCgVSSUdIVBACEggKBEJBQ0sQAyrPAQoFTXNnSWQSFAoQQ19D",
+            "UkVBVEVST09NX1JFURAAEhQKEFNfQ1JFQVRFUk9PTV9SRVMQARISCg5DX0pP",
+            "SU5ST09NX1JFURACEhIKDlNfSk9JTlJPT01fUkVTEAMSGgoWU19ST09NUEVS",
+            "U09OTkVMX0NIQU5HRRAEEhAKDFNfRU5URVJfR0FNRRAFEgsKB1NfU1BBV04Q",
+            "BhINCglTX0RFU1BBV04QBxIQCgxTX0xFQVZFX0dBTUUQCBIKCgZDX01PVkUQ",
+            "CRIKCgZTX01PVkUQCkIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.SceneType), typeof(global::Google.Protobuf.Protocol.ObjectState), typeof(global::Google.Protobuf.Protocol.GameObjectType), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.MsgId), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.UserInfo), global::Google.Protobuf.Protocol.UserInfo.Parser, new[]{ "NickName" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.RoomSetting), global::Google.Protobuf.Protocol.RoomSetting.Parser, new[]{ "Name", "MaxPlayer" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.RoomInfo), global::Google.Protobuf.Protocol.RoomInfo.Parser, new[]{ "Id", "Setting" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.RoomInfo), global::Google.Protobuf.Protocol.RoomInfo.Parser, new[]{ "Id", "CurrentPersnnel", "Setting" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.Vector), global::Google.Protobuf.Protocol.Vector.Parser, new[]{ "X", "Y", "Z" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.TransformInfo), global::Google.Protobuf.Protocol.TransformInfo.Parser, new[]{ "Dir", "Pos", "Rot", "Scale" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.ObjectInfo), global::Google.Protobuf.Protocol.ObjectInfo.Parser, new[]{ "Id", "State", "Transform" }, null, null, null, null),
@@ -445,6 +446,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public RoomInfo(RoomInfo other) : this() {
       id_ = other.id_;
+      currentPersnnel_ = other.currentPersnnel_;
       setting_ = other.setting_ != null ? other.setting_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -465,8 +467,19 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
+    /// <summary>Field number for the "CurrentPersnnel" field.</summary>
+    public const int CurrentPersnnelFieldNumber = 2;
+    private int currentPersnnel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CurrentPersnnel {
+      get { return currentPersnnel_; }
+      set {
+        currentPersnnel_ = value;
+      }
+    }
+
     /// <summary>Field number for the "Setting" field.</summary>
-    public const int SettingFieldNumber = 2;
+    public const int SettingFieldNumber = 3;
     private global::Google.Protobuf.Protocol.RoomSetting setting_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.Protocol.RoomSetting Setting {
@@ -490,6 +503,7 @@ namespace Google.Protobuf.Protocol {
         return true;
       }
       if (Id != other.Id) return false;
+      if (CurrentPersnnel != other.CurrentPersnnel) return false;
       if (!object.Equals(Setting, other.Setting)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -498,6 +512,7 @@ namespace Google.Protobuf.Protocol {
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
+      if (CurrentPersnnel != 0) hash ^= CurrentPersnnel.GetHashCode();
       if (setting_ != null) hash ^= Setting.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -516,8 +531,12 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(8);
         output.WriteInt32(Id);
       }
+      if (CurrentPersnnel != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(CurrentPersnnel);
+      }
       if (setting_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(Setting);
       }
       if (_unknownFields != null) {
@@ -530,6 +549,9 @@ namespace Google.Protobuf.Protocol {
       int size = 0;
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (CurrentPersnnel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CurrentPersnnel);
       }
       if (setting_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Setting);
@@ -547,6 +569,9 @@ namespace Google.Protobuf.Protocol {
       }
       if (other.Id != 0) {
         Id = other.Id;
+      }
+      if (other.CurrentPersnnel != 0) {
+        CurrentPersnnel = other.CurrentPersnnel;
       }
       if (other.setting_ != null) {
         if (setting_ == null) {
@@ -569,7 +594,11 @@ namespace Google.Protobuf.Protocol {
             Id = input.ReadInt32();
             break;
           }
-          case 18: {
+          case 16: {
+            CurrentPersnnel = input.ReadInt32();
+            break;
+          }
+          case 26: {
             if (setting_ == null) {
               Setting = new global::Google.Protobuf.Protocol.RoomSetting();
             }
