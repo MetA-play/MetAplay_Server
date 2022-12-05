@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yCYoqPyVjJ5Bg7F2kJMJ1Nf+yVdPPIy3U7IWaQIVGwJW9rJmjae6RsSGNYdYUxv+XFyDrgfCINvc3wop2JAvqQ==",
+  "dgSpecHash": "D+V5UjjvZVUwz68ieSGOwNSkVYrX+CcaOIBTjS+DG9S5kmko9qwOCTdjCb1Lhk5lD4fMrzwxUZVr/G/tbP06FA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\eunseong\\Documents\\GitHub\\MetAplay\\MetAplay_Server\\MetAplay\\ServerCore\\ServerCore.csproj",
+  "projectFilePath": "C:\\workspace\\Projects\\MetAplay\\MetAplay_Server\\MetAplay\\ServerCore\\ServerCore.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

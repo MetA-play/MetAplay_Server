@@ -1,5 +1,4 @@
 ﻿using Google.Protobuf.Protocol;
-using Server.Game;
 using Server;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MetAplay.Object
+namespace MetAplay
 {
     public class Player : GameObject
     {
