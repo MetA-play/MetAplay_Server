@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Server.Game
+namespace MetAplay
 {
     public class JobSerializer
     {

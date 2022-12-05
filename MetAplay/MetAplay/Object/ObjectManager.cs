@@ -1,75 +1,76 @@
 ﻿using Google.Protobuf.Protocol;
-using MetAplay.Object;
-using Server.Game;
 
-public class ObjectManager
+namespace MetAplay
 {
-    public static ObjectManager Instance { get; } = new ObjectManager();
-
-    object _lock = new object();
-    Dictionary<int, Player> _players = new Dictionary<int, Player>();
-
-    // [UNUSED(1)][TYPE(7)][ID(24)]
-    int _counter = 0;
-
-    public T Add<T>() where T : GameObject, new()
+    public class ObjectManager
     {
-        T gameObject = new T();
+        public static ObjectManager Instance { get; } = new ObjectManager();
 
-        lock (_lock)
+        object _lock = new object();
+        Dictionary<int, Player> _players = new Dictionary<int, Player>();
+
+        // [UNUSED(1)][TYPE(7)][ID(24)]
+        int _counter = 0;
+
+        public T Add<T>() where T : GameObject, new()
         {
-            gameObject.Id = GenerateId(gameObject.ObjectType);
+            T gameObject = new T();
 
-            if (gameObject.ObjectType == GameObjectType.Player)
+            lock (_lock)
             {
-                _players.Add(gameObject.Id, gameObject as Player);
+                gameObject.Id = GenerateId(gameObject.ObjectType);
+
+                if (gameObject.ObjectType == GameObjectType.Player)
+                {
+                    _players.Add(gameObject.Id, gameObject as Player);
+                }
+            }
+
+            return gameObject;
+        }
+
+        int GenerateId(GameObjectType type)
+        {
+            lock (_lock)
+            {
+                return ((int)type << 24) | (_counter++);
             }
         }
 
-        return gameObject;
-    }
-
-    int GenerateId(GameObjectType type)
-    {
-        lock (_lock)
+        public static GameObjectType GetObjectTypeById(int id)
         {
-            return ((int)type << 24) | (_counter++);
-        }
-    }
-
-    public static GameObjectType GetObjectTypeById(int id)
-    {
-        int type = (id >> 24) & 0x7F;
-        return (GameObjectType)type;
-    }
-
-    public bool Remove(int objectId)
-    {
-        GameObjectType objectType = GetObjectTypeById(objectId);
-
-        lock (_lock)
-        {
-            if (objectType == GameObjectType.Player)
-                return _players.Remove(objectId);
+            int type = (id >> 24) & 0x7F;
+            return (GameObjectType)type;
         }
 
-        return false;
-    }
-
-    public Player Find(int objectId)
-    {
-        GameObjectType objectType = GetObjectTypeById(objectId);
-
-        lock (_lock)
+        public bool Remove(int objectId)
         {
-            if (objectType == GameObjectType.Player)
+            GameObjectType objectType = GetObjectTypeById(objectId);
+
+            lock (_lock)
             {
-                Player player = null;
-                if (_players.TryGetValue(objectId, out player))
-                    return player;
+                if (objectType == GameObjectType.Player)
+                    return _players.Remove(objectId);
             }
+
+            return false;
         }
 
-        return null;
+        public Player Find(int objectId)
+        {
+            GameObjectType objectType = GetObjectTypeById(objectId);
+
+            lock (_lock)
+            {
+                if (objectType == GameObjectType.Player)
+                {
+                    Player player = null;
+                    if (_players.TryGetValue(objectId, out player))
+                        return player;
+                }
+            }
+
+            return null;
+        }
     }
 }

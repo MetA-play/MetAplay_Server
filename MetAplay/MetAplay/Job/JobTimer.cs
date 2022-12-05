@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using ServerCore;
 
-namespace Server.Game
+namespace MetAplay
 {
     struct JobTimerElem : IComparable<JobTimerElem>
     {
