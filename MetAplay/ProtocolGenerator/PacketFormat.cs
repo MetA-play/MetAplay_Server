@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PacketGenerator
+namespace ProtocolGenerator
 {
     class PacketFormat
     {

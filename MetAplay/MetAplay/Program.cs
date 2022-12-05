@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using Google.Protobuf.WellKnownTypes;
-using Server.Game;
 using ServerCore;
 
-namespace Server
+namespace MetAplay
 {
     class Program
     {

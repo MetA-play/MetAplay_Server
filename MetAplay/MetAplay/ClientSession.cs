@@ -8,12 +8,11 @@ using ServerCore;
 using System.Net;
 using Google.Protobuf.Protocol;
 using Google.Protobuf;
-using Server.Game;
 using System.Numerics;
 using System.Runtime.Serialization;
-using MetAplay.Object;
+using MetAplay;
 
-namespace Server
+namespace MetAplay
 {
     public class ClientSession : PacketSession
     {
