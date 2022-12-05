@@ -59,5 +59,18 @@ namespace MetAplay
                     if (p.Id != player.Id) p.Session.Send(despawnPacket);
             }
         }
+
+        public void HandleMove(Player player, C_Move movePacket)
+        {
+            if (player is null) return;
+
+            // TODO
+
+            S_Move resMovePacket = new S_Move();
+            resMovePacket.Id = player.Id;
+            resMovePacket.Transform = movePacket.Transform;
+
+            Broadcast(resMovePacket);
+        }
     }
 }
