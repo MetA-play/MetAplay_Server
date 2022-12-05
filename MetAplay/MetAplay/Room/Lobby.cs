@@ -13,10 +13,10 @@ namespace MetAplay
         public override void EnterGame(GameObject gameObject)
         {
 
-            if(gameObject.ObjectType == GameObjectType.Player)
+            if (gameObject.ObjectType == GameObjectType.Player)
             {
                 Player player = gameObject as Player;
-                _players.Add(gameObject.Id,player);
+                _players.Add(gameObject.Id, player);
 
                 {
                     S_EnterGame entergame = new S_EnterGame();
@@ -25,7 +25,7 @@ namespace MetAplay
 
                     foreach (Player p in _players.Values)
                     {
-                        if(player != p)
+                        if (player != p)
                             spawn.Objects.Add(p.Info);
                     }
 
@@ -42,6 +42,40 @@ namespace MetAplay
                 {
                     if (p.Id != gameObject.Id)
                         p.Session.Send(spawn);
+                }
+            }
+
+        }
+
+        public override void LeaveGame(int gameObjectId)
+        {
+            GameObjectType type = ObjectManager.GetObjectTypeById(gameObjectId);
+            if (type == GameObjectType.Player)
+            {
+                Player player = null;
+                if (_players.TryGetValue(gameObjectId, out player) == false)
+                    return;
+
+                player.Room = null;
+
+                _players.Remove(gameObjectId);
+
+                {
+                    S_LeaveGame leave = new S_LeaveGame();
+                    player.Session.Send(leave);
+                }
+            }
+
+
+            {
+
+                S_Despawn despawn = new S_Despawn();
+                despawn.ObjectId.Add(gameObjectId);
+
+                foreach (Player p in _players.Values)
+                {
+                    if(p.Id != gameObjectId)
+                        p.Session.Send(despawn);
                 }
             }
 
