@@ -27,9 +27,6 @@ namespace ServerCore
 
                 RegisterConnect(args);
             }
-
-
-
         }
 
         void RegisterConnect(SocketAsyncEventArgs args)
