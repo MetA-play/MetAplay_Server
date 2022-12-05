@@ -13,7 +13,7 @@ namespace MetAplay
     {
         public int RoomId { get; set; }
 
-        Dictionary<int, Player> _players = new Dictionary<int, Player>();
+        protected Dictionary<int, Player> _players = new Dictionary<int, Player>();
 
         public virtual void EnterGame(GameObject gameObject)
         {
