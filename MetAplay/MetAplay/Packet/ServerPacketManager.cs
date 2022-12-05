@@ -23,6 +23,10 @@ class PacketManager
 
 	public void Register()
 	{		
+		_onRecv.Add((ushort)MsgId.CCreateroomReq, MakePacket<C_CreateroomReq>);
+		_handler.Add((ushort)MsgId.CCreateroomReq, PacketHandler.C_CreateroomReqHandler);		
+		_onRecv.Add((ushort)MsgId.CJoinroomReq, MakePacket<C_JoinroomReq>);
+		_handler.Add((ushort)MsgId.CJoinroomReq, PacketHandler.C_JoinroomReqHandler);		
 		_onRecv.Add((ushort)MsgId.CMove, MakePacket<C_Move>);
 		_handler.Add((ushort)MsgId.CMove, PacketHandler.C_MoveHandler);
 	}
