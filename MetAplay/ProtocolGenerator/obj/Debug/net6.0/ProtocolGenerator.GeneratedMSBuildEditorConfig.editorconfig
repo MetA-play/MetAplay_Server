@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProtocolGenerator
-build_property.ProjectDir = C:\workspace\Projects\MetAplay\MetAplay_Server\MetAplay\ProtocolGenerator\
+build_property.ProjectDir = C:\Users\eunseong\Documents\GitHub\MetAplay\MetAplay_Server\MetAplay\ProtocolGenerator\
