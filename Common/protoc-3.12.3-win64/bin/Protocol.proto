@@ -19,7 +19,8 @@ message RoomSetting{
 
 message RoomInfo{
 	int32 Id = 1;
-	RoomSetting Setting = 2;
+	int32 CurrentPersnnel = 2;
+	RoomSetting Setting = 3;
 }
 
 // ---------------------------------------------------- Scene Type --------------------------------------------------------------- \\
