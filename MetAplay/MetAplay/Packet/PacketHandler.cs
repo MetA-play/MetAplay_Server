@@ -9,6 +9,14 @@ using System.Threading.Tasks;
 public class PacketHandler
 {
 
+    public static void C_CreateroomReqHandler(PacketSession session, IMessage packet)
+    {
+
+    }
+    public static void C_JoinroomReqHandler(PacketSession session, IMessage packet)
+    {
+
+    }
     public static void C_MoveHandler(PacketSession session, IMessage packet)
     {
 
