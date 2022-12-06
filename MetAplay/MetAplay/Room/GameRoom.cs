@@ -3,7 +3,6 @@ using MetAplay;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +10,8 @@ namespace MetAplay
 {
     public class GameRoom : BaseRoom
     {
+        public RoomSetting Setting { get; set; }
+
         public override void EnterGame(GameObject gameObject)
         {
             if (gameObject is null) return;
