@@ -76,10 +76,12 @@ namespace MetAplay
             if (player is null) return;
 
             player.Info.Transform = movePacket.Transform;
+            player.Info.State = movePacket.State;
 
             S_Move resMovePacket = new S_Move();
             resMovePacket.Id = player.Id;
             resMovePacket.Transform = movePacket.Transform;
+            resMovePacket.State = movePacket.State;
 
             Broadcast(resMovePacket);
         }
