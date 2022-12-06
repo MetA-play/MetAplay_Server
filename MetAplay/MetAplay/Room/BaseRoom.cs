@@ -9,7 +9,7 @@ namespace MetAplay
 {
     public class BaseRoom : JobSerializer
     {
-        public int RoomId { get; set; }
+        public int RoomId { get; set; } 
 
         protected Dictionary<int, Player> _players = new Dictionary<int, Player>();
 

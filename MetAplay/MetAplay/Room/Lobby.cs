@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,19 @@ namespace MetAplay
     public class Lobby : BaseRoom
     {
 
+        Dictionary<int, RoomObject> _roomObjs = new Dictionary<int, RoomObject>();
+        public void CreateRoomHandle(ClientSession session, RoomSetting setting)
+        {
+
+            RoomObject roomObj = ObjectManager.Instance.Add<RoomObject>();
+            GameRoom room = RoomManager.Instance.Add(setting);
+
+            roomObj.RoomId = room.RoomId;
+            roomObj.Info.Transform.Pos = session.MyPlayer.Info.Transform.Pos;
+            _roomObjs.Add(roomObj.Id, roomObj);
+
+            EnterGame(roomObj);
+        }
         public override void EnterGame(GameObject gameObject)
         {
 

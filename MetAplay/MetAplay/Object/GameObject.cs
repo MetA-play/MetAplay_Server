@@ -14,7 +14,7 @@ namespace MetAplay
             set { Info.Id = value; }
         }
 
-        public GameRoom Room { get; set; }
+        public GameRoom JoinedRoom { get; set; }
 
         public ObjectInfo Info { get; set; } = new ObjectInfo();
 
