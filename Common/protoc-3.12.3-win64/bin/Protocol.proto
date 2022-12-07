@@ -7,17 +7,17 @@ option csharp_namespace = "Google.Protobuf.Protocol"; //C#파일의 네임스페이스 이
 
 
 // ---------------------------------------------------- uSER Info --------------------------------------------------------------- \\
-message UserInfo{
-	string nickName = 1;
+message UserInfo {
+	string NickName = 1;
 }
 
 // ---------------------------------------------------- Room Info --------------------------------------------------------------- \\
-message RoomSetting{
-  string Name = 1;
-  int32 maxPlayer =2;
+message RoomSetting {
+	string Name = 1;
+	int32 MaxPlayer =2;
 }
 
-message RoomInfo{
+message RoomInfo {
 	int32 Id = 1;
 	int32 CurrentPersonnel = 2;
 	RoomSetting Setting = 3;
@@ -25,117 +25,116 @@ message RoomInfo{
 
 // ---------------------------------------------------- Scene Type --------------------------------------------------------------- \\
 
-enum SceneType{
-	MAIN = 0;
-	LOBBY = 1;
-	GAME = 2;
+enum SceneType {
+	Main = 0;
+	Lobby = 1;
+	Game = 2;
 }
 
 // ---------------------------------------------------- Object --------------------------------------------------------------- \\
 
 enum ObjectState {
-  IDLE = 0;
-  MOVE = 1;
-  JUMP = 2;
-  STUN = 3;
-  DIE = 4;
+	Idle = 0;
+	Move = 1;
+	Jump = 2;
+	Stun = 3;
+	Die = 4;
 }
 
 enum GameObjectType {
-  NONE = 0;
-  PLAYER = 1;
+	None = 0;
+	Player = 1;
 }
 
-enum MoveDir{
-	FRONT = 0;
-	LEFT = 1;
-	RIGHT = 2;
-	BACK = 3;
+enum MoveDir {
+	Front = 0;
+	Left = 1;
+	Right = 2;
+	Back = 3;
 }
 
-message Vector{
+message Vector {
 	float X = 1;
 	float Y = 2;
 	float Z = 3;
 }
 
-message TransformInfo{
+message TransformInfo {
 	MoveDir Dir = 1;
 	Vector Pos = 2;
 	Vector Rot = 3;
 	Vector Scale = 4;
 }
 
-message ObjectInfo{
+message ObjectInfo {
 	int32 Id = 1;
 	ObjectState State = 2;
 	TransformInfo Transform = 3;
 	string PrefabName = 4;
 }
 
-// ---------------------------------------------------- message Id--------------------------------------------------------------- \\
+// ---------------------------------------------------- message Id --------------------------------------------------------------- \\
 
-enum MsgId{
+enum MsgId {
 	C_CREATEROOM_REQ = 0;
 	S_CREATEROOM_RES = 1;
 	C_JOINROOM_REQ = 2;
 	S_JOINROOM_RES = 3;
 	S_ROOMPERSONNEL_CHANGE = 4;
 	S_ENTER_GAME = 5;
-	S_SPAWN = 6;
-	S_DESPAWN = 7;
-	S_LEAVE_GAME = 8;
+	S_LEAVE_GAME = 6;
+	S_SPAWN = 7;
+	S_DESPAWN = 8;
 	C_MOVE = 9;
 	S_MOVE = 10;
 }
+
 // ------------------------------------------------------ Packet ----------------------------------------------------------------- \\
 
-
-// -------------------------------------- Ingame ----------------------------------- \\
-
-message C_CreateroomReq{
-  RoomSetting Setting = 1;
+// -------------------------------------- Lobby ----------------------------------- \\
+message C_CreateroomReq {
+	RoomSetting Setting = 1;
 }
 
-message S_CreateroomRes{
-	int32 roomId =1;
+message S_CreateroomRes {
+	int32 RoomId = 1;
 }
 
-message C_JoinroomReq{
-  int32 roomId = 1;
+message C_JoinroomReq {
+	int32 RoomId = 1;
 }
 
-message S_JoinroomRes{
-  int32 roomId = 1;
+message S_JoinroomRes {
+	int32 RoomId = 1;
 }
 
-message S_RoompersonnelChange{
-  repeated UserInfo Users = 1;
-}
-// -------------------------------------- Ingame ----------------------------------- \\
-message S_EnterGame{
-	ObjectInfo player = 1;
+message S_RoompersonnelChange {
+	repeated UserInfo Users = 1;
 }
 
-message S_Spawn{
+// -------------------------------------- InGame ----------------------------------- \\
+message S_EnterGame {
+	ObjectInfo Player = 1;
+}
+
+message S_LeaveGame {
+}
+
+message S_Spawn {
 	repeated ObjectInfo Objects = 1;
 }
-message S_Despawn{
-	repeated int32 objectId = 1;
+
+message S_Despawn {
+	repeated int32 ObjectId = 1;
 }
 
-message S_LeaveGame{
-}
-
-
-message C_Move{
+message C_Move {
 	ObjectState State = 1;
 	TransformInfo Transform = 2;
 }
 
-message S_Move{
+message S_Move {
 	int32 Id = 1;
 	ObjectState State = 2;
 	TransformInfo Transform = 3;
 }
-
