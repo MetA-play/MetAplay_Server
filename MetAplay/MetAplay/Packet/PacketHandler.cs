@@ -15,7 +15,8 @@ public class PacketHandler
     {
         ClientSession CS = session as ClientSession;
         C_CreateroomReq req = packet as C_CreateroomReq;
-        
+
+        Lobby.Instance.Push(Lobby.Instance.CreateRoomHandle,CS,req.Setting);
     }
     public static void C_JoinroomReqHandler(PacketSession session, IMessage packet)
     {

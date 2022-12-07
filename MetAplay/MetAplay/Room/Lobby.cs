@@ -10,6 +10,8 @@ namespace MetAplay
 {
     public class Lobby : BaseRoom
     {
+        public static Lobby Instance { get; private set; } = new Lobby();
+
 
         Dictionary<int, RoomObject> _roomObjs = new Dictionary<int, RoomObject>();
         public void CreateRoomHandle(ClientSession session, RoomSetting setting)
@@ -42,7 +44,8 @@ namespace MetAplay
                         if (player != p)
                             spawn.Objects.Add(p.Info);
                     }
-
+                    foreach (RoomObject obj in _roomObjs.Values)
+                        spawn.Objects.Add(obj.Info);
                     player.Session.Send(spawn);
                 }
             }
