@@ -35,11 +35,13 @@ namespace MetAplay
         public void JoinRoomHandle(int roomId,Player player)
         {
             // 방 들어가기
-            RoomManager.Instance.Find(roomId).EnterGame(player);
+            GameRoom room = RoomManager.Instance.Find(roomId);
+            if (room.IsStart) return;
+            room.EnterGame(player);
 
+            // 정보 전송
             S_JoinroomRes res = new S_JoinroomRes();
             res.RoomId = roomId;
-
             player.Session.Send(res);
         }
         public void DeleteRoom()

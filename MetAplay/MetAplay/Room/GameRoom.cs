@@ -10,8 +10,20 @@ namespace MetAplay
 {
     public class GameRoom : BaseRoom
     {
+        public RoomInfo Info
+        {
+            get { return new RoomInfo() { Id = RoomId, CurrentPersonnel = _players.Count, Setting = Setting }; }
+        }
         public RoomSetting Setting { get; set; }
         public Player Host { get; set; }
+        public Game Content { get; set; }
+        public bool IsStart { get { return Content.State == GameState.Start} }
+
+        public override void Update()
+        {
+            base.Update();
+            Content.Update();
+        }
         public override void EnterGame(GameObject gameObject)
         {
             if (gameObject == null) return;

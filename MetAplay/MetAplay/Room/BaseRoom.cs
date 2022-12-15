@@ -14,6 +14,10 @@ namespace MetAplay
 
         protected Dictionary<int, Player> _players = new Dictionary<int, Player>();
 
+        public virtual void Update()
+        {
+            Flush();
+        }
         public virtual void EnterGame(GameObject gameObject)
         {
 
@@ -23,7 +27,7 @@ namespace MetAplay
 
         }
 
-        public void HandleMove(Player player, C_Move movePacket)
+        public void MoveHandle(Player player, C_Move movePacket)
         {
             if (player == null) return;
 
@@ -38,6 +42,10 @@ namespace MetAplay
             Broadcast(resMovePacket);
         }
 
+        //public void ChatHandle(Player player, C_Chat)
+       /* {
+
+        }*/
         public void Broadcast(IMessage packet)
         {
             foreach (Player p in _players.Values)
