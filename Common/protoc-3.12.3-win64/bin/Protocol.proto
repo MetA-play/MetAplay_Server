@@ -15,7 +15,9 @@ message UserInfo {
 message RoomSetting {
 	string Name = 1;
 	int32 MaxPlayer =2;
+	GameType gameType = 3;
 }
+
 
 message RoomInfo {
 	int32 Id = 1;
@@ -31,6 +33,11 @@ enum SceneType {
 	Game = 2;
 }
 
+// ---------------------------------------------------- Game Type --------------------------------------------------------------- \\
+enum GameType{
+	AvoidLog = 0;
+
+}
 // ---------------------------------------------------- Object --------------------------------------------------------------- \\
 
 enum ObjectState {
@@ -87,9 +94,20 @@ enum MsgId {
 	S_DESPAWN = 8;
 	C_MOVE = 9;
 	S_MOVE = 10;
+	C_CHAT = 11;
+	S_CHAT = 12;
 }
 
 // ------------------------------------------------------ Packet ----------------------------------------------------------------- \\
+
+message C_Chat{
+	string content = 1;
+}
+
+message S_Chat{
+	int32 playerId = 1;
+	string content = 2;
+}
 
 // -------------------------------------- Lobby ----------------------------------- \\
 message C_CreateroomReq {
@@ -106,10 +124,6 @@ message C_JoinroomReq {
 
 message S_JoinroomRes {
 	int32 RoomId = 1;
-}
-
-message S_RoompersonnelChange {
-	repeated UserInfo Users = 1;
 }
 
 // -------------------------------------- InGame ----------------------------------- \\
