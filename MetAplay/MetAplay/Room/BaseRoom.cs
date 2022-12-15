@@ -42,10 +42,14 @@ namespace MetAplay
             Broadcast(resMovePacket);
         }
 
-        //public void ChatHandle(Player player, C_Chat)
-       /* {
+        public void ChatHandle(Player player, C_Chat chat)
+        {
+            S_Chat res = new S_Chat();
+            res.PlayerId = player.Id;
+            res.Content = chat.Content;
 
-        }*/
+            Broadcast(res);
+        }
         public void Broadcast(IMessage packet)
         {
             foreach (Player p in _players.Values)

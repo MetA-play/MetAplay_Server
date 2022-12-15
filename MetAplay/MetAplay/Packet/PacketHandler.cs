@@ -31,4 +31,17 @@ public class PacketHandler
         ClientSession CS = session as ClientSession;
 
     }
+
+    public static void C_ChatHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession CS = session as ClientSession;
+        C_Chat chat = packet as C_Chat;
+
+        GameRoom room = CS.MyPlayer.Room;
+        if (room == null)
+            Lobby.Instance.Push(Lobby.Instance.ChatHandle, CS.MyPlayer, chat);
+        else
+            room.Push(room.ChatHandle, CS.MyPlayer, chat);
+        
+    }
 }
