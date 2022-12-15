@@ -14,17 +14,37 @@ namespace MetAplay
 
 
         Dictionary<int, RoomObject> _roomObjs = new Dictionary<int, RoomObject>();
-        public void CreateRoomHandle(ClientSession session, RoomSetting setting)
+        public void CreateRoomHandle(Player player, RoomSetting setting)
         {
-
+            // 방 오브젝트 생성
             RoomObject roomObj = ObjectManager.Instance.Add<RoomObject>();
             GameRoom room = RoomManager.Instance.Add(setting);
-
-            roomObj.RoomId = room.RoomId;
-            roomObj.Info.Transform.Pos = session.MyPlayer.Info.Transform.Pos;
+            roomObj.Room = room;
+            roomObj.Info.Transform.Pos = player.Info.Transform.Pos;
             _roomObjs.Add(roomObj.Id, roomObj);
 
             EnterGame(roomObj);
+
+            // 방 들어가기
+            roomObj.Enter(player,isHost:true);
+            S_CreateroomRes res = new S_CreateroomRes();
+            res.RoomId = room.RoomId;
+            player.Session.Send(res);
+        }
+
+        public void JoinRoomHandle(int roomId,Player player)
+        {
+            // 방 들어가기
+            RoomManager.Instance.Find(roomId).EnterGame(player);
+
+            S_JoinroomRes res = new S_JoinroomRes();
+            res.RoomId = roomId;
+
+            player.Session.Send(res);
+        }
+        public void DeleteRoom()
+        {
+
         }
         public override void EnterGame(GameObject gameObject)
         {

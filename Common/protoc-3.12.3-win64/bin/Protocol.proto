@@ -108,9 +108,10 @@ message S_JoinroomRes {
 	int32 RoomId = 1;
 }
 
-message S_RoompersonnelChange {
+message S_RoompersonnelChange { // 필요없을듯
 	repeated UserInfo Users = 1;
 }
+
 
 // -------------------------------------- InGame ----------------------------------- \\
 message S_EnterGame {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.Protocol;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,13 @@ namespace MetAplay
 {
     public class RoomObject : GameObject
     {
-        public int RoomId { get; set; }
+
+        public GameRoom Room { get; set; }
         
-        public void Enter()
+        public void Enter(Player player,bool isHost=false)
         {
+            Room.EnterGame(player);
+
 
         }
 
