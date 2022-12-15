@@ -14,7 +14,7 @@ namespace MetAplay
 
         public override void EnterGame(GameObject gameObject)
         {
-            if (gameObject is null) return;
+            if (gameObject == null) return;
 
             GameObjectType type = ObjectManager.GetObjectTypeById(gameObject.Id);
 
@@ -69,21 +69,6 @@ namespace MetAplay
                 foreach (Player p in _players.Values)
                     if (p.Id != player.Id) p.Session.Send(despawnPacket);
             }
-        }
-
-        public void HandleMove(Player player, C_Move movePacket)
-        {
-            if (player is null) return;
-
-            player.Info.Transform = movePacket.Transform;
-            player.Info.State = movePacket.State;
-
-            S_Move resMovePacket = new S_Move();
-            resMovePacket.Id = player.Id;
-            resMovePacket.Transform = movePacket.Transform;
-            resMovePacket.State = movePacket.State;
-
-            Broadcast(resMovePacket);
         }
     }
 }
