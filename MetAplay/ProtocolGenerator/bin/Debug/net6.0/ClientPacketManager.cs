@@ -22,7 +22,23 @@ class PacketManager
 	public Action<PacketSession, IMessage, ushort> CustomHandler { get; set; }
 
 	public void Register()
-	{
+	{		
+		_onRecv.Add((ushort)MsgId.SCreateroomRes, MakePacket<S_CreateroomRes>);
+		_handler.Add((ushort)MsgId.SCreateroomRes, PacketHandler.S_CreateroomResHandler);		
+		_onRecv.Add((ushort)MsgId.SJoinroomRes, MakePacket<S_JoinroomRes>);
+		_handler.Add((ushort)MsgId.SJoinroomRes, PacketHandler.S_JoinroomResHandler);		
+		_onRecv.Add((ushort)MsgId.SEnterGame, MakePacket<S_EnterGame>);
+		_handler.Add((ushort)MsgId.SEnterGame, PacketHandler.S_EnterGameHandler);		
+		_onRecv.Add((ushort)MsgId.SLeaveGame, MakePacket<S_LeaveGame>);
+		_handler.Add((ushort)MsgId.SLeaveGame, PacketHandler.S_LeaveGameHandler);		
+		_onRecv.Add((ushort)MsgId.SSpawn, MakePacket<S_Spawn>);
+		_handler.Add((ushort)MsgId.SSpawn, PacketHandler.S_SpawnHandler);		
+		_onRecv.Add((ushort)MsgId.SDespawn, MakePacket<S_Despawn>);
+		_handler.Add((ushort)MsgId.SDespawn, PacketHandler.S_DespawnHandler);		
+		_onRecv.Add((ushort)MsgId.SMove, MakePacket<S_Move>);
+		_handler.Add((ushort)MsgId.SMove, PacketHandler.S_MoveHandler);		
+		_onRecv.Add((ushort)MsgId.SChat, MakePacket<S_Chat>);
+		_handler.Add((ushort)MsgId.SChat, PacketHandler.S_ChatHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

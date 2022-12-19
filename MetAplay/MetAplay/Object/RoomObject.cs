@@ -9,7 +9,10 @@ namespace MetAplay
 {
     public class RoomObject : GameObject
     {
-
+        public RoomObject()
+        {
+            ObjectType = GameObjectType.Room;
+        }
         public GameRoom Room { get; set; }
         
         public void Enter(Player player,bool isHost=false)
