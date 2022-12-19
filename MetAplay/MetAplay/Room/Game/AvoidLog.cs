@@ -16,14 +16,16 @@ namespace MetAplay
             set { Info.Transform.Rot.Y = value; }
         }
 
-        private int _addedRotY = 15;
+        public int AddedRotY;
 
         public override void Update()
         {
-            int rotY = LogRotY + _addedRotY;
+            if (Room == null) return;
+            if (Room.Content.State != GameState.Start) return;
+
+            int rotY = LogRotY + AddedRotY;
             LogRotY = rotY > 360 ? rotY % 360 : rotY;
 
-            if (Room == null) return;
             S_Move movePacket = new S_Move();
             movePacket.Id = Id;
             movePacket.Transform = Info.Transform;
@@ -34,20 +36,25 @@ namespace MetAplay
     #endregion
 
     public class AvoidLog : Game
-    {
-        private Log log;
-        
+    {   
         public override void Init(GameRoom room)
         {
             base.Init(room);
-            log = ObjectManager.Instance.Add<Log>();
-            _objects.Add(log);
+            
+            // 통나무 생성
+            Log log1 = ObjectManager.Instance.Add<Log>();
+            Log log2 = ObjectManager.Instance.Add<Log>();
+            _objects.Add(log1);
+            _objects.Add(log2);
+            log1.Room = Room;
+            log2.Room = Room;
+            log1.AddedRotY = 15;
+            log2.AddedRotY = 10;
         }
 
         public override void Start()
         {
             base.Start();
-            log.Room = Room;
         }
 
         public override void Update()
