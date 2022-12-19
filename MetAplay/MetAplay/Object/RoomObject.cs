@@ -15,13 +15,11 @@ namespace MetAplay
         public void Enter(Player player,bool isHost=false)
         {
             Room.EnterGame(player);
-
-
         }
 
-        public void Leave()
+        public void Leave(int Id)
         {
-
+            Room.LeaveGame(Id);
         }
     
     }

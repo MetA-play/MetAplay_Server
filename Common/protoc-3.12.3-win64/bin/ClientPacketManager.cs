@@ -27,8 +27,6 @@ class PacketManager
 		_handler.Add((ushort)MsgId.SCreateroomRes, PacketHandler.S_CreateroomResHandler);		
 		_onRecv.Add((ushort)MsgId.SJoinroomRes, MakePacket<S_JoinroomRes>);
 		_handler.Add((ushort)MsgId.SJoinroomRes, PacketHandler.S_JoinroomResHandler);		
-		_onRecv.Add((ushort)MsgId.SRoompersonnelChange, MakePacket<S_RoompersonnelChange>);
-		_handler.Add((ushort)MsgId.SRoompersonnelChange, PacketHandler.S_RoompersonnelChangeHandler);		
 		_onRecv.Add((ushort)MsgId.SEnterGame, MakePacket<S_EnterGame>);
 		_handler.Add((ushort)MsgId.SEnterGame, PacketHandler.S_EnterGameHandler);		
 		_onRecv.Add((ushort)MsgId.SLeaveGame, MakePacket<S_LeaveGame>);

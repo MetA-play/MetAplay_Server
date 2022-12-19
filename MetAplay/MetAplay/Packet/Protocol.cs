@@ -54,13 +54,13 @@ namespace Google.Protobuf.Protocol {
             "DAoIQXZvaWRMb2cQACo+CgtPYmplY3RTdGF0ZRIICgRJZGxlEAASCAoETW92",
             "ZRABEggKBEp1bXAQAhIICgRTdHVuEAMSBwoDRGllEAQqJgoOR2FtZU9iamVj",
             "dFR5cGUSCAoETm9uZRAAEgoKBlBsYXllchABKjMKB01vdmVEaXISCQoFRnJv",
-            "bnQQABIICgRMZWZ0EAESCQoFUmlnaHQQAhIICgRCYWNrEAMq5wEKBU1zZ0lk",
+            "bnQQABIICgRMZWZ0EAESCQoFUmlnaHQQAhIICgRCYWNrEAMqywEKBU1zZ0lk",
             "EhQKEENfQ1JFQVRFUk9PTV9SRVEQABIUChBTX0NSRUFURVJPT01fUkVTEAES",
-            "EgoOQ19KT0lOUk9PTV9SRVEQAhISCg5TX0pPSU5ST09NX1JFUxADEhoKFlNf",
-            "Uk9PTVBFUlNPTk5FTF9DSEFOR0UQBBIQCgxTX0VOVEVSX0dBTUUQBRIQCgxT",
-            "X0xFQVZFX0dBTUUQBhILCgdTX1NQQVdOEAcSDQoJU19ERVNQQVdOEAgSCgoG",
-            "Q19NT1ZFEAkSCgoGU19NT1ZFEAoSCgoGQ19DSEFUEAsSCgoGU19DSEFUEAxC",
-            "G6oCGEdvb2dsZS5Qcm90b2J1Zi5Qcm90b2NvbGIGcHJvdG8z"));
+            "EgoOQ19KT0lOUk9PTV9SRVEQAhISCg5TX0pPSU5ST09NX1JFUxADEhAKDFNf",
+            "RU5URVJfR0FNRRAFEhAKDFNfTEVBVkVfR0FNRRAGEgsKB1NfU1BBV04QBxIN",
+            "CglTX0RFU1BBV04QCBIKCgZDX01PVkUQCRIKCgZTX01PVkUQChIKCgZDX0NI",
+            "QVQQCxIKCgZTX0NIQVQQDEIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29s",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.SceneType), typeof(global::Google.Protobuf.Protocol.GameType), typeof(global::Google.Protobuf.Protocol.ObjectState), typeof(global::Google.Protobuf.Protocol.GameObjectType), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.MsgId), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -126,7 +126,6 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("S_CREATEROOM_RES")] SCreateroomRes = 1,
     [pbr::OriginalName("C_JOINROOM_REQ")] CJoinroomReq = 2,
     [pbr::OriginalName("S_JOINROOM_RES")] SJoinroomRes = 3,
-    [pbr::OriginalName("S_ROOMPERSONNEL_CHANGE")] SRoompersonnelChange = 4,
     [pbr::OriginalName("S_ENTER_GAME")] SEnterGame = 5,
     [pbr::OriginalName("S_LEAVE_GAME")] SLeaveGame = 6,
     [pbr::OriginalName("S_SPAWN")] SSpawn = 7,
