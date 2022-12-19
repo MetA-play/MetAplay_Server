@@ -6,18 +6,17 @@ import "google/protobuf/timestamp.proto";
 option csharp_namespace = "Google.Protobuf.Protocol"; //C#파일의 네임스페이스 이름\
 
 
-// ---------------------------------------------------- uSER Info --------------------------------------------------------------- \\
+// ---------------------------------------------------- User --------------------------------------------------------------- \\
 message UserInfo {
 	string NickName = 1;
 }
 
-// ---------------------------------------------------- Room Info --------------------------------------------------------------- \\
+// ---------------------------------------------------- Room --------------------------------------------------------------- \\
 message RoomSetting {
 	string Name = 1;
 	int32 MaxPlayer =2;
 	GameType gameType = 3;
 }
-
 
 message RoomInfo {
 	int32 Id = 1;
@@ -25,27 +24,16 @@ message RoomInfo {
 	RoomSetting Setting = 3;
 }
 
-// ---------------------------------------------------- Scene Type --------------------------------------------------------------- \\
-
+// ---------------------------------------------------- Type ------------------------------------------------------ \\
 enum SceneType {
 	Main = 0;
 	Lobby = 1;
 	Game = 2;
 }
 
-// ---------------------------------------------------- Game Type --------------------------------------------------------------- \\
 enum GameType{
 	AvoidLog = 0;
-
-}
-// ---------------------------------------------------- Object --------------------------------------------------------------- \\
-
-enum ObjectState {
-	Idle = 0;
-	Move = 1;
-	Jump = 2;
-	Stun = 3;
-	Die = 4;
+	DoNotFall = 1;
 }
 
 enum GameObjectType {
@@ -54,6 +42,22 @@ enum GameObjectType {
 	Room = 2;
 }
 
+// ------------------------------------------- State ----------------------------------------------- \\
+enum ObjectState {
+	Idle = 0;
+	Move = 1;
+	Jump = 2;
+	Stun = 3;
+	Die = 4;
+}
+
+enum GameState {
+	Waiting = 0;
+	Playing = 1;
+	Ending = 2;
+}
+
+// ------------------------------------------- Object ----------------------------------------------- \\
 enum MoveDir {
 	Front = 0;
 	Left = 1;
@@ -81,8 +85,7 @@ message ObjectInfo {
 	string PrefabName = 4;
 }
 
-// ---------------------------------------------------- message Id --------------------------------------------------------------- \\
-
+// ---------------------------------------------------- Message Id --------------------------------------------------------------- \\
 enum MsgId {
 	C_CREATEROOM_REQ = 0;
 	S_CREATEROOM_RES = 1;
@@ -96,10 +99,11 @@ enum MsgId {
 	S_MOVE = 10;
 	C_CHAT = 11;
 	S_CHAT = 12;
+	C_UPDATE_GAME_STATE_REQ = 13;
+	S_UPDATE_GAME_STATE_RES = 14;
 }
 
 // ------------------------------------------------------ Packet ----------------------------------------------------------------- \\
-
 message C_Chat{
 	string content = 1;
 }
@@ -151,4 +155,12 @@ message S_Move {
 	int32 Id = 1;
 	ObjectState State = 2;
 	TransformInfo Transform = 3;
+}
+
+message C_UpdateGameStateReq {
+	GameState State = 1;
+}
+
+message S_UpdateGameStateRes {
+	GameState State = 1;
 }
