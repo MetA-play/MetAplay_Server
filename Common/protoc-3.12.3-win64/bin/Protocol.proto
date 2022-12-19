@@ -119,7 +119,8 @@ message C_CreateroomReq {
 }
 
 message S_CreateroomRes {
-	int32 RoomId = 1;
+	int32 ObjectId = 1;
+	int32 RoomId = 2;
 }
 
 message C_JoinroomReq {
