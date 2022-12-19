@@ -29,6 +29,7 @@ namespace MetAplay
             roomObj.Enter(player,isHost:true);
             S_CreateroomRes res = new S_CreateroomRes();
             res.RoomId = room.RoomId;
+            res.ObjectId = roomObj.Id;
             player.Session.Send(res);
             LeaveGame(player.Id);
 
@@ -50,6 +51,7 @@ namespace MetAplay
         {
 
         }
+
         public override void EnterGame(GameObject gameObject)
         {
 
@@ -70,6 +72,7 @@ namespace MetAplay
                     }
                     foreach (RoomObject obj in _roomObjs.Values)
                         spawn.Objects.Add(obj.Info);
+
                     player.Session.Send(spawn);
                 }
             }
