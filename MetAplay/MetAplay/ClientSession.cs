@@ -8,7 +8,6 @@ using ServerCore;
 using System.Net;
 using Google.Protobuf.Protocol;
 using Google.Protobuf;
-using System.Numerics;
 using System.Runtime.Serialization;
 using MetAplay;
 
@@ -34,7 +33,10 @@ namespace MetAplay
         public override void OnConnected(EndPoint endPoint)
         {
             Console.WriteLine($"OnConnected : {endPoint}");
-
+            Player player = ObjectManager.Instance.Add<Player>();
+            player.Session = this;
+            MyPlayer = player;
+            Lobby.Instance.Push(Lobby.Instance.EnterGame, player);
         }
 
         public override void OnRecvPacket(ArraySegment<byte> buffer)
@@ -52,8 +54,7 @@ namespace MetAplay
             Console.WriteLine($"OnDisconnected : {endPoint}");
         }
 
-        public override void OnSend
-            (int numOfBytes)
+        public override void OnSend(int numOfBytes)
         {
             //Console.WriteLine($"Transferred bytes: {numOfBytes}");
         }

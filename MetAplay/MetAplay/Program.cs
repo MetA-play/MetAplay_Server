@@ -46,6 +46,7 @@ namespace MetAplay
             // TODO
             while (true)
             {
+                Lobby.Instance.Flush();
             }
         }
     }

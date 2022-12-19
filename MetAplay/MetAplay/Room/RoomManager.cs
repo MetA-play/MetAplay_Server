@@ -32,7 +32,7 @@ namespace MetAplay
             lock (_lock)
             {
                 gameRoom.RoomId = _roomId;
-                //gameRoom.Setting = setting;
+                gameRoom.Setting = setting;
                 _rooms.Add(_roomId, gameRoom);
                 _roomId++;
             }
@@ -59,16 +59,5 @@ namespace MetAplay
                 return null;
             }
         }
-
-        /*public List<RoomInfo> LoadRoomInfo()
-        {
-            List<RoomInfo> info = new List<RoomInfo>();
-
-            foreach (GameRoom room in _rooms.Values)
-                info.Add(new RoomInfo() { Id = room.RoomId, CurrentPersonnel = room._sessions.Count, Setting = room.Setting });
-
-
-            return info;
-        }*/
     }
 }

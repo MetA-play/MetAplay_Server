@@ -14,13 +14,18 @@ namespace MetAplay
             set { Info.Id = value; }
         }
 
-        public GameRoom Room { get; set; }
+        public GameRoom JoinedRoom { get; set; }
 
         public ObjectInfo Info { get; set; } = new ObjectInfo();
 
 
         public GameObject()
         {
+            Info = new ObjectInfo();
+            Info.Transform = new TransformInfo();
+            Info.Transform.Pos = new Vector();
+            Info.Transform.Rot = new Vector();
+            Info.Transform.Scale  = new Vector();
         }
 
         public virtual void Update()
