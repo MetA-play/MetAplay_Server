@@ -21,7 +21,7 @@ namespace MetAplay
         public override void Update()
         {
             if (Room == null) return;
-            if (Room.Content.State != GameState.Start) return;
+            if (Room.Content.State != GameState.Playing) return;
 
             int rotY = LogRotY + AddedRotY;
             LogRotY = rotY > 360 ? rotY % 360 : rotY;
@@ -40,6 +40,7 @@ namespace MetAplay
         public override void Init(GameRoom room)
         {
             base.Init(room);
+            GameName = GameType.AvoidLog;
             
             // 통나무 생성
             Log log1 = ObjectManager.Instance.Add<Log>();
