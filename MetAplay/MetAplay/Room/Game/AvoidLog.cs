@@ -40,26 +40,21 @@ namespace MetAplay
         public override void Init(GameRoom room)
         {
             base.Init(room);
-            
+            log = ObjectManager.Instance.Add<Log>();
+            _objects.Add(log);
         }
+
         public override void Start()
         {
             base.Start();
-
-            if (Room == null) return;
-
             log.Room = Room;
-            S_Spawn spawnPacket = new S_Spawn();
-            foreach (GameObject go in _objects)
-                spawnPacket.Objects.Add(go.Info);
-            Room.Broadcast(spawnPacket);
         }
+
         public override void Update()
         {
-            
-
-            log.Update();
+            base.Update();
         }
+
         public override void End()
         {
             base.End();

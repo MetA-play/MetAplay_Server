@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Google.Protobuf.Protocol;
 
 namespace MetAplay
 {
@@ -30,14 +26,24 @@ namespace MetAplay
 
         public virtual void Init(GameRoom room)
         {
-            State = GameState.Ready;
+            if (room == null) return;
             Room = room;
-            _objects.Clear();
+            State = GameState.Ready;
         }
 
         public virtual void Start()
         {
+            if (Room == null || State != GameState.Ready) return;
             State = GameState.Start;
+
+            // Init에서 등록된 오브젝트가 있다면 스폰
+            if (_objects.Count > 0)
+            {
+                S_Spawn spawnPacket = new S_Spawn();
+                foreach (GameObject go in _objects)
+                    spawnPacket.Objects.Add(go.Info);
+                Room.Broadcast(spawnPacket);
+            }
         }
 
         public virtual void Update()
