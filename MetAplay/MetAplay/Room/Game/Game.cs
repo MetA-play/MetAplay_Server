@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Google.Protobuf.Protocol;
 
 namespace MetAplay
 {
@@ -14,40 +10,47 @@ namespace MetAplay
         public void End();
     }
 
-    public enum GameState
-    {
-        Ready,
-        Start,
-        End,
-    }
-
     public class Game : IGame
     {
         public GameRoom Room { get; set; }
+        public GameType GameName { get; protected set; }
         public GameState State { get; protected set; }
 
         public List<GameObject> _objects = new List<GameObject>();
 
         public virtual void Init(GameRoom room)
         {
-            State = GameState.Ready;
+            if (room == null) return;
             Room = room;
-            _objects.Clear();
+            State = GameState.Waiting;
         }
 
         public virtual void Start()
         {
-            State = GameState.Start;
+            if (Room == null || State != GameState.Waiting) return;
+            State = GameState.Playing;
+
+            // Init에서 등록된 오브젝트가 있다면 스폰
+            if (_objects.Count > 0)
+            {
+                S_Spawn spawnPacket = new S_Spawn();
+                foreach (GameObject go in _objects)
+                    spawnPacket.Objects.Add(go.Info);
+                Room.Broadcast(spawnPacket);
+            }
         }
 
         public virtual void Update()
         {
-
+            foreach (GameObject obj in _objects)
+            {
+                obj.Update();
+            }
         }
 
         public virtual void End()
         {
-            State = GameState.End;
+            State = GameState.Ending;
         }
     }
 }

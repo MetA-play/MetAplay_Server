@@ -58,7 +58,6 @@ namespace MetAplay
             }
             else if (type.Equals(GameObjectType.None))
             {
-
             }
         }
 
