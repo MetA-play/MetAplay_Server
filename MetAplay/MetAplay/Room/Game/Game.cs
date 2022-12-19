@@ -13,6 +13,7 @@ namespace MetAplay
     public class Game : IGame
     {
         public GameRoom Room { get; set; }
+        public GameType GameName { get; } = GameType.AvoidLog;
         public GameState State { get; protected set; }
 
         public List<GameObject> _objects = new List<GameObject>();
