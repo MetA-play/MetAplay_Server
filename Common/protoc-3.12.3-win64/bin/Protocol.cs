@@ -39,33 +39,34 @@ namespace Google.Protobuf.Protocol {
             "cm90b2NvbC5UcmFuc2Zvcm1JbmZvEhIKClByZWZhYk5hbWUYBCABKAkiGQoG",
             "Q19DaGF0Eg8KB2NvbnRlbnQYASABKAkiKwoGU19DaGF0EhAKCHBsYXllcklk",
             "GAEgASgFEg8KB2NvbnRlbnQYAiABKAkiOQoPQ19DcmVhdGVyb29tUmVxEiYK",
-            "B1NldHRpbmcYASABKAsyFS5Qcm90b2NvbC5Sb29tU2V0dGluZyIhCg9TX0Ny",
-            "ZWF0ZXJvb21SZXMSDgoGUm9vbUlkGAEgASgFIh8KDUNfSm9pbnJvb21SZXES",
-            "DgoGUm9vbUlkGAEgASgFIh8KDVNfSm9pbnJvb21SZXMSDgoGUm9vbUlkGAEg",
-            "ASgFIjMKC1NfRW50ZXJHYW1lEiQKBlBsYXllchgBIAEoCzIULlByb3RvY29s",
-            "Lk9iamVjdEluZm8iDQoLU19MZWF2ZUdhbWUiMAoHU19TcGF3bhIlCgdPYmpl",
-            "Y3RzGAEgAygLMhQuUHJvdG9jb2wuT2JqZWN0SW5mbyIdCglTX0Rlc3Bhd24S",
-            "EAoIT2JqZWN0SWQYASADKAUiWgoGQ19Nb3ZlEiQKBVN0YXRlGAEgASgOMhUu",
-            "UHJvdG9jb2wuT2JqZWN0U3RhdGUSKgoJVHJhbnNmb3JtGAIgASgLMhcuUHJv",
-            "dG9jb2wuVHJhbnNmb3JtSW5mbyJmCgZTX01vdmUSCgoCSWQYASABKAUSJAoF",
-            "U3RhdGUYAiABKA4yFS5Qcm90b2NvbC5PYmplY3RTdGF0ZRIqCglUcmFuc2Zv",
-            "cm0YAyABKAsyFy5Qcm90b2NvbC5UcmFuc2Zvcm1JbmZvIjoKFENfVXBkYXRl",
-            "R2FtZVN0YXRlUmVxEiIKBVN0YXRlGAEgASgOMhMuUHJvdG9jb2wuR2FtZVN0",
-            "YXRlIjoKFFNfVXBkYXRlR2FtZVN0YXRlUmVzEiIKBVN0YXRlGAEgASgOMhMu",
-            "UHJvdG9jb2wuR2FtZVN0YXRlKioKCVNjZW5lVHlwZRIICgRNYWluEAASCQoF",
-            "TG9iYnkQARIICgRHYW1lEAIqJwoIR2FtZVR5cGUSDAoIQXZvaWRMb2cQABIN",
-            "CglEb05vdEZhbGwQASowCg5HYW1lT2JqZWN0VHlwZRIICgROb25lEAASCgoG",
-            "UGxheWVyEAESCAoEUm9vbRACKj4KC09iamVjdFN0YXRlEggKBElkbGUQABII",
-            "CgRNb3ZlEAESCAoESnVtcBACEggKBFN0dW4QAxIHCgNEaWUQBCoxCglHYW1l",
-            "U3RhdGUSCwoHV2FpdGluZxAAEgsKB1BsYXlpbmcQARIKCgZFbmRpbmcQAioz",
-            "CgdNb3ZlRGlyEgkKBUZyb250EAASCAoETGVmdBABEgkKBVJpZ2h0EAISCAoE",
-            "QmFjaxADKoUCCgVNc2dJZBIUChBDX0NSRUFURVJPT01fUkVREAASFAoQU19D",
-            "UkVBVEVST09NX1JFUxABEhIKDkNfSk9JTlJPT01fUkVREAISEgoOU19KT0lO",
-            "Uk9PTV9SRVMQAxIQCgxTX0VOVEVSX0dBTUUQBRIQCgxTX0xFQVZFX0dBTUUQ",
-            "BhILCgdTX1NQQVdOEAcSDQoJU19ERVNQQVdOEAgSCgoGQ19NT1ZFEAkSCgoG",
-            "U19NT1ZFEAoSCgoGQ19DSEFUEAsSCgoGU19DSEFUEAwSGwoXQ19VUERBVEVf",
-            "R0FNRV9TVEFURV9SRVEQDRIbChdTX1VQREFURV9HQU1FX1NUQVRFX1JFUxAO",
-            "QhuqAhhHb29nbGUuUHJvdG9idWYuUHJvdG9jb2xiBnByb3RvMw=="));
+            "B1NldHRpbmcYASABKAsyFS5Qcm90b2NvbC5Sb29tU2V0dGluZyIzCg9TX0Ny",
+            "ZWF0ZXJvb21SZXMSEAoIT2JqZWN0SWQYASABKAUSDgoGUm9vbUlkGAIgASgF",
+            "Ih8KDUNfSm9pbnJvb21SZXESDgoGUm9vbUlkGAEgASgFIh8KDVNfSm9pbnJv",
+            "b21SZXMSDgoGUm9vbUlkGAEgASgFIjMKC1NfRW50ZXJHYW1lEiQKBlBsYXll",
+            "chgBIAEoCzIULlByb3RvY29sLk9iamVjdEluZm8iDQoLU19MZWF2ZUdhbWUi",
+            "MAoHU19TcGF3bhIlCgdPYmplY3RzGAEgAygLMhQuUHJvdG9jb2wuT2JqZWN0",
+            "SW5mbyIdCglTX0Rlc3Bhd24SEAoIT2JqZWN0SWQYASADKAUiWgoGQ19Nb3Zl",
+            "EiQKBVN0YXRlGAEgASgOMhUuUHJvdG9jb2wuT2JqZWN0U3RhdGUSKgoJVHJh",
+            "bnNmb3JtGAIgASgLMhcuUHJvdG9jb2wuVHJhbnNmb3JtSW5mbyJmCgZTX01v",
+            "dmUSCgoCSWQYASABKAUSJAoFU3RhdGUYAiABKA4yFS5Qcm90b2NvbC5PYmpl",
+            "Y3RTdGF0ZRIqCglUcmFuc2Zvcm0YAyABKAsyFy5Qcm90b2NvbC5UcmFuc2Zv",
+            "cm1JbmZvIjoKFENfVXBkYXRlR2FtZVN0YXRlUmVxEiIKBVN0YXRlGAEgASgO",
+            "MhMuUHJvdG9jb2wuR2FtZVN0YXRlIjoKFFNfVXBkYXRlR2FtZVN0YXRlUmVz",
+            "EiIKBVN0YXRlGAEgASgOMhMuUHJvdG9jb2wuR2FtZVN0YXRlKioKCVNjZW5l",
+            "VHlwZRIICgRNYWluEAASCQoFTG9iYnkQARIICgRHYW1lEAIqJwoIR2FtZVR5",
+            "cGUSDAoIQXZvaWRMb2cQABINCglEb05vdEZhbGwQASowCg5HYW1lT2JqZWN0",
+            "VHlwZRIICgROb25lEAASCgoGUGxheWVyEAESCAoEUm9vbRACKj4KC09iamVj",
+            "dFN0YXRlEggKBElkbGUQABIICgRNb3ZlEAESCAoESnVtcBACEggKBFN0dW4Q",
+            "AxIHCgNEaWUQBCoxCglHYW1lU3RhdGUSCwoHV2FpdGluZxAAEgsKB1BsYXlp",
+            "bmcQARIKCgZFbmRpbmcQAiozCgdNb3ZlRGlyEgkKBUZyb250EAASCAoETGVm",
+            "dBABEgkKBVJpZ2h0EAISCAoEQmFjaxADKoUCCgVNc2dJZBIUChBDX0NSRUFU",
+            "RVJPT01fUkVREAASFAoQU19DUkVBVEVST09NX1JFUxABEhIKDkNfSk9JTlJP",
+            "T01fUkVREAISEgoOU19KT0lOUk9PTV9SRVMQAxIQCgxTX0VOVEVSX0dBTUUQ",
+            "BRIQCgxTX0xFQVZFX0dBTUUQBhILCgdTX1NQQVdOEAcSDQoJU19ERVNQQVdO",
+            "EAgSCgoGQ19NT1ZFEAkSCgoGU19NT1ZFEAoSCgoGQ19DSEFUEAsSCgoGU19D",
+            "SEFUEAwSGwoXQ19VUERBVEVfR0FNRV9TVEFURV9SRVEQDRIbChdTX1VQREFU",
+            "RV9HQU1FX1NUQVRFX1JFUxAOQhuqAhhHb29nbGUuUHJvdG9idWYuUHJvdG9j",
+            "b2xiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.SceneType), typeof(global::Google.Protobuf.Protocol.GameType), typeof(global::Google.Protobuf.Protocol.GameObjectType), typeof(global::Google.Protobuf.Protocol.ObjectState), typeof(global::Google.Protobuf.Protocol.GameState), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.MsgId), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -78,7 +79,7 @@ namespace Google.Protobuf.Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Chat), global::Google.Protobuf.Protocol.C_Chat.Parser, new[]{ "Content" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Chat), global::Google.Protobuf.Protocol.S_Chat.Parser, new[]{ "PlayerId", "Content" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_CreateroomReq), global::Google.Protobuf.Protocol.C_CreateroomReq.Parser, new[]{ "Setting" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_CreateroomRes), global::Google.Protobuf.Protocol.S_CreateroomRes.Parser, new[]{ "RoomId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_CreateroomRes), global::Google.Protobuf.Protocol.S_CreateroomRes.Parser, new[]{ "ObjectId", "RoomId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_JoinroomReq), global::Google.Protobuf.Protocol.C_JoinroomReq.Parser, new[]{ "RoomId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_JoinroomRes), global::Google.Protobuf.Protocol.S_JoinroomRes.Parser, new[]{ "RoomId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_EnterGame), global::Google.Protobuf.Protocol.S_EnterGame.Parser, new[]{ "Player" }, null, null, null, null),
@@ -1763,6 +1764,7 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public S_CreateroomRes(S_CreateroomRes other) : this() {
+      objectId_ = other.objectId_;
       roomId_ = other.roomId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1772,8 +1774,19 @@ namespace Google.Protobuf.Protocol {
       return new S_CreateroomRes(this);
     }
 
+    /// <summary>Field number for the "ObjectId" field.</summary>
+    public const int ObjectIdFieldNumber = 1;
+    private int objectId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ObjectId {
+      get { return objectId_; }
+      set {
+        objectId_ = value;
+      }
+    }
+
     /// <summary>Field number for the "RoomId" field.</summary>
-    public const int RoomIdFieldNumber = 1;
+    public const int RoomIdFieldNumber = 2;
     private int roomId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int RoomId {
@@ -1796,6 +1809,7 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ObjectId != other.ObjectId) return false;
       if (RoomId != other.RoomId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1803,6 +1817,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (ObjectId != 0) hash ^= ObjectId.GetHashCode();
       if (RoomId != 0) hash ^= RoomId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1817,8 +1832,12 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (RoomId != 0) {
+      if (ObjectId != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(ObjectId);
+      }
+      if (RoomId != 0) {
+        output.WriteRawTag(16);
         output.WriteInt32(RoomId);
       }
       if (_unknownFields != null) {
@@ -1829,6 +1848,9 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (ObjectId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ObjectId);
+      }
       if (RoomId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(RoomId);
       }
@@ -1842,6 +1864,9 @@ namespace Google.Protobuf.Protocol {
     public void MergeFrom(S_CreateroomRes other) {
       if (other == null) {
         return;
+      }
+      if (other.ObjectId != 0) {
+        ObjectId = other.ObjectId;
       }
       if (other.RoomId != 0) {
         RoomId = other.RoomId;
@@ -1858,6 +1883,10 @@ namespace Google.Protobuf.Protocol {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
+            ObjectId = input.ReadInt32();
+            break;
+          }
+          case 16: {
             RoomId = input.ReadInt32();
             break;
           }
