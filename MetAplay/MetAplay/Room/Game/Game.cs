@@ -8,7 +8,7 @@ namespace MetAplay
 {
     public interface IGame
     {
-        public void Init();
+        public void Init(GameRoom room);
         public void Start();
         public void Update();
         public void End();
@@ -23,11 +23,16 @@ namespace MetAplay
 
     public class Game : IGame
     {
+        public GameRoom Room { get; set; }
         public GameState State { get; protected set; }
 
-        public virtual void Init()
+        public List<GameObject> _objects = new List<GameObject>();
+
+        public virtual void Init(GameRoom room)
         {
             State = GameState.Ready;
+            Room = room;
+            _objects.Clear();
         }
 
         public virtual void Start()
@@ -37,7 +42,10 @@ namespace MetAplay
 
         public virtual void Update()
         {
-            
+            foreach (GameObject obj in _objects)
+            {
+                obj.Update();
+            }
         }
 
         public virtual void End()
