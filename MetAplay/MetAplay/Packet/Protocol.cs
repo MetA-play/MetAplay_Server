@@ -52,15 +52,15 @@ namespace Google.Protobuf.Protocol {
             "cm0YAyABKAsyFy5Qcm90b2NvbC5UcmFuc2Zvcm1JbmZvKioKCVNjZW5lVHlw",
             "ZRIICgRNYWluEAASCQoFTG9iYnkQARIICgRHYW1lEAIqGAoIR2FtZVR5cGUS",
             "DAoIQXZvaWRMb2cQACo+CgtPYmplY3RTdGF0ZRIICgRJZGxlEAASCAoETW92",
-            "ZRABEggKBEp1bXAQAhIICgRTdHVuEAMSBwoDRGllEAQqJgoOR2FtZU9iamVj",
-            "dFR5cGUSCAoETm9uZRAAEgoKBlBsYXllchABKjMKB01vdmVEaXISCQoFRnJv",
-            "bnQQABIICgRMZWZ0EAESCQoFUmlnaHQQAhIICgRCYWNrEAMqywEKBU1zZ0lk",
-            "EhQKEENfQ1JFQVRFUk9PTV9SRVEQABIUChBTX0NSRUFURVJPT01fUkVTEAES",
-            "EgoOQ19KT0lOUk9PTV9SRVEQAhISCg5TX0pPSU5ST09NX1JFUxADEhAKDFNf",
-            "RU5URVJfR0FNRRAFEhAKDFNfTEVBVkVfR0FNRRAGEgsKB1NfU1BBV04QBxIN",
-            "CglTX0RFU1BBV04QCBIKCgZDX01PVkUQCRIKCgZTX01PVkUQChIKCgZDX0NI",
-            "QVQQCxIKCgZTX0NIQVQQDEIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29s",
-            "YgZwcm90bzM="));
+            "ZRABEggKBEp1bXAQAhIICgRTdHVuEAMSBwoDRGllEAQqMAoOR2FtZU9iamVj",
+            "dFR5cGUSCAoETm9uZRAAEgoKBlBsYXllchABEggKBFJvb20QAiozCgdNb3Zl",
+            "RGlyEgkKBUZyb250EAASCAoETGVmdBABEgkKBVJpZ2h0EAISCAoEQmFjaxAD",
+            "KssBCgVNc2dJZBIUChBDX0NSRUFURVJPT01fUkVREAASFAoQU19DUkVBVEVS",
+            "T09NX1JFUxABEhIKDkNfSk9JTlJPT01fUkVREAISEgoOU19KT0lOUk9PTV9S",
+            "RVMQAxIQCgxTX0VOVEVSX0dBTUUQBRIQCgxTX0xFQVZFX0dBTUUQBhILCgdT",
+            "X1NQQVdOEAcSDQoJU19ERVNQQVdOEAgSCgoGQ19NT1ZFEAkSCgoGU19NT1ZF",
+            "EAoSCgoGQ19DSEFUEAsSCgoGU19DSEFUEAxCG6oCGEdvb2dsZS5Qcm90b2J1",
+            "Zi5Qcm90b2NvbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.SceneType), typeof(global::Google.Protobuf.Protocol.GameType), typeof(global::Google.Protobuf.Protocol.ObjectState), typeof(global::Google.Protobuf.Protocol.GameObjectType), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.MsgId), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -112,6 +112,7 @@ namespace Google.Protobuf.Protocol {
   public enum GameObjectType {
     [pbr::OriginalName("None")] None = 0,
     [pbr::OriginalName("Player")] Player = 1,
+    [pbr::OriginalName("Room")] Room = 2,
   }
 
   public enum MoveDir {
