@@ -30,6 +30,8 @@ namespace MetAplay
             S_CreateroomRes res = new S_CreateroomRes();
             res.RoomId = room.RoomId;
             player.Session.Send(res);
+            LeaveGame(player.Id);
+
         }
 
         public void JoinRoomHandle(int roomId,Player player)

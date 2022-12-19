@@ -21,6 +21,11 @@ namespace MetAplay
 
         public GameObject()
         {
+            Info = new ObjectInfo();
+            Info.Transform = new TransformInfo();
+            Info.Transform.Pos = new Vector();
+            Info.Transform.Rot = new Vector();
+            Info.Transform.Scale  = new Vector();
         }
 
         public virtual void Update()

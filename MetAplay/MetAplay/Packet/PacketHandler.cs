@@ -44,4 +44,9 @@ public class PacketHandler
             room.Push(room.ChatHandle, CS.MyPlayer, chat);
         
     }
+    public static void C_UpdateGameStateReqHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession CS = session as ClientSession;
+        
+    }
 }

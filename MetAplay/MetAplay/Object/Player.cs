@@ -14,6 +14,7 @@ namespace MetAplay
         public Player()
         {
             ObjectType = GameObjectType.Player;
+
         }
     }
 }

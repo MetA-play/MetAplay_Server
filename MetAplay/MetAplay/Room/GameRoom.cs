@@ -44,7 +44,7 @@ namespace MetAplay
 
                     S_Spawn spawnPacket = new S_Spawn();
                     foreach (Player p in _players.Values)
-                        if (p != player)
+                        if (p != player)    
                             spawnPacket.Objects.Add(p.Info);
                     player.Session.Send(spawnPacket);
                 }
