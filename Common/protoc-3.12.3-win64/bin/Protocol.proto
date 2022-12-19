@@ -51,6 +51,7 @@ enum ObjectState {
 enum GameObjectType {
 	None = 0;
 	Player = 1;
+	Room = 2;
 }
 
 enum MoveDir {
