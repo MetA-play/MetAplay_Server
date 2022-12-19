@@ -10,13 +10,6 @@ namespace MetAplay
         public void End();
     }
 
-    public enum GameState
-    {
-        Ready,
-        Start,
-        End,
-    }
-
     public class Game : IGame
     {
         public GameRoom Room { get; set; }
@@ -28,13 +21,13 @@ namespace MetAplay
         {
             if (room == null) return;
             Room = room;
-            State = GameState.Ready;
+            State = GameState.Waiting;
         }
 
         public virtual void Start()
         {
-            if (Room == null || State != GameState.Ready) return;
-            State = GameState.Start;
+            if (Room == null || State != GameState.Waiting) return;
+            State = GameState.Playing;
 
             // Init에서 등록된 오브젝트가 있다면 스폰
             if (_objects.Count > 0)
@@ -56,7 +49,7 @@ namespace MetAplay
 
         public virtual void End()
         {
-            State = GameState.End;
+            State = GameState.Ending;
         }
     }
 }
