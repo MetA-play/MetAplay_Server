@@ -56,9 +56,7 @@ namespace MetAplay
         public void Broadcast(IMessage packet)
         {
             foreach (Player p in _players.Values)
-            {
                 p.Session.Send(packet);
-            }
         }
     }
 }

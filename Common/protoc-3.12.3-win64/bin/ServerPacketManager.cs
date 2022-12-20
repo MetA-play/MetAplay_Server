@@ -23,16 +23,18 @@ class PacketManager
 
 	public void Register()
 	{		
-		_onRecv.Add((ushort)MsgId.CCreateroomReq, MakePacket<C_CreateroomReq>);
-		_handler.Add((ushort)MsgId.CCreateroomReq, PacketHandler.C_CreateroomReqHandler);		
-		_onRecv.Add((ushort)MsgId.CJoinroomReq, MakePacket<C_JoinroomReq>);
-		_handler.Add((ushort)MsgId.CJoinroomReq, PacketHandler.C_JoinroomReqHandler);		
+		_onRecv.Add((ushort)MsgId.CCreateRoomReq, MakePacket<C_CreateRoomReq>);
+		_handler.Add((ushort)MsgId.CCreateRoomReq, PacketHandler.C_CreateRoomReqHandler);		
+		_onRecv.Add((ushort)MsgId.CJoinRoomReq, MakePacket<C_JoinRoomReq>);
+		_handler.Add((ushort)MsgId.CJoinRoomReq, PacketHandler.C_JoinRoomReqHandler);		
 		_onRecv.Add((ushort)MsgId.CMove, MakePacket<C_Move>);
 		_handler.Add((ushort)MsgId.CMove, PacketHandler.C_MoveHandler);		
 		_onRecv.Add((ushort)MsgId.CChat, MakePacket<C_Chat>);
 		_handler.Add((ushort)MsgId.CChat, PacketHandler.C_ChatHandler);		
 		_onRecv.Add((ushort)MsgId.CUpdateGameStateReq, MakePacket<C_UpdateGameStateReq>);
-		_handler.Add((ushort)MsgId.CUpdateGameStateReq, PacketHandler.C_UpdateGameStateReqHandler);
+		_handler.Add((ushort)MsgId.CUpdateGameStateReq, PacketHandler.C_UpdateGameStateReqHandler);		
+		_onRecv.Add((ushort)MsgId.CCollidePlayer, MakePacket<C_CollidePlayer>);
+		_handler.Add((ushort)MsgId.CCollidePlayer, PacketHandler.C_CollidePlayerHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

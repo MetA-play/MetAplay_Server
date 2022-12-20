@@ -43,14 +43,17 @@ namespace MetAplay
         public virtual void Update()
         {
             foreach (GameObject obj in _objects)
-            {
                 obj.Update();
-            }
         }
 
         public virtual void End()
         {
             State = GameState.Ending;
+        }
+
+        public virtual void CollidePlayer(int playerId)
+        {
+
         }
     }
 }

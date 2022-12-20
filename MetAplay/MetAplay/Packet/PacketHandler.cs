@@ -10,43 +10,58 @@ using System.Threading.Tasks;
 
 public class PacketHandler
 {
-
-    public static void C_CreateroomReqHandler(PacketSession session, IMessage packet)
+    public static void C_CreateRoomReqHandler(PacketSession session, IMessage packet)
     {
-        ClientSession CS = session as ClientSession;
-        C_CreateroomReq req = packet as C_CreateroomReq;
+        ClientSession clientSession = session as ClientSession;
+        C_CreateRoomReq req = packet as C_CreateRoomReq;
 
-        Lobby.Instance.Push(Lobby.Instance.CreateRoomHandle,CS.MyPlayer,req.Setting);
+        Lobby.Instance.Push(Lobby.Instance.CreateRoomHandle,clientSession.MyPlayer,req.Setting);
     }
-    public static void C_JoinroomReqHandler(PacketSession session, IMessage packet)
+
+    public static void C_JoinRoomReqHandler(PacketSession session, IMessage packet)
     {
-        ClientSession CS = session as ClientSession;
-        C_JoinroomReq req = packet as C_JoinroomReq;
+        ClientSession clientSession = session as ClientSession;
+        C_JoinRoomReq req = packet as C_JoinRoomReq;
         Console.WriteLine("Join Try");
-        Lobby.Instance.Push(Lobby.Instance.JoinRoomHandle, req.RoomId,CS.MyPlayer);
+        Lobby.Instance.Push(Lobby.Instance.JoinRoomHandle, req.RoomId,clientSession.MyPlayer);
 
     }
+
     public static void C_MoveHandler(PacketSession session, IMessage packet)
     {
-        ClientSession CS = session as ClientSession;
+        ClientSession clientSession = session as ClientSession;
 
     }
 
     public static void C_ChatHandler(PacketSession session, IMessage packet)
     {
-        ClientSession CS = session as ClientSession;
+        ClientSession clientSession = session as ClientSession;
         C_Chat chat = packet as C_Chat;
 
-        GameRoom room = CS.MyPlayer.Room;
+        GameRoom room = clientSession.MyPlayer.Room;
         if (room == null)
-            Lobby.Instance.Push(Lobby.Instance.ChatHandle, CS.MyPlayer, chat);
+            Lobby.Instance.Push(Lobby.Instance.ChatHandle, clientSession.MyPlayer, chat);
         else
-            room.Push(room.ChatHandle, CS.MyPlayer, chat);
-        
+            room.Push(room.ChatHandle, clientSession.MyPlayer, chat);
     }
+
     public static void C_UpdateGameStateReqHandler(PacketSession session, IMessage packet)
     {
-        ClientSession CS = session as ClientSession;
+        ClientSession clientSession = session as ClientSession;
         
+    }
+
+    public static void C_CollidePlayerHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+        C_CollidePlayer collidePacket = packet as C_CollidePlayer;
+
+        GameRoom room = clientSession.MyPlayer.Room;
+        if (room == null)
+        {
+            
+        }
+        else
+            room.Push(room.Content.CollidePlayer, collidePacket.PlayerId);
     }
 }
