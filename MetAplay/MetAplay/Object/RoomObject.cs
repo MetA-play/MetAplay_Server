@@ -14,16 +14,6 @@ namespace MetAplay
             ObjectType = GameObjectType.Room;
         }
         public GameRoom Room { get; set; }
-        
-        public void Enter(Player player,bool isHost=false)
-        {
-            Room.EnterGame(player);
-        }
-
-        public void Leave(int Id)
-        {
-            Room.LeaveGame(Id);
-        }
     
     }
 }

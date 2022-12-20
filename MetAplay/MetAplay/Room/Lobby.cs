@@ -22,11 +22,11 @@ namespace MetAplay
             _roomObjs.Add(roomObj.Id, roomObj);
             EnterGame(roomObj);
 
-            roomObj.Enter(player, isHost:true);
             S_CreateRoomRes res = new S_CreateRoomRes();
             res.RoomId = room.RoomId;
             res.ObjectId = roomObj.Id;
             player.Session.Send(res);
+
             LeaveGame(player.Id);
         }
 
@@ -34,11 +34,15 @@ namespace MetAplay
         {
             GameRoom room = RoomManager.Instance.Find(roomId);
             if (room.IsStart) return;
-            room.EnterGame(player);
+
+            if (room.Host == null)
+                room.Host = player; 
 
             S_JoinRoomRes res = new S_JoinRoomRes();
             res.RoomId = roomId;
             player.Session.Send(res);
+         
+            room.EnterGame(player);
         }
 
         public void DeleteRoom()
@@ -55,6 +59,7 @@ namespace MetAplay
 
                 {
                     S_EnterGame entergame = new S_EnterGame();
+                    entergame.Player = gameObject.Info;
                     player.Session.Send(entergame);
                     S_Spawn spawn = new S_Spawn();
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rJFanILzuKArJ1N5Ttcm2+9lkPtL3M4ZPuQgdMvDIwuK3Eu2wVhd8E3UJCqOTi3KLwuf7EXl3UfQIs8fJr2S1g==",
+  "dgSpecHash": "k/Qii9z+y7lBxvaUN6rentu26jqE4na94JJicOu1jqa0/bsqcdDKalP29KpRSipbuFRkt1Jl68+Z8k/R7a7x2w==",
   "success": true,
-  "projectFilePath": "C:\\workspace\\Projects\\MetAplay\\MetAplay_Server\\MetAplay\\ProtocolGenerator\\ProtocolGenerator.csproj",
+  "projectFilePath": "C:\\Users\\eunseong\\Documents\\GitHub\\MetAplay\\MetAplay_Server\\MetAplay\\ProtocolGenerator\\ProtocolGenerator.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

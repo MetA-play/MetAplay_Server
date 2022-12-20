@@ -9,6 +9,11 @@ namespace MetAplay
 {
     public class GameRoom : BaseRoom
     {
+
+        public GameRoom() 
+        {
+            Content = new Game();
+        }
         public RoomInfo Info
         {
             get { return new RoomInfo() { Id = RoomId, CurrentPersonnel = _players.Count, Setting = Setting }; }

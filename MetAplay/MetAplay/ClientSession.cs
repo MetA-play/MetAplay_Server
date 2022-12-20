@@ -36,6 +36,7 @@ namespace MetAplay
             Player player = ObjectManager.Instance.Add<Player>();
             player.Session = this;
             MyPlayer = player;
+            player.Info.Transform.Pos.Y = 1;
             Lobby.Instance.Push(Lobby.Instance.EnterGame, player);
         }
 
