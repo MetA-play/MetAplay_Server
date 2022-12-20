@@ -18,24 +18,26 @@ namespace MetAplay
         {
             Flush();
         }
+
         public virtual void EnterGame(GameObject gameObject)
         {
 
         }
+
         public virtual void LeaveGame(int gameObjectId)
         {
 
         }
 
-        public void MoveHandle(Player player, C_Move movePacket)
+        public void MoveHandle(GameObject gameObject, C_Move movePacket)
         {
-            if (player == null) return;
+            if (gameObject == null) return;
 
-            player.Info.Transform = movePacket.Transform;
-            player.Info.State = movePacket.State;
+            gameObject.Info.Transform = movePacket.Transform;
+            gameObject.Info.State = movePacket.State;
 
             S_Move resMovePacket = new S_Move();
-            resMovePacket.Id = player.Id;
+            resMovePacket.Id = gameObject.Id;
             resMovePacket.Transform = movePacket.Transform;
             resMovePacket.State = movePacket.State;
 
@@ -50,6 +52,7 @@ namespace MetAplay
 
             Broadcast(res);
         }
+
         public void Broadcast(IMessage packet)
         {
             foreach (Player p in _players.Values)
