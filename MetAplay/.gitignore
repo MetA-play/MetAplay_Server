@@ -194,7 +194,7 @@ Icon?
 **/*.sln.ide
 
 # Visual Studio temp something
-.vs/
+MetAplay/.vs/
 
 # dotnet stuff
 project.lock.json
