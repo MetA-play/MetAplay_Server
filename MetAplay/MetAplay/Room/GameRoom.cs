@@ -21,9 +21,10 @@ namespace MetAplay
 
         public override void Update()
         {
-            base.Update();
             Content.Update();
+            base.Update();
         }
+
         public override void EnterGame(GameObject gameObject)
         {
             if (gameObject == null) return;
@@ -58,6 +59,7 @@ namespace MetAplay
             }
             else if (type.Equals(GameObjectType.None))
             {
+
             }
         }
 
