@@ -12,9 +12,9 @@ namespace MetAplay
         public static Lobby Instance { get; private set; } = new Lobby();
 
         Dictionary<int, RoomObject> _roomObjs = new Dictionary<int, RoomObject>();
+
         public void CreateRoomHandle(Player player, RoomSetting setting)
         {
-            // 방 오브젝트 생성
             RoomObject roomObj = ObjectManager.Instance.Add<RoomObject>();
             GameRoom room = RoomManager.Instance.Add(setting);
             roomObj.Room = room;
@@ -22,24 +22,21 @@ namespace MetAplay
             _roomObjs.Add(roomObj.Id, roomObj);
             EnterGame(roomObj);
 
-            // 방 들어가기
             roomObj.Enter(player, isHost:true);
-            S_CreateroomRes res = new S_CreateroomRes();
+            S_CreateRoomRes res = new S_CreateRoomRes();
             res.RoomId = room.RoomId;
             res.ObjectId = roomObj.Id;
             player.Session.Send(res);
             LeaveGame(player.Id);
         }
 
-        public void JoinRoomHandle(int roomId,Player player)
+        public void JoinRoomHandle(int roomId, Player player)
         {
-            // 방 들어가기
             GameRoom room = RoomManager.Instance.Find(roomId);
             if (room.IsStart) return;
             room.EnterGame(player);
 
-            // 정보 전송
-            S_JoinroomRes res = new S_JoinroomRes();
+            S_JoinRoomRes res = new S_JoinRoomRes();
             res.RoomId = roomId;
             player.Session.Send(res);
         }
@@ -51,8 +48,7 @@ namespace MetAplay
 
         public override void EnterGame(GameObject gameObject)
         {
-
-            if (gameObject.ObjectType == GameObjectType.Player)
+            if (gameObject.ObjectType.Equals(GameObjectType.Player))
             {
                 Player player = gameObject as Player;
                 _players.Add(gameObject.Id, player);
@@ -85,37 +81,30 @@ namespace MetAplay
                         p.Session.Send(spawn);
                 }
             }
-
         }
 
         public override void LeaveGame(int gameObjectId)
         {
             GameObjectType type = ObjectManager.GetObjectTypeById(gameObjectId);
-            if (type == GameObjectType.Player)
+
+            if (type.Equals(GameObjectType.Player))
             {
-                Player player = null;
-                if (_players.TryGetValue(gameObjectId, out player) == false)
-                    return;
+                if (!_players.TryGetValue(gameObjectId, out Player player)) return;
 
                 player.Room = null;
-
                 _players.Remove(gameObjectId);
 
-                {
-                    S_LeaveGame leave = new S_LeaveGame();
-                    player.Session.Send(leave);
-                }
+                S_LeaveGame leave = new S_LeaveGame();
+                player.Session.Send(leave);
             }
 
-            {
-                S_Despawn despawn = new S_Despawn();
-                despawn.ObjectId.Add(gameObjectId);
+            S_Despawn despawn = new S_Despawn();
+            despawn.ObjectId.Add(gameObjectId);
 
-                foreach (Player p in _players.Values)
-                {
-                    if(p.Id != gameObjectId)
-                        p.Session.Send(despawn);
-                }
+            foreach (Player p in _players.Values)
+            {
+                if (p.Id != gameObjectId)
+                    p.Session.Send(despawn);
             }
         }
     }

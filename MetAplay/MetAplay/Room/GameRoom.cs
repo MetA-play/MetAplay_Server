@@ -1,5 +1,4 @@
 using Google.Protobuf.Protocol;
-using MetAplay;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +23,7 @@ namespace MetAplay
             Content.Update();
             base.Update();
         }
-
+        
         public override void EnterGame(GameObject gameObject)
         {
             if (gameObject == null) return;
@@ -37,7 +36,6 @@ namespace MetAplay
                 _players.Add(player.Id, player);
                 player.Room = this;
 
-                // 본인에게 전송
                 {
                     S_EnterGame enterGamePacket = new S_EnterGame();
                     enterGamePacket.Player = player.Info;
@@ -50,7 +48,6 @@ namespace MetAplay
                     player.Session.Send(spawnPacket);
                 }
 
-                // 타인에게 전송
                 {
                     S_Spawn spawnPacket = new S_Spawn();
                     foreach (Player p in _players.Values)
@@ -69,13 +66,11 @@ namespace MetAplay
 
             player.Room = null;
 
-            // 본인에게 전송
             {
                 S_LeaveGame leaveGamePacket = new S_LeaveGame();
                 player.Session.Send(leaveGamePacket);
             }
 
-            // 타인에게 전송
             {
                 S_Despawn despawnPacket = new S_Despawn();
                 despawnPacket.ObjectId.Add(gameObjectId);
