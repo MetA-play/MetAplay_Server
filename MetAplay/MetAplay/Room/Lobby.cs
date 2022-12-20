@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +10,6 @@ namespace MetAplay
     public class Lobby : BaseRoom
     {
         public static Lobby Instance { get; private set; } = new Lobby();
-
 
         Dictionary<int, RoomObject> _roomObjs = new Dictionary<int, RoomObject>();
         public void CreateRoomHandle(Player player, RoomSetting setting)
@@ -22,17 +20,15 @@ namespace MetAplay
             roomObj.Room = room;
             roomObj.Info.Transform.Pos = player.Info.Transform.Pos;
             _roomObjs.Add(roomObj.Id, roomObj);
-
             EnterGame(roomObj);
 
             // 방 들어가기
-            roomObj.Enter(player,isHost:true);
+            roomObj.Enter(player, isHost:true);
             S_CreateroomRes res = new S_CreateroomRes();
             res.RoomId = room.RoomId;
             res.ObjectId = roomObj.Id;
             player.Session.Send(res);
             LeaveGame(player.Id);
-
         }
 
         public void JoinRoomHandle(int roomId,Player player)
@@ -47,6 +43,7 @@ namespace MetAplay
             res.RoomId = roomId;
             player.Session.Send(res);
         }
+
         public void DeleteRoom()
         {
 
@@ -110,9 +107,7 @@ namespace MetAplay
                 }
             }
 
-
             {
-
                 S_Despawn despawn = new S_Despawn();
                 despawn.ObjectId.Add(gameObjectId);
 
@@ -122,7 +117,6 @@ namespace MetAplay
                         p.Session.Send(despawn);
                 }
             }
-
         }
     }
 }
