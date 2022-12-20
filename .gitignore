@@ -1,0 +1,226 @@
+# The following command works for downloading when using Git for Windows:
+# curl -LOf http://gist.githubusercontent.com/kmorcinek/2710267/raw/.gitignore
+#
+# Download this file using PowerShell v3 under Windows with the following comand:
+# Invoke-WebRequest https://gist.githubusercontent.com/kmorcinek/2710267/raw/ -OutFile .gitignore
+#
+# or wget:
+# wget --no-check-certificate http://gist.githubusercontent.com/kmorcinek/2710267/raw/.gitignore
+
+# User-specific files
+MetAplay/*.suo
+MetAplay/*.user
+MetAplay/*.sln.docstates
+
+# Build results
+MetAplay/[Dd]ebug/
+MetAplay/[Rr]elease/
+MetAplay/x64/
+MetAplay/[Bb]in/
+MetAplay/[Oo]bj/
+# build folder is nowadays used for build scripts and should not be ignored
+#build/
+
+# NuGet Packages
+MetAplay/*.nupkg
+# The packages folder can be ignored because of Package Restore
+MetAplay/**/packages/*
+# except build/, which is used as an MSBuild target.
+MetAplay/!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+
+# MSTest test Results
+MetAplay/[Tt]est[Rr]esult*/
+MetAplay/[Bb]uild[Ll]og.*
+
+MetAplay/*_i.c
+MetAplay/*_p.c
+MetAplay/*.ilk
+MetAplay/*.meta
+MetAplay/*.obj
+MetAplay/*.pch
+MetAplay/*.pdb
+MetAplay/*.pgc
+MetAplay/*.pgd
+MetAplay/*.rsp
+MetAplay/*.sbr
+MetAplay/*.tlb
+MetAplay/*.tli
+MetAplay/*.tlh
+MetAplay/*.tmp
+MetAplay/*.tmp_proj
+MetAplay/*.log
+MetAplay/*.vspscc
+MetAplay/*.vssscc
+MetAplay/.builds
+MetAplay/*.pidb
+MetAplay/*.scc
+
+# Visual C++ cache files
+MetAplay/ipch/
+MetAplay/*.aps
+MetAplay/*.ncb
+MetAplay/*.opensdf
+MetAplay/*.sdf
+MetAplay/*.cachefile
+
+# Visual Studio profiler
+MetAplay/*.psess
+MetAplay/*.vsp
+MetAplay/*.vspx
+
+# Guidance Automation Toolkit
+MetAplay/*.gpState
+
+# ReSharper is a .NET coding add-in
+MetAplay/_ReSharper*/
+MetAplay/*.[Rr]e[Ss]harper
+
+# TeamCity is a build add-in
+MetAplay/_TeamCity*
+
+# DotCover is a Code Coverage Tool
+MetAplay/*.dotCover
+
+# NCrunch
+MetAplay/*.ncrunch*
+MetAplay/.*crunch*.local.xml
+
+# Installshield output folder
+MetAplay/[Ee]xpress/
+
+# DocProject is a documentation generator add-in
+MetAplay/DocProject/buildhelp/
+MetAplay/DocProject/Help/*.HxT
+MetAplay/DocProject/Help/*.HxC
+MetAplay/DocProject/Help/*.hhc
+MetAplay/DocProject/Help/*.hhk
+MetAplay/DocProject/Help/*.hhp
+MetAplay/DocProject/Help/Html2
+MetAplay/DocProject/Help/html
+
+# Click-Once directory
+MetAplay/publish/
+
+# Publish Web Output
+MetAplay/*.Publish.xml
+
+# Windows Azure Build Output
+MetAplay/csx
+MetAplay/*.build.csdef
+
+# Windows Store app package directory
+MetAplay/AppPackages/
+
+# Others
+MetAplay/*.Cache
+MetAplay/ClientBin/
+MetAplay/[Ss]tyle[Cc]op.*
+MetAplay/~$*
+MetAplay/*~
+MetAplay/*.dbmdl
+MetAplay/*.[Pp]ublish.xml
+MetAplay/*.pfx
+MetAplay/*.publishsettings
+MetAplay/modulesbin/
+MetAplay/tempbin/
+
+# EPiServer Site file (VPP)
+MetAplay/AppData/
+
+# RIA/Silverlight projects
+MetAplay/Generated_Code/
+
+# Backup & report files from converting an old project file to a newer
+# Visual Studio version. Backup files are not needed, because we have git ;-)
+MetAplay/_UpgradeReport_Files/
+MetAplay/Backup*/
+MetAplay/UpgradeLog*.XML
+MetAplay/UpgradeLog*.htm
+
+# vim
+MetAplay/*.txt~
+MetAplay/*.swp
+MetAplay/*.swo
+
+# Temp files when opening LibreOffice on ubuntu
+MetAplay/.~lock.*
+ 
+# svn
+MetAplay/.svn
+
+# CVS - Source Control
+MetAplay/**/CVS/
+
+# Remainings from resolving conflicts in Source Control
+MetAplay/*.orig
+
+# SQL Server files
+MetAplay/**/App_Data/*.mdf
+MetAplay/**/App_Data/*.ldf
+MetAplay/**/App_Data/*.sdf
+
+
+#LightSwitch generated files
+MetAplay/GeneratedArtifacts/
+MetAplay/_Pvt_Extensions/
+MetAplay/ModelManifest.xml
+
+# =========================
+# Windows detritus
+# =========================
+
+# Windows image file caches
+MetAplay/Thumbs.db
+MetAplay/ehthumbs.db
+
+# Folder config file
+MetAplay/Desktop.ini
+
+# Recycle Bin used on file shares
+MetAplay/$RECYCLE.BIN/
+
+# OS generated files #
+MetAplay/Icon?
+
+# Mac desktop service store files
+MetAplay/.DS_Store
+
+# SASS Compiler cache
+MetAplay/.sass-cache
+
+# Visual Studio 2014 CTP
+MetAplay/**/*.sln.ide
+
+# Visual Studio temp something
+MetAplay/.vs/
+
+# dotnet stuff
+MetAplay/project.lock.json
+
+# VS 2015+
+MetAplay/*.vc.vc.opendb
+MetAplay/*.vc.db
+
+# Rider
+MetAplay/.idea/
+
+# Visual Studio Code
+MetAplay/.vscode/
+
+# Output folder used by Webpack or other FE stuff
+MetAplay/**/node_modules/*
+MetAplay/**/wwwroot/*
+
+# SpecFlow specific
+MetAplay/*.feature.cs
+MetAplay/*.feature.xlsx.*
+MetAplay/*.Specs_*.html
+
+# UWP Projects
+MetAplay/AppPackages/
+
+#####
+# End of core ignore list, below put you custom 'per project' settings (patterns or path)
+#####
