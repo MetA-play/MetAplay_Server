@@ -17,7 +17,7 @@ namespace MetAplay
         public RoomSetting Setting { get; set; }
         public Player Host { get; set; }
         public Game Content { get; set; }
-        public bool IsStart { get { return Content.State == GameState.Start; } }
+        public bool IsStart { get { return Content.State == GameState.Playing; } }
 
         public override void Update()
         {

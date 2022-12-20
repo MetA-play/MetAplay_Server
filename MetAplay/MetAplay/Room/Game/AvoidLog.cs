@@ -20,8 +20,8 @@ namespace MetAplay
 
         public override void Update()
         {
-            if (Room == null) return;
-            if (Room.Content.State != GameState.Playing) return;
+            if (JoinedRoom == null) return;
+            if (JoinedRoom.Content.State != GameState.Playing) return;
 
             int rotY = LogRotY + AddedRotY;
             LogRotY = rotY > 360 ? rotY % 360 : rotY;
@@ -30,7 +30,7 @@ namespace MetAplay
             movePacket.Id = Id;
             movePacket.Transform = Info.Transform;
             movePacket.State = Info.State;
-            Room.Broadcast(movePacket);
+            JoinedRoom.Broadcast(movePacket);
         }
     }
     #endregion
@@ -47,8 +47,8 @@ namespace MetAplay
             Log log2 = ObjectManager.Instance.Add<Log>();
             _objects.Add(log1);
             _objects.Add(log2);
-            log1.Room = Room;
-            log2.Room = Room;
+            log1.JoinedRoom = Room;
+            log2.JoinedRoom = Room;
             log1.AddedRotY = 15;
             log2.AddedRotY = 10;
         }
