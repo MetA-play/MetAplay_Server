@@ -3,18 +3,18 @@ package Protocol;
 
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "Google.Protobuf.Protocol"; //C#파일의 네임스페이스 이름\
+option csharp_namespace = "Google.Protobuf.Protocol"; // C#파일의 네임스페이스 이름
 
 
-// ---------------------------------------------------- User --------------------------------------------------------------- \\
+// ---------------------------------------------------- User ---------------------------------------------------- \\
 message UserInfo {
 	string NickName = 1;
 }
 
-// ---------------------------------------------------- Room --------------------------------------------------------------- \\
+// ---------------------------------------------------- Room ---------------------------------------------------- \\
 message RoomSetting {
 	string Name = 1;
-	int32 MaxPlayer =2;
+	int32 MaxPlayer = 2;
 	GameType gameType = 3;
 }
 
@@ -24,14 +24,14 @@ message RoomInfo {
 	RoomSetting Setting = 3;
 }
 
-// ---------------------------------------------------- Type ------------------------------------------------------ \\
+// ---------------------------------------------------- Type ---------------------------------------------------- \\
 enum SceneType {
 	Main = 0;
 	Lobby = 1;
 	Game = 2;
 }
 
-enum GameType{
+enum GameType {
 	AvoidLog = 0;
 	DoNotFall = 1;
 }
@@ -42,7 +42,7 @@ enum GameObjectType {
 	Room = 2;
 }
 
-// ------------------------------------------- State ----------------------------------------------- \\
+// ------------------------------------------- State ------------------------------------------- \\
 enum ObjectState {
 	Idle = 0;
 	Move = 1;
@@ -57,7 +57,7 @@ enum GameState {
 	Ending = 2;
 }
 
-// ------------------------------------------- Object ----------------------------------------------- \\
+// ------------------------------------------- Object ------------------------------------------- \\
 enum MoveDir {
 	Front = 0;
 	Left = 1;
@@ -85,12 +85,12 @@ message ObjectInfo {
 	string PrefabName = 4;
 }
 
-// ---------------------------------------------------- Message Id --------------------------------------------------------------- \\
+// ---------------------------------------------------- Message Id ---------------------------------------------------- \\
 enum MsgId {
-	C_CREATEROOM_REQ = 0;
-	S_CREATEROOM_RES = 1;
-	C_JOINROOM_REQ = 2;
-	S_JOINROOM_RES = 3;
+	C_CREATE_ROOM_REQ = 0;
+	S_CREATE_ROOM_RES = 1;
+	C_JOIN_ROOM_REQ = 2;
+	S_JOIN_ROOM_RES = 3;
 	S_ENTER_GAME = 5;
 	S_LEAVE_GAME = 6;
 	S_SPAWN = 7;
@@ -101,37 +101,38 @@ enum MsgId {
 	S_CHAT = 12;
 	C_UPDATE_GAME_STATE_REQ = 13;
 	S_UPDATE_GAME_STATE_RES = 14;
+	C_COLLIDE_PLAYER = 15;
 }
 
-// ------------------------------------------------------ Packet ----------------------------------------------------------------- \\
-message C_Chat{
-	string content = 1;
+// ------------------------------------------------------ Packet ------------------------------------------------------ \\
+message C_Chat {
+	string Content = 1;
 }
 
-message S_Chat{
-	int32 playerId = 1;
-	string content = 2;
+message S_Chat {
+	int32 PlayerId = 1;
+	string Content = 2;
 }
 
-// -------------------------------------- Lobby ----------------------------------- \\
-message C_CreateroomReq {
+// -------------------------------------- Lobby -------------------------------------- \\
+message C_CreateRoomReq {
 	RoomSetting Setting = 1;
 }
 
-message S_CreateroomRes {
+message S_CreateRoomRes {
 	int32 ObjectId = 1;
 	int32 RoomId = 2;
 }
 
-message C_JoinroomReq {
+message C_JoinRoomReq {
 	int32 RoomId = 1;
 }
 
-message S_JoinroomRes {
+message S_JoinRoomRes {
 	int32 RoomId = 1;
 }
 
-// -------------------------------------- InGame ----------------------------------- \\
+// -------------------------------------- InGame -------------------------------------- \\
 message S_EnterGame {
 	ObjectInfo Player = 1;
 }
@@ -164,4 +165,8 @@ message C_UpdateGameStateReq {
 
 message S_UpdateGameStateRes {
 	GameState State = 1;
+}
+
+message C_CollidePlayer {
+	int32 PlayerId = 1;
 }
