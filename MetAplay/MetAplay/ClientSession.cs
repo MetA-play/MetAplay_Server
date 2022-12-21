@@ -37,7 +37,7 @@ namespace MetAplay
             player.Session = this;
             MyPlayer = player;
             player.Info.Transform.Pos.Y = 1;
-            Lobby.Instance.Push(Lobby.Instance.EnterGame, player);
+            Lobby.Instance./*Push(Lobby.Instance.*/EnterGame(player);
         }
 
         public override void OnRecvPacket(ArraySegment<byte> buffer)
