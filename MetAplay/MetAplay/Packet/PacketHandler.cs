@@ -50,18 +50,4 @@ public class PacketHandler
         ClientSession clientSession = session as ClientSession;
         
     }
-
-    public static void C_CollidePlayerHandler(PacketSession session, IMessage packet)
-    {
-        ClientSession clientSession = session as ClientSession;
-        C_CollidePlayer collidePacket = packet as C_CollidePlayer;
-
-        GameRoom room = clientSession.MyPlayer.Room;
-        if (room == null)
-        {
-            
-        }
-        else
-            room.Push(room.Content.CollidePlayer, collidePacket.PlayerId);
-    }
 }
