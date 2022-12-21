@@ -27,7 +27,7 @@ namespace ServerCore
                 if (buffer.Count < dataSize)
                     break;
 
-                OnRecvPacket(buffer);
+                OnRecvPacket(new ArraySegment<byte>(buffer.Array, buffer.Offset, dataSize));
                 packetCount++;
 
                 processLen += dataSize;

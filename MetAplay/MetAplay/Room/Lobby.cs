@@ -26,17 +26,25 @@ namespace MetAplay
             res.RoomId = room.RoomId;
             res.ObjectId = roomObj.Id;
             player.Session.Send(res);
-
             LeaveGame(player.Id);
         }
 
         public void JoinRoomHandle(int roomId, Player player)
         {
             GameRoom room = RoomManager.Instance.Find(roomId);
+
+            if(room == null)
+            {
+                Console.WriteLine("room is null");
+                return;
+            }
             if (room.IsStart) return;
 
             if (room.Host == null)
-                room.Host = player; 
+                room.Host = player;
+
+            if (room.Players.Contains(player) == true)
+                return;
 
             S_JoinRoomRes res = new S_JoinRoomRes();
             res.RoomId = roomId;
@@ -76,9 +84,18 @@ namespace MetAplay
             }
 
             {
+
+
                 S_Spawn spawn = new S_Spawn();
 
-                spawn.Objects.Add(gameObject.Info);
+                if (gameObject.ObjectType.Equals(GameObjectType.Room))
+                {
+                    RoomObject roomObj = gameObject as RoomObject;
+                    roomObj.Info.Transform.Scale.Y = roomObj.Room.RoomId;
+                    spawn.Objects.Add(roomObj.Info);
+                }
+                else
+                    spawn.Objects.Add(gameObject.Info);
 
                 foreach (Player p in _players.Values)
                 {

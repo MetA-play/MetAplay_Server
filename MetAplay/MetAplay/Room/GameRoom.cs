@@ -23,6 +23,11 @@ namespace MetAplay
         public Game Content { get; set; }
         public bool IsStart { get { return Content.State == GameState.Playing; } }
 
+        public List<Player> Players { get
+            {
+                return _players.Values.ToList();
+            } }
+
         public override void Update()
         {
             Content.Update();
