@@ -60,7 +60,7 @@ namespace MetAplay
 
         public override void EnterGame(GameObject gameObject)
         {
-            if (gameObject.ObjectType.Equals(GameObjectType.Player))
+            if (gameObject.ObjectType  == GameObjectType.Player)
             {
                 Player player = gameObject as Player;
                 _players.Add(gameObject.Id, player);
@@ -88,7 +88,7 @@ namespace MetAplay
 
                 S_Spawn spawn = new S_Spawn();
 
-                if (gameObject.ObjectType.Equals(GameObjectType.Room))
+                if (gameObject.ObjectType == GameObjectType.Room)
                 {
                     RoomObject roomObj = gameObject as RoomObject;
                     roomObj.Info.Transform.Scale.Y = roomObj.Room.RoomId;

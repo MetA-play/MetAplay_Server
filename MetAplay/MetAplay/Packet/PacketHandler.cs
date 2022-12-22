@@ -48,6 +48,7 @@ public class PacketHandler
     public static void C_UpdateGameStateReqHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
-        
+
+        clientSession.MyPlayer.Room.Push(clientSession.MyPlayer.Room.GameStartHandle, clientSession.MyPlayer);
     }
 }
