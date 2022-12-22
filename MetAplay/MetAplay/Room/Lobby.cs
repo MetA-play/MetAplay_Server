@@ -23,6 +23,7 @@ namespace MetAplay
             EnterGame(roomObj);
 
             S_CreateRoomRes res = new S_CreateRoomRes();
+            res.Info = new RoomInfo();
             res.Info.Setting= setting;
             res.Info.Id = room.RoomId;
             res.ObjectId = roomObj.Id;
@@ -48,7 +49,7 @@ namespace MetAplay
                 return;
 
             S_JoinRoomRes res = new S_JoinRoomRes();
-            res.RoomInfo.Id = roomId;
+            res.Info.Id = roomId;
             player.Session.Send(res);
          
             room.EnterGame(player);
