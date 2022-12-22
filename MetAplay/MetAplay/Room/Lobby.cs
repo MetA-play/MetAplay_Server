@@ -24,7 +24,8 @@ namespace MetAplay
 
             roomObj.Enter(player, isHost:true);
             S_CreateRoomRes res = new S_CreateRoomRes();
-            res.RoomId = room.RoomId;
+            res.Info.Setting= setting;
+            res.Info.Id = room.RoomId;
             res.ObjectId = roomObj.Id;
             player.Session.Send(res);
             LeaveGame(player.Id);
@@ -37,7 +38,7 @@ namespace MetAplay
             room.EnterGame(player);
 
             S_JoinRoomRes res = new S_JoinRoomRes();
-            res.RoomId = roomId;
+            res.RoomInfo.Id = roomId;
             player.Session.Send(res);
         }
 

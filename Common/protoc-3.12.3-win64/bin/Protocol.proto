@@ -128,7 +128,7 @@ message C_JoinRoomReq {
 }
 
 message S_JoinRoomRes {
-	RoomInfo roomInfo = 1;
+	RoomInfo Info = 1;
 }
 
 // -------------------------------------- InGame -------------------------------------- \\
