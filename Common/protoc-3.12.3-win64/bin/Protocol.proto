@@ -148,14 +148,16 @@ message S_Despawn {
 }
 
 message C_Move {
-	ObjectState State = 1;
-	TransformInfo Transform = 2;
+	int32 inputFlag = 1;
+	ObjectState State = 2;
+	TransformInfo Transform = 3;
 }
 
 message S_Move {
 	int32 Id = 1;
-	ObjectState State = 2;
-	TransformInfo Transform = 3;
+	int32 inputFlag = 2;
+	ObjectState State = 3;
+	TransformInfo Transform = 4;
 }
 
 message C_UpdateGameStateReq {
