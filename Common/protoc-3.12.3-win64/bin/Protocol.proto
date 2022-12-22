@@ -120,7 +120,7 @@ message C_CreateRoomReq {
 
 message S_CreateRoomRes {
 	int32 ObjectId = 1;
-	int32 RoomId = 2;
+	RoomInfo Info = 2;
 }
 
 message C_JoinRoomReq {
@@ -128,7 +128,7 @@ message C_JoinRoomReq {
 }
 
 message S_JoinRoomRes {
-	int32 RoomId = 1;
+	RoomInfo roomInfo = 1;
 }
 
 // -------------------------------------- InGame -------------------------------------- \\
