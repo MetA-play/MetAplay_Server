@@ -24,7 +24,7 @@ namespace MetAplay
 
             S_CreateRoomRes res = new S_CreateRoomRes();
             res.Info = new RoomInfo();
-            res.Info.Setting= setting;
+            res.Info.Setting = setting;
             res.Info.Id = room.RoomId;
             res.ObjectId = roomObj.Id;
             player.Session.Send(res);
@@ -35,7 +35,7 @@ namespace MetAplay
         {
             GameRoom room = RoomManager.Instance.Find(roomId);
 
-            if(room == null)
+            if (room == null)
             {
                 Console.WriteLine("room is null");
                 return;
@@ -51,7 +51,7 @@ namespace MetAplay
             S_JoinRoomRes res = new S_JoinRoomRes();
             res.Info.Id = roomId;
             player.Session.Send(res);
-         
+
             room.EnterGame(player);
         }
 
@@ -62,47 +62,49 @@ namespace MetAplay
 
         public override void EnterGame(GameObject gameObject)
         {
-            if (gameObject.ObjectType  == GameObjectType.Player)
+            if (gameObject.ObjectType == GameObjectType.Player)
             {
                 Player player = gameObject as Player;
                 _players.Add(gameObject.Id, player);
 
                 {
-                    S_EnterGame entergame = new S_EnterGame();
-                    entergame.Player = gameObject.Info;
-                    player.Session.Send(entergame);
+                    {
+                        S_EnterGame enterGamePacket = new S_EnterGame();
+                        enterGamePacket.Player = player.Info;
+                        player.Session.Send(enterGamePacket);
+
+                        S_Spawn spawn = new S_Spawn();
+                        foreach (Player p in _players.Values)
+                        {
+                            if (p != player)
+                                spawn.Objects.Add(p.Info);
+                            foreach (RoomObject obj in _roomObjs.Values)
+                                spawn.Objects.Add(obj.Info);
+                        }
+
+                        player.Session.Send(spawn);
+                    }
+                }
+
+                {
+
+
                     S_Spawn spawn = new S_Spawn();
+
+                    if (gameObject.ObjectType == GameObjectType.Room)
+                    {
+                        RoomObject roomObj = gameObject as RoomObject;
+                        roomObj.Info.Transform.Scale.Y = roomObj.Room.RoomId;
+                        spawn.Objects.Add(roomObj.Info);
+                    }
+                    else
+                        spawn.Objects.Add(gameObject.Info);
 
                     foreach (Player p in _players.Values)
                     {
-                        if (player != p)
-                            spawn.Objects.Add(p.Info);
+                        if (p.Id != gameObject.Id)
+                            p.Session.Send(spawn);
                     }
-                    foreach (RoomObject obj in _roomObjs.Values)
-                        spawn.Objects.Add(obj.Info);
-
-                    player.Session.Send(spawn);
-                }
-            }
-
-            {
-
-
-                S_Spawn spawn = new S_Spawn();
-
-                if (gameObject.ObjectType == GameObjectType.Room)
-                {
-                    RoomObject roomObj = gameObject as RoomObject;
-                    roomObj.Info.Transform.Scale.Y = roomObj.Room.RoomId;
-                    spawn.Objects.Add(roomObj.Info);
-                }
-                else
-                    spawn.Objects.Add(gameObject.Info);
-
-                foreach (Player p in _players.Values)
-                {
-                    if (p.Id != gameObject.Id)
-                        p.Session.Send(spawn);
                 }
             }
         }

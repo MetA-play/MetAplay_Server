@@ -36,8 +36,10 @@ namespace MetAplay
             Player player = ObjectManager.Instance.Add<Player>();
             player.Session = this;
             MyPlayer = player;
+            player.Info.Transform.Pos.X = 1;
             player.Info.Transform.Pos.Y = 1;
-            Lobby.Instance.Push(Lobby.Instance.EnterGame,(player));
+            player.Info.Transform.Pos.Z = 1;
+            Lobby.Instance.Push(Lobby.Instance.EnterGame,player);
         }
 
         public override void OnRecvPacket(ArraySegment<byte> buffer)
@@ -47,10 +49,10 @@ namespace MetAplay
 
         public override void OnDisconnected(EndPoint endPoint)
         {
-            //GameRoom room = RoomManager.Instance.Find(1);
-            //room.Push(room.LeaveGame, MyPlayer.Info.ObjectId);
+            GameRoom room = MyPlayer.Room;
+            room.Push(room.LeaveGame, MyPlayer.Info.Id);
 
-            //SessionManager.Instance.Remove(this);
+            SessionManager.Instance.Remove(this);
 
             Console.WriteLine($"OnDisconnected : {endPoint}");
         }

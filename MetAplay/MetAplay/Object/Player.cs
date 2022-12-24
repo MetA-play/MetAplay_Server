@@ -11,7 +11,7 @@ namespace MetAplay
     {
         public ClientSession Session { get; set; }
         public GameRoom Room { get; set; }
-        public Player()
+        public Player() : base()
         {
             ObjectType = GameObjectType.Player;
 

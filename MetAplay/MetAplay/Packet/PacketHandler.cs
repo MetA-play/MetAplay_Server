@@ -30,7 +30,12 @@ public class PacketHandler
     public static void C_MoveHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
+        C_Move move = packet as C_Move;
 
+        if (clientSession.MyPlayer.Room == null)
+            Lobby.Instance.Push(Lobby.Instance.MoveHandle, clientSession.MyPlayer, move);
+        else
+            clientSession.MyPlayer.Room.Push(clientSession.MyPlayer.Room.MoveHandle, clientSession.MyPlayer, move);
     }
 
     public static void C_ChatHandler(PacketSession session, IMessage packet)

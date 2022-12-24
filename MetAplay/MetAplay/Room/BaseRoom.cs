@@ -31,15 +31,21 @@ namespace MetAplay
 
         public void MoveHandle(GameObject gameObject, C_Move movePacket)
         {
-            if (gameObject == null) return;
+            if (gameObject == null) return; 
 
-            gameObject.Info.Transform = movePacket.Transform;
+
+            if(movePacket.Transform != null)
+                gameObject.Info.Transform = movePacket.Transform;
+                
             gameObject.Info.State = movePacket.State;
+
+
 
             S_Move resMovePacket = new S_Move();
             resMovePacket.Id = gameObject.Id;
             resMovePacket.Transform = movePacket.Transform;
             resMovePacket.State = movePacket.State;
+            resMovePacket.InputFlag = movePacket.InputFlag;
 
             Broadcast(resMovePacket);
         }
@@ -49,7 +55,6 @@ namespace MetAplay
             S_Chat res = new S_Chat();
             res.PlayerId = player.Id;
             res.Content = chat.Content;
-
             Broadcast(res);
         }
 
