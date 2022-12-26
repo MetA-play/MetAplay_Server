@@ -46,6 +46,7 @@ namespace MetAplay
             resMovePacket.Transform = movePacket.Transform;
             resMovePacket.State = movePacket.State;
             resMovePacket.InputFlag = movePacket.InputFlag;
+            resMovePacket.IsSync = movePacket.IsSync;
 
             Broadcast(resMovePacket);
         }
