@@ -151,6 +151,7 @@ message C_Move {
 	int32 inputFlag = 1;
 	ObjectState State = 2;
 	TransformInfo Transform = 3;
+	bool isSync = 4;
 }
 
 message S_Move {
@@ -158,6 +159,8 @@ message S_Move {
 	int32 inputFlag = 2;
 	ObjectState State = 3;
 	TransformInfo Transform = 4;
+	bool isSync = 5;
+
 }
 
 message C_UpdateGameStateReq {
