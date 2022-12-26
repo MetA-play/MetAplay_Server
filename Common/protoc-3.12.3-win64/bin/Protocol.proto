@@ -101,7 +101,6 @@ enum MsgId {
 	S_CHAT = 12;
 	C_UPDATE_GAME_STATE_REQ = 13;
 	S_UPDATE_GAME_STATE_RES = 14;
-	C_COLLIDE_PLAYER = 15;
 }
 
 // ------------------------------------------------------ Packet ------------------------------------------------------ \\
@@ -167,8 +166,4 @@ message C_UpdateGameStateReq {
 
 message S_UpdateGameStateRes {
 	GameState State = 1;
-}
-
-message C_CollidePlayer {
-	int32 PlayerId = 1;
 }

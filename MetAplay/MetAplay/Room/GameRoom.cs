@@ -18,6 +18,19 @@ namespace MetAplay
         public Game Content { get; set; }
         public bool IsStart { get { return Content.State == GameState.Playing; } }
 
+        public void Init()
+        {
+            switch (Setting.GameType)
+            {
+                case GameType.AvoidLog:
+                    Content = new AvoidLog();
+                    break;
+                case GameType.DoNotFall:
+                    Content = new DoNotFall();
+                    break;
+            }
+        }
+
         public override void Update()
         {
             Content.Update();

@@ -30,6 +30,8 @@ namespace MetAplay
             if (Room == null || State != GameState.Waiting) return;
             State = GameState.Playing;
 
+            Console.WriteLine("게임 시작");
+
             // Init에서 등록된 오브젝트가 있다면 스폰
             if (_objects.Count > 0)
             {
@@ -44,16 +46,27 @@ namespace MetAplay
         {
             foreach (GameObject obj in _objects)
                 obj.Update();
+            Console.WriteLine("Update");
         }
 
         public virtual void End()
         {
+            if (Room == null || State != GameState.Playing) return;
+
+            Console.WriteLine("게임 종료");
+
             State = GameState.Ending;
         }
 
-        public virtual void CollidePlayer(int playerId)
+        public void UpdateGameState(GameState state)
         {
+            if (State == GameState.Ending) return;
 
+            if (state == GameState.Playing)
+                Start();
+
+            if (state == GameState.Ending)
+                End();
         }
     }
 }

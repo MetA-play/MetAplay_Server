@@ -17,7 +17,8 @@ namespace MetAplay
     {
         static Listener _listener = new Listener();
         static List<System.Timers.Timer> _timers = new List<System.Timers.Timer>();
-        /*static void TickRoom(GameRoom room, int tick = 100)
+
+        static void TickRoom(GameRoom room, int tick = 100)
         {
             var timer = new System.Timers.Timer();
             timer.Interval = tick;
@@ -26,10 +27,12 @@ namespace MetAplay
             timer.Enabled = true;
 
             _timers.Add(timer);
-        }*/
+        }
 
         static void Main(string[] args)
         {
+            GameRoom room = RoomManager.Instance.Add(new RoomSetting() { Name = "Temp", MaxPlayer = 4, GameType = GameType.AvoidLog });
+            TickRoom(room, 250);
 
             // DNS (Domain Name System)
             string host = Dns.GetHostName();

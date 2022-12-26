@@ -36,7 +36,11 @@ namespace MetAplay
             Player player = ObjectManager.Instance.Add<Player>();
             player.Session = this;
             MyPlayer = player;
-            Lobby.Instance.Push(Lobby.Instance.EnterGame, player);
+
+            GameRoom room = RoomManager.Instance.Find(1);
+            MyPlayer.Room = room;
+            room.EnterGame(MyPlayer);
+            //Lobby.Instance.Push(Lobby.Instance.EnterGame, player);
         }
 
         public override void OnRecvPacket(ArraySegment<byte> buffer)

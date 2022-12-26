@@ -48,20 +48,10 @@ public class PacketHandler
     public static void C_UpdateGameStateReqHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
-        
-    }
-
-    public static void C_CollidePlayerHandler(PacketSession session, IMessage packet)
-    {
-        ClientSession clientSession = session as ClientSession;
-        C_CollidePlayer collidePacket = packet as C_CollidePlayer;
+        C_UpdateGameStateReq gameStatePacket = packet as C_UpdateGameStateReq;
 
         GameRoom room = clientSession.MyPlayer.Room;
-        if (room == null)
-        {
-            
-        }
-        else
-            room.Push(room.Content.CollidePlayer, collidePacket.PlayerId);
+        if (room == null) return;
+        room.Push(room.Content.UpdateGameState, gameStatePacket.State);
     }
 }
