@@ -40,6 +40,7 @@ namespace MetAplay
             resMovePacket.Id = gameObject.Id;
             resMovePacket.Transform = movePacket.Transform;
             resMovePacket.State = movePacket.State;
+            resMovePacket.IsSync = movePacket.IsSync;
 
             Broadcast(resMovePacket);
         }
