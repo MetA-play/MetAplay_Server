@@ -38,7 +38,7 @@ namespace MetAplay
             room.EnterGame(player);
 
             S_JoinRoomRes res = new S_JoinRoomRes();
-            res.RoomInfo.Id = roomId;
+            res.Info.Id = roomId;
             player.Session.Send(res);
         }
 
