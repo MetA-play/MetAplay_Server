@@ -16,6 +16,10 @@ namespace MetAplay
 
         public virtual void Update()
         {
+            foreach (Player p in _players.Values)
+                p.Update();
+            
+            
             Flush();
         }
 
@@ -33,12 +37,13 @@ namespace MetAplay
         {
             if (gameObject == null) return; 
 
-
-            if(movePacket.Transform != null)
-                gameObject.Info.Transform = movePacket.Transform;
-                
             gameObject.Info.State = movePacket.State;
 
+            if(gameObject.ObjectType == GameObjectType.Player && !movePacket.IsSync)
+            {
+                Player player = gameObject as Player;
+                player.inputFlag = movePacket.InputFlag;
+            }
 
 
             S_Move resMovePacket = new S_Move();

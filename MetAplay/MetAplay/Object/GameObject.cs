@@ -1,10 +1,12 @@
 ﻿using Google.Protobuf.Protocol;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace MetAplay
 {
+
     public class GameObject
     {
         public GameObjectType ObjectType { get; protected set; } = GameObjectType.None;
@@ -18,6 +20,11 @@ namespace MetAplay
 
         public ObjectInfo Info { get; set; } = new ObjectInfo();
 
+        public TransformInfo Transform
+        {
+            get => Info.Transform;
+            set => Info.Transform = value;
+        }
 
         public GameObject()
         {
@@ -29,7 +36,9 @@ namespace MetAplay
 
         public virtual void Update()
         {
-
         }
+
+
+      
     }
 }

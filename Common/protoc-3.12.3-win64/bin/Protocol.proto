@@ -160,7 +160,6 @@ message S_Move {
 	ObjectState State = 3;
 	TransformInfo Transform = 4;
 	bool isSync = 5;
-
 }
 
 message C_UpdateGameStateReq {

@@ -50,7 +50,10 @@ namespace MetAplay
         public override void OnDisconnected(EndPoint endPoint)
         {
             GameRoom room = MyPlayer.Room;
-            room.Push(room.LeaveGame, MyPlayer.Info.Id);
+            if(room == null)
+                Lobby.Instance.Push(Lobby.Instance.LeaveGame, MyPlayer.Info.Id);
+            else
+                room.Push(room.LeaveGame, MyPlayer.Info.Id);
 
             SessionManager.Instance.Remove(this);
 
