@@ -33,13 +33,20 @@ namespace MetAplay
         {
             if (gameObject == null) return;
 
-            gameObject.Info.Transform = movePacket.Transform;
             gameObject.Info.State = movePacket.State;
+
+            if (gameObject.ObjectType == GameObjectType.Player && !movePacket.IsSync)
+            {
+                Player player = gameObject as Player;
+                player.inputFlag = movePacket.InputFlag;
+            }
+
 
             S_Move resMovePacket = new S_Move();
             resMovePacket.Id = gameObject.Id;
             resMovePacket.Transform = movePacket.Transform;
             resMovePacket.State = movePacket.State;
+            resMovePacket.InputFlag = movePacket.InputFlag;
             resMovePacket.IsSync = movePacket.IsSync;
 
             Broadcast(resMovePacket);
