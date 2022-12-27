@@ -9,6 +9,8 @@ option csharp_namespace = "Google.Protobuf.Protocol"; // C#파일의 네임스페이스 �
 // ---------------------------------------------------- User ---------------------------------------------------- \\
 message UserInfo {
 	string NickName = 1;
+	int32 headPartsIdx = 2;
+	int32 FootPartsIdx = 3;
 }
 
 // ---------------------------------------------------- Room ---------------------------------------------------- \\
@@ -101,6 +103,7 @@ enum MsgId {
 	S_CHAT = 12;
 	C_UPDATE_GAME_STATE_REQ = 13;
 	S_UPDATE_GAME_STATE_RES = 14;
+	C_SET_USERINFO = 15;
 }
 
 // ------------------------------------------------------ Packet ------------------------------------------------------ \\
@@ -141,6 +144,7 @@ message S_LeaveGame {
 
 message S_Spawn {
 	repeated ObjectInfo Objects = 1;
+	UserInfo Info = 2;
 }
 
 message S_Despawn {
@@ -169,4 +173,8 @@ message C_UpdateGameStateReq {
 
 message S_UpdateGameStateRes {
 	GameState State = 1;
+}
+
+message C_SetUserinfo{
+	UserInfo Info = 1;
 }
