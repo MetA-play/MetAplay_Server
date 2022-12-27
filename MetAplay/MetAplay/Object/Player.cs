@@ -21,6 +21,9 @@ namespace MetAplay
         }
 
 
+        public UserInfo UserData { get { return Session.UserData; } set { Session.UserData = value; } }
+
+
         public override void Update()
         {
             base.Update();

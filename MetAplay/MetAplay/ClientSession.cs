@@ -15,6 +15,8 @@ namespace MetAplay
 {
     public class ClientSession : PacketSession
     {
+
+        public UserInfo UserData;
         public Player MyPlayer { get; set; }
         public int SessionId { get; set; }
 
