@@ -39,7 +39,7 @@ namespace MetAplay
 
             GameRoom room = RoomManager.Instance.Find(1);
             MyPlayer.Room = room;
-            room.EnterGame(MyPlayer);
+            room.Push(room.EnterGame, MyPlayer);
             //Lobby.Instance.Push(Lobby.Instance.EnterGame, player);
         }
 

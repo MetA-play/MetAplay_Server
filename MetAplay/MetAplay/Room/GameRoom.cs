@@ -29,6 +29,8 @@ namespace MetAplay
                     Content = new DoNotFall();
                     break;
             }
+
+            Content.Init(this);
         }
 
         public override void Update()

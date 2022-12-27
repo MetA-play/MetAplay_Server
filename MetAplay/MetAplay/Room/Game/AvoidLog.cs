@@ -22,9 +22,9 @@ namespace MetAplay
         {
             if (JoinedRoom == null) return;
             if (JoinedRoom.Content.State != GameState.Playing) return;
-
+            
             int rotY = LogRotY + AddedRotY;
-            LogRotY = rotY > 360 ? rotY % 360 : rotY;
+            LogRotY = rotY >= 360 ? rotY % 360 : rotY;
 
             S_Move movePacket = new S_Move();
             movePacket.Id = Id;
@@ -44,13 +44,18 @@ namespace MetAplay
             
             // 통나무 생성
             Log log1 = ObjectManager.Instance.Add<Log>();
-            Log log2 = ObjectManager.Instance.Add<Log>();
             _objects.Add(log1);
-            _objects.Add(log2);
             log1.JoinedRoom = Room;
-            log2.JoinedRoom = Room;
             log1.AddedRotY = 15;
-            log2.AddedRotY = 10;
+            log1.Info.PrefabName = "Log1";
+            log1.SetPosition(0f, 8f, 0f);
+
+            //Log log2 = ObjectManager.Instance.Add<Log>();
+            //_objects.Add(log2);
+            //log2.JoinedRoom = Room;
+            //log2.AddedRotY = 10;
+            //log2.Info.PrefabName = "Log2";
+            //log2.SetPosition(0f, 1.9f, 0f);
         }
 
         public override void Start()

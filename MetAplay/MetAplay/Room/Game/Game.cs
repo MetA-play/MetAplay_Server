@@ -46,7 +46,6 @@ namespace MetAplay
         {
             foreach (GameObject obj in _objects)
                 obj.Update();
-            Console.WriteLine("Update");
         }
 
         public virtual void End()

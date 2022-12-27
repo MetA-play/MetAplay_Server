@@ -32,5 +32,12 @@ namespace MetAplay
         {
 
         }
+        
+        public void SetPosition(float x, float y, float z)
+        {
+            Info.Transform.Pos.X = x;
+            Info.Transform.Pos.Y = y;
+            Info.Transform.Pos.Z = z;
+        }
     }
 }
