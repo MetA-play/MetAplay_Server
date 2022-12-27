@@ -16,6 +16,10 @@ namespace MetAplay
 
         public virtual void Update()
         {
+            foreach (Player p in _players.Values)
+                p.Update();
+            
+            
             Flush();
         }
 
@@ -31,11 +35,11 @@ namespace MetAplay
 
         public void MoveHandle(GameObject gameObject, C_Move movePacket)
         {
-            if (gameObject == null) return;
+            if (gameObject == null) return; 
 
             gameObject.Info.State = movePacket.State;
 
-            if (gameObject.ObjectType == GameObjectType.Player && !movePacket.IsSync)
+            if(gameObject.ObjectType == GameObjectType.Player && !movePacket.IsSync)
             {
                 Player player = gameObject as Player;
                 player.inputFlag = movePacket.InputFlag;
@@ -57,7 +61,6 @@ namespace MetAplay
             S_Chat res = new S_Chat();
             res.PlayerId = player.Id;
             res.Content = chat.Content;
-
             Broadcast(res);
         }
 

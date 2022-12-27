@@ -9,6 +9,11 @@ namespace MetAplay
 {
     public class GameRoom : BaseRoom
     {
+
+        public GameRoom() 
+        {
+            Content = new Game();
+        }
         public RoomInfo Info
         {
             get { return new RoomInfo() { Id = RoomId, CurrentPersonnel = _players.Count, Setting = Setting }; }
@@ -18,20 +23,10 @@ namespace MetAplay
         public Game Content { get; set; }
         public bool IsStart { get { return Content.State == GameState.Playing; } }
 
-        public void Init()
-        {
-            switch (Setting.GameType)
+        public List<Player> Players { get
             {
-                case GameType.AvoidLog:
-                    Content = new AvoidLog();
-                    break;
-                case GameType.DoNotFall:
-                    Content = new DoNotFall();
-                    break;
-            }
-
-            Content.Init(this);
-        }
+                return _players.Values.ToList();
+            } }
 
         public override void Update()
         {
@@ -92,6 +87,16 @@ namespace MetAplay
                 foreach (Player p in _players.Values)
                     if (p.Id != player.Id) p.Session.Send(despawnPacket);
             }
+        }
+
+        public void GameStartHandle(Player player)
+        {
+            Content.Start();
+
+            S_UpdateGameStateRes res= new S_UpdateGameStateRes();
+            res.State = GameState.Playing;
+
+            Broadcast(res);
         }
     }
 }

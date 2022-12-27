@@ -30,6 +30,7 @@ public class PacketHandler
     public static void C_MoveHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
+        C_Move move = packet as C_Move;
 
         if (clientSession.MyPlayer.Room == null)
             Lobby.Instance.Push(Lobby.Instance.MoveHandle, clientSession.MyPlayer, move);
@@ -52,10 +53,7 @@ public class PacketHandler
     public static void C_UpdateGameStateReqHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
-        C_UpdateGameStateReq gameStatePacket = packet as C_UpdateGameStateReq;
 
-        GameRoom room = clientSession.MyPlayer.Room;
-        if (room == null) return;
-        room.Push(room.Content.UpdateGameState, gameStatePacket.State);
+        clientSession.MyPlayer.Room.Push(clientSession.MyPlayer.Room.GameStartHandle, clientSession.MyPlayer);
     }
 }
