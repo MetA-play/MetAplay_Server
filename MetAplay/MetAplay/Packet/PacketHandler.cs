@@ -53,14 +53,10 @@ public class PacketHandler
     public static void C_UpdateGameStateReqHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
+        C_UpdateGameStateReq statePacket = packet as C_UpdateGameStateReq;
 
-        clientSession.MyPlayer.Room.Push(clientSession.MyPlayer.Room.GameStartHandle, clientSession.MyPlayer);
-    }
-
-    public static void C_SetUserinfoHandler(PacketSession session, IMessage packet)
-    {
-        ClientSession clientSession = session as ClientSession;
-
+        if (clientSession.MyPlayer.Room.Content == null) return;
+        clientSession.MyPlayer.Room.Push(clientSession.MyPlayer.Room.Content.UpdateGameState, statePacket.State);
     }
 
     public static void C_SetUserinfoHandler(PacketSession session, IMessage packet)

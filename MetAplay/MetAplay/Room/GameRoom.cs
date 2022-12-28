@@ -103,15 +103,5 @@ namespace MetAplay
                     if (p.Id != player.Id) p.Session.Send(despawnPacket);
             }
         }
-
-        public void GameStartHandle(Player player)
-        {
-            Content.Start();
-
-            S_UpdateGameStateRes res= new S_UpdateGameStateRes();
-            res.State = GameState.Playing;
-
-            Broadcast(res);
-        }
     }
 }
