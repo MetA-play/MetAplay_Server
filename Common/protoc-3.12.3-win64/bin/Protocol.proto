@@ -42,7 +42,7 @@ enum GameObjectType {
 	None = 0;
 	Player = 1;
 	Room = 2;
-	SoccerBal = 3;
+	SoccerBall = 3;
 }
 
 // ------------------------------------------- State ------------------------------------------- \\
@@ -107,6 +107,8 @@ enum MsgId {
 	S_UPDATE_GAME_STATE_RES = 14;
 	C_SET_USERINFO = 15;
 	C_HIT_SOCCERBALL = 16;
+	C_SYNC_POS = 17;
+	S_SYNC_POS = 18;
 }
 
 // ------------------------------------------------------ Packet ------------------------------------------------------ \\
@@ -156,16 +158,13 @@ message S_Despawn {
 message C_Move {
 	int32 inputFlag = 1;
 	ObjectState State = 2;
-	TransformInfo Transform = 3;
-	bool isSync = 4;
 }
+
 
 message S_Move {
 	int32 Id = 1;
 	int32 inputFlag = 2;
 	ObjectState State = 3;
-	TransformInfo Transform = 4;
-	bool isSync = 5;
 }
 
 message C_UpdateGameStateReq {
@@ -183,4 +182,15 @@ message C_SetUserinfo{
 message C_HitSoccerball{
 	int32 ObjectId = 1;
 	TransformInfo hitterTransform = 2;
+}
+
+message C_SyncPos{
+	ObjectState State = 1;
+	TransformInfo Transform = 2;
+}
+
+message S_SyncPos{
+	int32 Id = 1;
+	ObjectState State = 2;
+	TransformInfo Transform = 3;
 }
