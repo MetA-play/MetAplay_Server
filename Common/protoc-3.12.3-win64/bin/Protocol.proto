@@ -85,6 +85,7 @@ message ObjectInfo {
 	ObjectState State = 2;
 	TransformInfo Transform = 3;
 	string PrefabName = 4;
+	UserInfo UserData = 5;
 }
 
 // ---------------------------------------------------- Message Id ---------------------------------------------------- \\
@@ -144,7 +145,6 @@ message S_LeaveGame {
 
 message S_Spawn {
 	repeated ObjectInfo Objects = 1;
-	UserInfo Info = 2;
 }
 
 message S_Despawn {
