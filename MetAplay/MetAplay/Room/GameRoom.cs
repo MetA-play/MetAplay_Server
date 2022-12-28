@@ -43,6 +43,7 @@ namespace MetAplay
             if (type.Equals(GameObjectType.Player))
             {
                 Player player = gameObject as Player;
+                player.Info.UserData = player.Session.UserData;
                 _players.Add(player.Id, player);
                 player.Room = this;
 
@@ -87,16 +88,6 @@ namespace MetAplay
                 foreach (Player p in _players.Values)
                     if (p.Id != player.Id) p.Session.Send(despawnPacket);
             }
-        }
-
-        public void GameStartHandle(Player player)
-        {
-            Content.Start();
-
-            S_UpdateGameStateRes res= new S_UpdateGameStateRes();
-            res.State = GameState.Playing;
-
-            Broadcast(res);
         }
     }
 }

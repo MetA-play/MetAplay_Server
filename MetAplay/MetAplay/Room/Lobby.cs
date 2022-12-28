@@ -65,6 +65,7 @@ namespace MetAplay
             if (gameObject.ObjectType == GameObjectType.Player)
             {
                 Player player = gameObject as Player;
+                player.Info.UserData = player.Session.UserData;
                 _players.Add(gameObject.Id, player);
 
                 {
