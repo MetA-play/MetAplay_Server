@@ -181,5 +181,6 @@ message C_SetUserinfo{
 }
 
 message C_HitSoccerball{
-	TransformInfo hitterTransform = 1;
+	int32 ObjectId = 1;
+	TransformInfo hitterTransform = 2;
 }
