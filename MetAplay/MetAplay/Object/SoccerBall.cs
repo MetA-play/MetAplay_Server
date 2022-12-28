@@ -34,7 +34,7 @@ namespace MetAplay
 
             Move();
 
-            S_Move move = new S_Move();
+            S_SyncPos move = new S_SyncPos();
             move.Id = Id;
             move.Transform = Transform;
             Lobby.Instance.Broadcast(move);

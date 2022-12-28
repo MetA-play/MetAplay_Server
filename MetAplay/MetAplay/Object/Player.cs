@@ -9,8 +9,14 @@ namespace MetAplay
 {
     public class Player : GameObject
     {
-
-        public int inputFlag;
+        int input;
+        public int inputFlag { get { return input; } set {
+                input = value;
+                float x = ((inputFlag >> 27) == 1) ? 1 : ((inputFlag >> 27) == 2) ? -1 : 0;
+                float z = ((inputFlag >> 23 & 0b1111) == 1) ? 1 : ((inputFlag >> 23 & 0b1111) == 2) ? -1 : 0;
+                //Console.WriteLine($"x: {x}   z:{z}");
+            } 
+        }
         public int speed = 5;
         public ClientSession Session { get; set; }
         public GameRoom Room { get; set; }
@@ -48,18 +54,24 @@ namespace MetAplay
         {
             float x = ((inputFlag >> 27) == 1) ? 1 : ((inputFlag >> 27) == 2) ? -1 : 0;
             float z = ((inputFlag >> 23 & 0b1111) == 1) ? 1 : ((inputFlag >> 23 & 0b1111) == 2) ? -1 : 0;
-            Console.WriteLine($"x: {x}   z:{z}");
+            //Console.WriteLine($"x: {x}   z:{z}");
             
             Vector dirVec = new Vector();
             float magnitude = MathF.Sqrt(x * x + z * z);
-            Console.WriteLine($"mag: {magnitude}");
+            //Console.WriteLine($"mag: {magnitude}");
             dirVec.X = x / magnitude;
             dirVec.Z = z / magnitude;
 
+            if(x == 0 && z == 0)
+            {
+                dirVec.X = 0;
+                dirVec.Z = 0;
+            }
+
             Transform.Pos.X += dirVec.X;
             Transform.Pos.Z += dirVec.Z;
-            Console.WriteLine($"{dirVec.X},           {dirVec.Z}");
-            Console.WriteLine($"{Id}:   {(int)Transform.Pos.X}, {(int)Transform.Pos.Y}, {(int)Transform.Pos.Z}");
+            //Console.WriteLine($"{dirVec.X},           {dirVec.Z}");
+            //Console.WriteLine($"{Id}:   {Transform.Pos.X}, {Transform.Pos.Y}, {Transform.Pos.Z}");
         }
     }
 }

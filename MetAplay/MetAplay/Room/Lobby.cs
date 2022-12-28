@@ -119,7 +119,7 @@ namespace MetAplay
                     }
                 }
             }
-            else if (gameObject.ObjectType == GameObjectType.SoccerBal)
+            else if (gameObject.ObjectType == GameObjectType.SoccerBall)
             {
                 SoccerBall ball = gameObject as SoccerBall;
                 _soccerBalls.Add(ball.Id, ball);
