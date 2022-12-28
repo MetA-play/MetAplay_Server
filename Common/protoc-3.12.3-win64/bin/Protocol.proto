@@ -3,7 +3,7 @@ package Protocol;
 
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "Google.Protobuf.Protocol"; // C#ÆÄÀÏÀÇ ³×ÀÓ½ºÆäÀÌ½º ÀÌ¸§
+option csharp_namespace = "Google.Protobuf.Protocol"; // C#íŒŒì¼ì˜ ë„¤ì„ìŠ¤í˜ì´ìŠ¤ ì´ë¦„
 
 
 // ---------------------------------------------------- User ---------------------------------------------------- \\
