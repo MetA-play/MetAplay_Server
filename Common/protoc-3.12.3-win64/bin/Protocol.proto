@@ -3,7 +3,7 @@ package Protocol;
 
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "Google.Protobuf.Protocol"; // C#∆ƒ¿œ¿« ≥◊¿”Ω∫∆‰¿ÃΩ∫ ¿Ã∏ß
+option csharp_namespace = "Google.Protobuf.Protocol"; // C#ÌååÏùºÏùò ÎÑ§ÏûÑÏä§ÌéòÏù¥Ïä§ Ïù¥Î¶Ñ
 
 
 // ---------------------------------------------------- User ---------------------------------------------------- \\
@@ -42,6 +42,7 @@ enum GameObjectType {
 	None = 0;
 	Player = 1;
 	Room = 2;
+	SoccerBall = 3;
 }
 
 // ------------------------------------------- State ------------------------------------------- \\
@@ -105,9 +106,9 @@ enum MsgId {
 	C_UPDATE_GAME_STATE_REQ = 13;
 	S_UPDATE_GAME_STATE_RES = 14;
 	C_SET_USERINFO = 15;
-	C_COLLIDE_OBSTACLE = 16;
-	C_DELETE_FLOOR_BLOCK = 17;
-	S_DELETE_FLOOR_BLOCK = 18;
+	C_HIT_SOCCERBALL = 16;
+	C_SYNC_POS = 17;
+	S_SYNC_POS = 18;
 }
 
 // ------------------------------------------------------ Packet ------------------------------------------------------ \\
@@ -157,16 +158,13 @@ message S_Despawn {
 message C_Move {
 	int32 inputFlag = 1;
 	ObjectState State = 2;
-	TransformInfo Transform = 3;
-	bool isSync = 4;
 }
+
 
 message S_Move {
 	int32 Id = 1;
 	int32 inputFlag = 2;
 	ObjectState State = 3;
-	TransformInfo Transform = 4;
-	bool isSync = 5;
 }
 
 message C_UpdateGameStateReq {
@@ -181,16 +179,18 @@ message C_SetUserinfo{
 	UserInfo Info = 1;
 }
 
-message C_CollideObstacle {
-	int32 playerId = 1;
+message C_HitSoccerball{
+	int32 ObjectId = 1;
+	TransformInfo hitterTransform = 2;
 }
 
-message C_DeleteFloorBlock {
-	int32 FloorIndex = 1;
-	int32 BlockIndex = 2;
+message C_SyncPos{
+	ObjectState State = 1;
+	TransformInfo Transform = 2;
 }
 
-message S_DeleteFloorBlock {
-	int32 FloorIndex = 1;
-	int32 BlockIndex = 2;
+message S_SyncPos{
+	int32 Id = 1;
+	ObjectState State = 2;
+	TransformInfo Transform = 3;
 }
