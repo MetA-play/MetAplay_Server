@@ -37,10 +37,8 @@ class PacketManager
 		_handler.Add((ushort)MsgId.CSetUserinfo, PacketHandler.C_SetUserinfoHandler);		
 		_onRecv.Add((ushort)MsgId.CHitSoccerball, MakePacket<C_HitSoccerball>);
 		_handler.Add((ushort)MsgId.CHitSoccerball, PacketHandler.C_HitSoccerballHandler);		
-		_onRecv.Add((ushort)MsgId.CSyncpos, MakePacket<C_Syncpos>);
-		_handler.Add((ushort)MsgId.CSyncpos, PacketHandler.C_SyncposHandler);		
-		_onRecv.Add((ushort)MsgId.CSyncpos, MakePacket<C_Syncpos>);
-		_handler.Add((ushort)MsgId.CSyncpos, PacketHandler.C_SyncposHandler);
+		_onRecv.Add((ushort)MsgId.CSyncPos, MakePacket<C_SyncPos>);
+		_handler.Add((ushort)MsgId.CSyncPos, PacketHandler.C_SyncPosHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

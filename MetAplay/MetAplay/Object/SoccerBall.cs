@@ -16,7 +16,7 @@ namespace MetAplay
 
         public SoccerBall()
         {
-            ObjectType = GameObjectType.SoccerBal;
+            ObjectType = GameObjectType.SoccerBall;
             speed = 8;
         }
         public override void Update()

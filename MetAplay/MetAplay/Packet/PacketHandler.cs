@@ -74,4 +74,11 @@ public class PacketHandler
 
         Lobby.Instance.Push(Lobby.Instance.SoccerballHandle,hit);
     }
+    public static void C_SyncPosHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+        C_SyncPos sync = packet as C_SyncPos;
+
+
+    }
 }

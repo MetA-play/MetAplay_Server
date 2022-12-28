@@ -58,6 +58,14 @@ namespace MetAplay
 
         public void MoveHandle(GameObject gameObject, C_SyncPos movePacket)
         {
+            gameObject.Transform = movePacket.Transform;
+
+            S_SyncPos res = new S_SyncPos();
+            res.Id = gameObject.Id;
+            res.Transform = movePacket.Transform;
+
+
+            Broadcast(res);
 
         }
 
