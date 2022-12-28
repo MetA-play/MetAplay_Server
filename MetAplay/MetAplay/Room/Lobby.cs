@@ -12,7 +12,15 @@ namespace MetAplay
         public static Lobby Instance { get; private set; } = new Lobby();
 
         Dictionary<int, RoomObject> _roomObjs = new Dictionary<int, RoomObject>();
+        Dictionary<int, SoccerBall> _soccerBalls = new Dictionary<int, SoccerBall>();
 
+        public override void Update()
+        {
+            foreach (SoccerBall ball in _soccerBalls.Values)
+                ball.Update();
+            base.Update();
+
+        }
         public void CreateRoomHandle(Player player, RoomSetting setting)
         {
             RoomObject roomObj = ObjectManager.Instance.Add<RoomObject>();
@@ -79,9 +87,12 @@ namespace MetAplay
                         {
                             if (p != player)
                                 spawn.Objects.Add(p.Info);
-                            foreach (RoomObject obj in _roomObjs.Values)
-                                spawn.Objects.Add(obj.Info);
+
                         }
+                        foreach (RoomObject obj in _roomObjs.Values)
+                            spawn.Objects.Add(obj.Info);
+                        foreach (SoccerBall ball in _soccerBalls.Values)
+                            spawn.Objects.Add(ball.Info);
 
                         player.Session.Send(spawn);
                     }
@@ -108,6 +119,11 @@ namespace MetAplay
                     }
                 }
             }
+            else if (gameObject.ObjectType == GameObjectType.SoccerBal)
+            {
+                SoccerBall ball = gameObject as SoccerBall;
+                _soccerBalls.Add(ball.Id, ball);
+            }
         }
 
         public override void LeaveGame(int gameObjectId)
@@ -133,6 +149,17 @@ namespace MetAplay
                 if (p.Id != gameObjectId)
                     p.Session.Send(despawn);
             }
+        }
+
+        public void SoccerballHandle(C_HitSoccerball hitBall)
+        {
+            SoccerBall ball = null;
+
+            if (_soccerBalls.TryGetValue(hitBall.ObjectId, out ball) == false)
+                return;
+
+            ball.KickIt(hitBall.HitterTransform.Pos);
+            
         }
     }
 }

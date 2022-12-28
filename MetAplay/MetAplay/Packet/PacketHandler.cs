@@ -66,11 +66,12 @@ public class PacketHandler
 
     }
 
-    public static void C_SetUserinfoHandler(PacketSession session, IMessage packet)
+    public static void C_HitSoccerballHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
-        C_SetUserinfo info = packet as C_SetUserinfo;
+        C_HitSoccerball hit = packet as C_HitSoccerball;
 
-        clientSession.UserData = info.Info;
+
+        Lobby.Instance.Push(Lobby.Instance.SoccerballHandle,hit);
     }
 }
