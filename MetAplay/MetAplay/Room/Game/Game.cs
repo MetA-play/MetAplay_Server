@@ -44,9 +44,10 @@ namespace MetAplay
             int index = 0;
             foreach (Player player in Room.Players)
             {
+                player.Transform = SpawnPoints[index++];
                 S_Move movePacket = new S_Move();
                 movePacket.Id = player.Id;
-                movePacket.Transform = SpawnPoints[index++];
+                movePacket.Transform = player.Transform;
                 movePacket.IsSync = true;
                 Room.Broadcast(movePacket);
                 Console.WriteLine($"Move Player({movePacket.Id}) To SpawnPoint : ({movePacket.Transform.Pos.X}, {movePacket.Transform.Pos.Y}, {movePacket.Transform.Pos.Z})");

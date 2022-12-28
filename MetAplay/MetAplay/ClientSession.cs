@@ -16,7 +16,7 @@ namespace MetAplay
     public class ClientSession : PacketSession
     {
 
-        public UserInfo UserData;
+        public UserInfo UserData = new UserInfo();
         public Player MyPlayer { get; set; }
         public int SessionId { get; set; }
 
@@ -46,6 +46,7 @@ namespace MetAplay
             UserData.NickName = "TEMP";
             UserData.HeadPartsIdx = 11;
             UserData.FootPartsIdx = 11;
+            player.UserData = UserData;
 
             GameRoom room = RoomManager.Instance.Find(1);
             room.Push(room.EnterGame, player);

@@ -64,6 +64,7 @@ namespace MetAplay
                 {
                     S_EnterGame enterGamePacket = new S_EnterGame();
                     enterGamePacket.Player = player.Info;
+                    enterGamePacket.Player.UserData = player.UserData;
                     player.Session.Send(enterGamePacket);
 
                     S_Spawn spawnPacket = new S_Spawn();
