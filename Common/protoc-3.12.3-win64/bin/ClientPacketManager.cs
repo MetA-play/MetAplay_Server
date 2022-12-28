@@ -40,7 +40,9 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SChat, MakePacket<S_Chat>);
 		_handler.Add((ushort)MsgId.SChat, PacketHandler.S_ChatHandler);		
 		_onRecv.Add((ushort)MsgId.SUpdateGameStateRes, MakePacket<S_UpdateGameStateRes>);
-		_handler.Add((ushort)MsgId.SUpdateGameStateRes, PacketHandler.S_UpdateGameStateResHandler);
+		_handler.Add((ushort)MsgId.SUpdateGameStateRes, PacketHandler.S_UpdateGameStateResHandler);		
+		_onRecv.Add((ushort)MsgId.SDeleteFloorBlock, MakePacket<S_DeleteFloorBlock>);
+		_handler.Add((ushort)MsgId.SDeleteFloorBlock, PacketHandler.S_DeleteFloorBlockHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

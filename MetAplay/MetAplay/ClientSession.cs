@@ -42,6 +42,11 @@ namespace MetAplay
             player.Info.Transform.Pos.Y = 1;
             player.Info.Transform.Pos.Z = 1;
 
+            UserData = new UserInfo();
+            UserData.NickName = "TEMP";
+            UserData.HeadPartsIdx = 11;
+            UserData.FootPartsIdx = 11;
+
             GameRoom room = RoomManager.Instance.Find(1);
             room.Push(room.EnterGame, player);
 

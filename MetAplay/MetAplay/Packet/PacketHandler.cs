@@ -66,4 +66,23 @@ public class PacketHandler
 
         clientSession.UserData = info.Info;
     }
+
+    public static void C_CollideObstacleHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+
+
+    }
+
+    public static void C_DeleteFloorBlockHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+        C_DeleteFloorBlock deleteFloorBlockPacket = packet as C_DeleteFloorBlock;
+
+        GameRoom room = clientSession.MyPlayer.Room;
+        if (room == null) return;
+        if (room.Content.GameName != GameType.DoNotFall) return;
+        DoNotFall game = clientSession.MyPlayer.Room.Content as DoNotFall;
+        room.Push(game.DeleteFloorBlock, deleteFloorBlockPacket.FloorIndex, deleteFloorBlockPacket.BlockIndex);
+    }
 }

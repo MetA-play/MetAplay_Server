@@ -105,6 +105,9 @@ enum MsgId {
 	C_UPDATE_GAME_STATE_REQ = 13;
 	S_UPDATE_GAME_STATE_RES = 14;
 	C_SET_USERINFO = 15;
+	C_COLLIDE_OBSTACLE = 16;
+	C_DELETE_FLOOR_BLOCK = 17;
+	S_DELETE_FLOOR_BLOCK = 18;
 }
 
 // ------------------------------------------------------ Packet ------------------------------------------------------ \\
@@ -176,4 +179,18 @@ message S_UpdateGameStateRes {
 
 message C_SetUserinfo{
 	UserInfo Info = 1;
+}
+
+message C_CollideObstacle {
+	int32 playerId = 1;
+}
+
+message C_DeleteFloorBlock {
+	int32 FloorIndex = 1;
+	int32 BlockIndex = 2;
+}
+
+message S_DeleteFloorBlock {
+	int32 FloorIndex = 1;
+	int32 BlockIndex = 2;
 }
