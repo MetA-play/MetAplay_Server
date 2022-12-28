@@ -42,6 +42,7 @@ enum GameObjectType {
 	None = 0;
 	Player = 1;
 	Room = 2;
+	SoccerBal = 3;
 }
 
 // ------------------------------------------- State ------------------------------------------- \\
@@ -105,6 +106,7 @@ enum MsgId {
 	C_UPDATE_GAME_STATE_REQ = 13;
 	S_UPDATE_GAME_STATE_RES = 14;
 	C_SET_USERINFO = 15;
+	C_HIT_SOCCERBALL = 16;
 }
 
 // ------------------------------------------------------ Packet ------------------------------------------------------ \\
@@ -176,4 +178,8 @@ message S_UpdateGameStateRes {
 
 message C_SetUserinfo{
 	UserInfo Info = 1;
+}
+
+message C_HitSoccerball{
+	TransformInfo hitterTransform = 1;
 }

@@ -25,6 +25,7 @@ namespace MetAplay
             get => Info.Transform;
             set => Info.Transform = value;
         }
+        public int speed;
 
         public GameObject()
         {
