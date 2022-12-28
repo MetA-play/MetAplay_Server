@@ -15,6 +15,8 @@ namespace MetAplay
 {
     public class ClientSession : PacketSession
     {
+
+        public UserInfo UserData { get; set; }
         public Player MyPlayer { get; set; }
         public int SessionId { get; set; }
 
@@ -36,7 +38,15 @@ namespace MetAplay
             Player player = ObjectManager.Instance.Add<Player>();
             player.Session = this;
             MyPlayer = player;
-            Lobby.Instance.Push(Lobby.Instance.EnterGame, player);
+            player.Info.Transform.Pos.X = 1;
+            player.Info.Transform.Pos.Y = 1;
+            player.Info.Transform.Pos.Z = 1;
+
+            UserData = new UserInfo();
+            UserData.NickName = "dsafsdfas";
+            UserData.HeadPartsIdx = 11;
+            UserData.FootPartsIdx = 11;
+            Lobby.Instance.Push(Lobby.Instance.EnterGame,player);
         }
 
         public override void OnRecvPacket(ArraySegment<byte> buffer)
@@ -46,10 +56,13 @@ namespace MetAplay
 
         public override void OnDisconnected(EndPoint endPoint)
         {
-            //GameRoom room = RoomManager.Instance.Find(1);
-            //room.Push(room.LeaveGame, MyPlayer.Info.ObjectId);
+            GameRoom room = MyPlayer.Room;
+            if(room == null)
+                Lobby.Instance.Push(Lobby.Instance.LeaveGame, MyPlayer.Info.Id);
+            else
+                room.Push(room.LeaveGame, MyPlayer.Info.Id);
 
-            //SessionManager.Instance.Remove(this);
+            SessionManager.Instance.Remove(this);
 
             Console.WriteLine($"OnDisconnected : {endPoint}");
         }

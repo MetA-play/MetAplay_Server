@@ -9,6 +9,11 @@ namespace MetAplay
 {
     public class GameRoom : BaseRoom
     {
+
+        public GameRoom() 
+        {
+            Content = new Game();
+        }
         public RoomInfo Info
         {
             get { return new RoomInfo() { Id = RoomId, CurrentPersonnel = _players.Count, Setting = Setting }; }
@@ -17,6 +22,11 @@ namespace MetAplay
         public Player Host { get; set; }
         public Game Content { get; set; }
         public bool IsStart { get { return Content.State == GameState.Playing; } }
+
+        public List<Player> Players { get
+            {
+                return _players.Values.ToList();
+            } }
 
         public override void Update()
         {
@@ -33,6 +43,7 @@ namespace MetAplay
             if (type.Equals(GameObjectType.Player))
             {
                 Player player = gameObject as Player;
+                player.Info.UserData = player.Session.UserData;
                 _players.Add(player.Id, player);
                 player.Room = this;
 

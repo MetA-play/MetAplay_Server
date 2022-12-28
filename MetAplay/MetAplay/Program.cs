@@ -40,13 +40,19 @@ namespace MetAplay
             _listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
             Console.WriteLine("Listening...");
 
+
             //FlushRoom();
             //JobTimer.Instance.Push(FlushRoom);
-
-            // TODO
+            // TODO 
             while (true)
             {
-                Lobby.Instance.Flush();
+                //테스트용
+                Lobby.Instance.Update();
+                for (int i = 0; i < 5; i++)
+                {
+                    if (RoomManager.Instance.Find(i) != null)
+                        RoomManager.Instance.Find(i).Update();
+                }
             }
         }
     }
