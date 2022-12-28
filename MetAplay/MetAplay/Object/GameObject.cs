@@ -18,6 +18,11 @@ namespace MetAplay
 
         public ObjectInfo Info { get; set; } = new ObjectInfo();
 
+        public TransformInfo Transform
+        {
+            get => Info.Transform;
+            set => Info.Transform = value;
+        }
 
         public GameObject()
         {

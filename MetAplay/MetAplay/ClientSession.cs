@@ -41,7 +41,11 @@ namespace MetAplay
             player.Info.Transform.Pos.X = 1;
             player.Info.Transform.Pos.Y = 1;
             player.Info.Transform.Pos.Z = 1;
-            Lobby.Instance.Push(Lobby.Instance.EnterGame,player);
+
+            GameRoom room = RoomManager.Instance.Find(1);
+            room.Push(room.EnterGame, player);
+
+            //Lobby.Instance.Push(Lobby.Instance.EnterGame,player);
         }
 
         public override void OnRecvPacket(ArraySegment<byte> buffer)

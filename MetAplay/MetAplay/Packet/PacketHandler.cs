@@ -56,4 +56,10 @@ public class PacketHandler
 
         clientSession.MyPlayer.Room.Push(clientSession.MyPlayer.Room.GameStartHandle, clientSession.MyPlayer);
     }
+
+    public static void C_SetUserinfoHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+
+    }
 }
