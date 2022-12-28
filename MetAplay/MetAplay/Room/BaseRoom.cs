@@ -39,7 +39,7 @@ namespace MetAplay
 
             gameObject.Info.State = movePacket.State;
 
-            if(gameObject.ObjectType == GameObjectType.Player && !movePacket.IsSync)
+            if(gameObject.ObjectType == GameObjectType.Player)
             {
                 Player player = gameObject as Player;
                 player.inputFlag = movePacket.InputFlag;
@@ -52,9 +52,13 @@ namespace MetAplay
             resMovePacket.Transform = movePacket.Transform;
             resMovePacket.State = movePacket.State;
             resMovePacket.InputFlag = movePacket.InputFlag;
-            resMovePacket.IsSync = movePacket.IsSync;
 
             Broadcast(resMovePacket);
+        }
+
+        public void MoveHandle(GameObject gameObject, C_SyncPos movePacket)
+        {
+
         }
 
         public void ChatHandle(Player player, C_Chat chat)
