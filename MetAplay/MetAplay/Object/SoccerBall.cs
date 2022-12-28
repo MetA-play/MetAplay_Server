@@ -17,7 +17,7 @@ namespace MetAplay
         public SoccerBall()
         {
             ObjectType = GameObjectType.SoccerBall;
-            speed = 8;
+            speed = 100;
         }
         public override void Update()
         {
@@ -42,14 +42,12 @@ namespace MetAplay
 
         public void Move()
         {
-
-            AddedForce.X = Lerp(AddedForce.X, 0, .3f);
-            AddedForce.Y = Lerp(AddedForce.Y, 0, .3f);
-            AddedForce.Z = Lerp(AddedForce.Z, 0, .3f);
+            AddedForce.X = Lerp(AddedForce.X, 0, .1f);
+            AddedForce.Y = Lerp(AddedForce.Y, 0, .1f);
+            AddedForce.Z = Lerp(AddedForce.Z, 0, .1f);
 
 
             Transform.Pos.X += AddedForce.X;
-            Transform.Pos.Y += AddedForce.Y;
             Transform.Pos.Z += AddedForce.Z;
         }
 
@@ -59,19 +57,15 @@ namespace MetAplay
          
             Vector dir = new Vector();
             dir.X = Transform.Pos.X - hitterPos.X;
-            dir.Y = Transform.Pos.X - hitterPos.Y;
             dir.Z = Transform.Pos.X - hitterPos.Z;
 
             float magnitude = MathF.Sqrt(dir.X * dir.X + dir.Z * dir.Z);
-
-
             dir.X = dir.X / magnitude;
             dir.Z = dir.Z / magnitude;
 
-            forceVec = new Vector() { X = dir.X * 2 * 0.05f, Y = dir.Y * 2 * 0.05f, Z = dir.Z * 2 * 0.05f };
+            forceVec = new Vector() { X = dir.X * 20 * 0.05f, Y = dir.Y * 20 * 0.05f, Z = dir.Z * 20 * 0.05f };
 
             AddedForce.X += forceVec.X;
-            AddedForce.Y += forceVec.Y;
             AddedForce.Z += forceVec.Z;
         }
 
