@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace MetAplay
 {
-    public class SoccerBall :GameObject
+    public class SoccerBall : GameObject
     {
         public Vector AddedForce { get; set; } = new Vector();
-        
-        
+
+
         long _nextMoveTick = 0;
 
         public SoccerBall()
@@ -46,6 +46,18 @@ namespace MetAplay
             AddedForce.Y = Lerp(AddedForce.Y, 0, .1f);
             AddedForce.Z = Lerp(AddedForce.Z, 0, .1f);
 
+            if (AddedForce.X < 0.05f)
+            {
+                AddedForce.X = 0;
+            }
+            else if (AddedForce.Y < 0.05f)
+            {
+                AddedForce.Y = 0;
+            }
+            else if (AddedForce.Z < 0.05f)
+            {
+                AddedForce.Z = 0;
+            }
 
             Transform.Pos.X += AddedForce.X;
             Transform.Pos.Z += AddedForce.Z;
@@ -54,17 +66,19 @@ namespace MetAplay
         public void KickIt(Vector hitterPos)
         {
             Vector forceVec = new Vector();
-         
+            //Console.WriteLine($"hitPos: {hitterPos.X}   {hitterPos.Z}");
             Vector dir = new Vector();
             dir.X = Transform.Pos.X - hitterPos.X;
-            dir.Z = Transform.Pos.X - hitterPos.Z;
-
+            dir.Z = Transform.Pos.Z - hitterPos.Z;
+            //Console.WriteLine($"My Pos: {Transform.Pos.X}    {Transform.Pos.Z}");
+            //Console.WriteLine($"Hit Pos: {hitterPos.X}    {hitterPos.Z}");
             float magnitude = MathF.Sqrt(dir.X * dir.X + dir.Z * dir.Z);
             dir.X = dir.X / magnitude;
             dir.Z = dir.Z / magnitude;
+            //Console.WriteLine($"Dir:  {dir.X}     {dir.Z}");
 
             forceVec = new Vector() { X = dir.X * 20 * 0.05f, Y = dir.Y * 20 * 0.05f, Z = dir.Z * 20 * 0.05f };
-
+            //Console.WriteLine($"ForceVec: {forceVec.X}        {forceVec.Z}");
             AddedForce.X += forceVec.X;
             AddedForce.Z += forceVec.Z;
         }

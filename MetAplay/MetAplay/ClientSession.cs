@@ -38,9 +38,9 @@ namespace MetAplay
             Player player = ObjectManager.Instance.Add<Player>();
             player.Session = this;
             MyPlayer = player;
-            player.Info.Transform.Pos.X = 1;
-            player.Info.Transform.Pos.Y = 1;
-            player.Info.Transform.Pos.Z = 1;
+            player.Info.Transform.Pos.X = 15;
+            player.Info.Transform.Pos.Y = 0 ;
+            player.Info.Transform.Pos.Z = 118;
 
             UserData = new UserInfo();
             UserData.NickName = "dsafsdfas";
