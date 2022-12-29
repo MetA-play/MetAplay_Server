@@ -84,6 +84,11 @@ namespace MetAplay
             if (state == GameState.Ending)
                 End();
         }
+        
+        public void PlayerDead()
+        {
+
+        }
 
         public void GameOverCheck()
         {
