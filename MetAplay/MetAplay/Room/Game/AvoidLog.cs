@@ -90,5 +90,22 @@ namespace MetAplay
         {
             base.End();
         }
+
+        public void CollideObstacle(int playerId)
+        {
+            Player player = Room.FindPlayerById(playerId);
+            if (player == null) return;
+            player.IsDead = true;
+            int leavePlayerCount = Room.Players.Count(p => p.IsDead == false);
+            
+            if (State == GameState.Playing)
+            {
+                if (leavePlayerCount == 1)
+                {
+                    UpdateGameState(GameState.Ending);
+                    
+                }
+            }
+        }
     }
 }

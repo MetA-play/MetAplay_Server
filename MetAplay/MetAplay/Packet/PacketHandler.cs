@@ -67,11 +67,25 @@ public class PacketHandler
         clientSession.UserData = info.Info;
     }
 
+    public static void C_HitSoccerballHandler(PacketSession session, IMessage packet)
+    {
+
+    }
+
+    public static void C_SyncPosHandler(PacketSession session, IMessage packet)
+    {
+
+    }
+
     public static void C_CollideObstacleHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
 
-
+        GameRoom room = clientSession.MyPlayer.Room;
+        if (room == null) return;
+        if (room.Content.GameName != GameType.AvoidLog) return;
+        AvoidLog game = room.Content as AvoidLog;
+        room.Push(game.CollideObstacle, clientSession.MyPlayer.Id);
     }
 
     public static void C_DeleteFloorBlockHandler(PacketSession session, IMessage packet)
@@ -82,7 +96,7 @@ public class PacketHandler
         GameRoom room = clientSession.MyPlayer.Room;
         if (room == null) return;
         if (room.Content.GameName != GameType.DoNotFall) return;
-        DoNotFall game = clientSession.MyPlayer.Room.Content as DoNotFall;
+        DoNotFall game = room.Content as DoNotFall;
         room.Push(game.DeleteFloorBlock, deleteFloorBlockPacket.FloorIndex, deleteFloorBlockPacket.BlockIndex);
     }
 }

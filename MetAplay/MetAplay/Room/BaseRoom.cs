@@ -73,5 +73,18 @@ namespace MetAplay
             foreach (Player p in _players.Values)
                 p.Session.Send(packet);
         }
+
+        public Player FindPlayerById(int playerId)
+        {
+            Player player = null;
+
+            foreach (var p in _players.Values)
+            {
+                if (p.Id == playerId)
+                    player = p;
+            }
+
+            return player;
+        }
     }
 }
