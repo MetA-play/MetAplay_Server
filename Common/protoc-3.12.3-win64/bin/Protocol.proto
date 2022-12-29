@@ -7,10 +7,19 @@ option csharp_namespace = "Google.Protobuf.Protocol"; // C#파일의 네임스�
 
 
 // ---------------------------------------------------- User ---------------------------------------------------- \\
+message MetColor{
+	float r=  1;
+	float g = 2;
+	float b = 3;
+}
+
 message UserInfo {
 	string NickName = 1;
 	int32 headPartsIdx = 2;
-	int32 FootPartsIdx = 3;
+	int32 bodyPartsIdx = 3;
+	int32 FootPartsIdx = 4;
+	MetColor bodyColor = 5;
+	MetColor cloakColor = 6;
 }
 
 // ---------------------------------------------------- Room ---------------------------------------------------- \\
