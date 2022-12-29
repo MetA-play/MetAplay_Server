@@ -12,7 +12,7 @@ namespace MetAplay
     
     public class FloorBlockController : GameObject
     {
-        public bool[,] IsDeleted = new bool[3, 57];
+        public bool[,] IsDeleted = new bool[3, 61];
 
         public void DeleteFloorBlock(int floorIndex, int blockIndex)
         {
@@ -78,6 +78,7 @@ namespace MetAplay
 
         public void DeleteFloorBlock(int floorIndex, int blockIndex)
         {
+            if (floorIndex > 2 || blockIndex > 60) return;
             FBC.DeleteFloorBlock(floorIndex, blockIndex);
         }
     }

@@ -45,11 +45,11 @@ namespace MetAplay
             foreach (Player player in Room.Players)
             {
                 player.Transform = SpawnPoints[index++];
-                S_Move movePacket = new S_Move();
-                movePacket.Id = player.Id;
-                movePacket.Transform = player.Transform;
-                Room.Broadcast(movePacket);
-                Console.WriteLine($"Move Player({movePacket.Id}) To SpawnPoint : ({movePacket.Transform.Pos.X}, {movePacket.Transform.Pos.Y}, {movePacket.Transform.Pos.Z})");
+                S_SyncPos syncPosPacket = new S_SyncPos();
+                syncPosPacket.Id = player.Id;
+                syncPosPacket.Transform = player.Transform;
+                Room.Broadcast(syncPosPacket);
+                Console.WriteLine($"Move Player({syncPosPacket.Id}) To SpawnPoint : ({syncPosPacket.Transform.Pos.X}, {syncPosPacket.Transform.Pos.Y}, {syncPosPacket.Transform.Pos.Z})");
             }
         }
 
