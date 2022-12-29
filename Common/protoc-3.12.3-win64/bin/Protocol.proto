@@ -118,9 +118,9 @@ enum MsgId {
 	C_HIT_SOCCERBALL = 16;
 	C_SYNC_POS = 17;
 	S_SYNC_POS = 18;
-	C_COLLIDE_OBSTACLE = 19;
-	C_DELETE_FLOOR_BLOCK = 20;
-	S_DELETE_FLOOR_BLOCK = 21;
+	C_DELETE_FLOOR_BLOCK = 19;
+	S_DELETE_FLOOR_BLOCK = 20;
+	C_PLAYER_DEAD = 21;
 	S_PLAYER_DEAD = 22;
 	S_GAME_END = 23;
 }
@@ -210,9 +210,6 @@ message S_SyncPos{
 	TransformInfo Transform = 3;
 }
 
-message C_CollideObstacle {
-}
-
 message C_DeleteFloorBlock {
 	int32 FloorIndex = 1;
 	int32 BlockIndex = 2;
@@ -221,6 +218,9 @@ message C_DeleteFloorBlock {
 message S_DeleteFloorBlock {
 	int32 FloorIndex = 1;
 	int32 BlockIndex = 2;
+}
+
+message C_PlayerDead {
 }
 
 message S_PlayerDead {
