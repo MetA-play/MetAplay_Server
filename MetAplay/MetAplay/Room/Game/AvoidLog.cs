@@ -96,16 +96,12 @@ namespace MetAplay
             Player player = Room.FindPlayerById(playerId);
             if (player == null) return;
             player.IsDead = true;
-            int leavePlayerCount = Room.Players.Count(p => p.IsDead == false);
-            
-            if (State == GameState.Playing)
-            {
-                if (leavePlayerCount == 1)
-                {
-                    UpdateGameState(GameState.Ending);
-                    
-                }
-            }
+
+            S_PlayerDead deadPacket = new S_PlayerDead();
+            deadPacket.PlayerId = player.Id;
+            Room.Broadcast(deadPacket);
+
+            GameOverCheck();
         }
     }
 }

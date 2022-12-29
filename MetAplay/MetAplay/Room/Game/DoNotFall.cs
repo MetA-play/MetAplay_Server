@@ -34,10 +34,26 @@ namespace MetAplay
     {
         private FloorBlockController FBC;
 
+        private void SetSpawnPoint()
+        {
+            SpawnPoints = new List<TransformInfo>()
+            {
+                new TransformInfo() { Pos = new Vector() { X = -14, Y = 66, Z = 0 } },
+                new TransformInfo() { Pos = new Vector() { X = -10.5f, Y = 66, Z = -10 } },
+                new TransformInfo() { Pos = new Vector() { X = 0, Y = 66, Z = -16 } },
+                new TransformInfo() { Pos = new Vector() { X = 10.5f, Y = 66, Z = -10 } },
+                new TransformInfo() { Pos = new Vector() { X = 14, Y = 66, Z = 0 } },
+                new TransformInfo() { Pos = new Vector() { X = 10.5f, Y = 66, Z = 10 } },
+                new TransformInfo() { Pos = new Vector() { X = 0, Y = 66, Z = 16 } },
+                new TransformInfo() { Pos = new Vector() { X = -10.5f, Y = 66, Z = 10 } }
+            };
+        }
+
         public override void Init(GameRoom room)
         {
             base.Init(room);
             GameName = GameType.DoNotFall;
+            SetSpawnPoint();
 
             FBC = ObjectManager.Instance.Add<FloorBlockController>();
             Objects.Add(FBC);
@@ -62,7 +78,7 @@ namespace MetAplay
 
         public void DeleteFloorBlock(int floorIndex, int blockIndex)
         {
-            
+            FBC.DeleteFloorBlock(floorIndex, blockIndex);
         }
     }
 }

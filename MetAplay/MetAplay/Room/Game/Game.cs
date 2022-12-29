@@ -64,7 +64,12 @@ namespace MetAplay
         {
             if (Room == null || State != GameState.Playing) return;
 
-            Console.WriteLine("게임 종료");
+
+            S_GameEnd endGamePacket = new S_GameEnd();
+            endGamePacket.WinnerId = Room.Players.Find(p => p.IsDead == false).Id;
+            Room.Broadcast(endGamePacket);
+
+            Console.WriteLine($"게임 종료 Winner: {endGamePacket.WinnerId}");
 
             State = GameState.Ending;
         }
@@ -78,6 +83,19 @@ namespace MetAplay
 
             if (state == GameState.Ending)
                 End();
+        }
+
+        public void GameOverCheck()
+        {
+            int leavePlayerCount = Room.Players.Count(p => p.IsDead == false);
+
+            if (State == GameState.Playing)
+            {
+                if (leavePlayerCount == 1)
+                {
+                    UpdateGameState(GameState.Ending);
+                }
+            }
         }
     }
 }
