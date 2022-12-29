@@ -77,17 +77,6 @@ public class PacketHandler
 
     }
 
-    public static void C_CollideObstacleHandler(PacketSession session, IMessage packet)
-    {
-        ClientSession clientSession = session as ClientSession;
-
-        GameRoom room = clientSession.MyPlayer.Room;
-        if (room == null) return;
-        if (room.Content.GameName != GameType.AvoidLog) return;
-        AvoidLog game = room.Content as AvoidLog;
-        room.Push(game.CollideObstacle, clientSession.MyPlayer.Id);
-    }
-
     public static void C_DeleteFloorBlockHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
@@ -98,5 +87,14 @@ public class PacketHandler
         if (room.Content.GameName != GameType.DoNotFall) return;
         DoNotFall game = room.Content as DoNotFall;
         room.Push(game.DeleteFloorBlock, deleteFloorBlockPacket.FloorIndex, deleteFloorBlockPacket.BlockIndex);
+    }
+
+    public static void C_PlayerDeadHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+
+        GameRoom room = clientSession.MyPlayer.Room;
+        if (room == null) return;
+        room.Push(room.Content.PlayerDead, clientSession.MyPlayer.Id);
     }
 }

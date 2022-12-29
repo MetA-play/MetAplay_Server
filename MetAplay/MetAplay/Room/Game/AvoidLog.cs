@@ -90,18 +90,5 @@ namespace MetAplay
         {
             base.End();
         }
-
-        public void CollideObstacle(int playerId)
-        {
-            Player player = Room.FindPlayerById(playerId);
-            if (player == null) return;
-            player.IsDead = true;
-
-            S_PlayerDead deadPacket = new S_PlayerDead();
-            deadPacket.PlayerId = player.Id;
-            Room.Broadcast(deadPacket);
-
-            GameOverCheck();
-        }
     }
 }

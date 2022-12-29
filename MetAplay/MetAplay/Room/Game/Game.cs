@@ -48,7 +48,6 @@ namespace MetAplay
                 S_Move movePacket = new S_Move();
                 movePacket.Id = player.Id;
                 movePacket.Transform = player.Transform;
-                movePacket.IsSync = true;
                 Room.Broadcast(movePacket);
                 Console.WriteLine($"Move Player({movePacket.Id}) To SpawnPoint : ({movePacket.Transform.Pos.X}, {movePacket.Transform.Pos.Y}, {movePacket.Transform.Pos.Z})");
             }
@@ -85,18 +84,26 @@ namespace MetAplay
                 End();
         }
         
-        public void PlayerDead()
+        public void PlayerDead(int playerId)
         {
+            Player player = Room.FindPlayerById(playerId);
+            if (player == null) return;
+            player.IsDead = true;
 
+            S_PlayerDead deadPacket = new S_PlayerDead();
+            deadPacket.PlayerId = player.Id;
+            Room.Broadcast(deadPacket);
+
+            GameOverCheck();
         }
 
         public void GameOverCheck()
         {
             int leavePlayerCount = Room.Players.Count(p => p.IsDead == false);
 
-            if (State == GameState.Playing)
+            if (leavePlayerCount == 1)
             {
-                if (leavePlayerCount == 1)
+                if (State == GameState.Playing)
                 {
                     UpdateGameState(GameState.Ending);
                 }
