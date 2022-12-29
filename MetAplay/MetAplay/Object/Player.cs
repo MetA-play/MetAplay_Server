@@ -12,7 +12,6 @@ namespace MetAplay
 
         public int speed = 5;
         public int inputFlag;
-        public int speed;
         public ClientSession Session { get; set; }
         public GameRoom Room { get; set; }
         public Player() : base()

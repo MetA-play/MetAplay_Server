@@ -64,6 +64,14 @@ public class PacketHandler
 
         clientSession.UserData = info.Info;
 
+        Player player = ObjectManager.Instance.Add<Player>();
+        player.Session = clientSession;
+        clientSession.MyPlayer = player;
+        player.Info.Transform.Pos.X = 15;
+        player.Info.Transform.Pos.Y = 0;
+        player.Info.Transform.Pos.Z = 118;
+        Lobby.Instance.Push(Lobby.Instance.EnterGame, player);
+
     }
 
     public static void C_HitSoccerballHandler(PacketSession session, IMessage packet)
@@ -74,11 +82,28 @@ public class PacketHandler
 
         Lobby.Instance.Push(Lobby.Instance.SoccerballHandle,hit);
     }
+    
     public static void C_SyncPosHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
         C_SyncPos sync = packet as C_SyncPos;
 
+        if(clientSession.MyPlayer.Session!= null)
+        {
+            clientSession.MyPlayer.Room.Push(clientSession.MyPlayer.Room.MoveHandle,clientSession.MyPlayer ,sync);
+        }
+        else
+        {
+            Lobby.Instance.Push(Lobby.Instance.MoveHandle, clientSession.MyPlayer, sync);
 
+        }
+    }
+    public static void C_CollideObstacleHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+    }
+    public static void C_DeleteFloorBlockHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
     }
 }
