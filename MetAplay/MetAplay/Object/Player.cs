@@ -9,7 +9,6 @@ namespace MetAplay
 {
     public class Player : GameObject
     {
-
         public int inputFlag;
         public int speed;
         public ClientSession Session { get; set; }
@@ -17,12 +16,10 @@ namespace MetAplay
         public Player() : base()
         {
             ObjectType = GameObjectType.Player;
-
         }
 
-
         public UserInfo UserData { get { return Session.UserData; } set { Session.UserData = value; } }
-
+        public bool IsDead { get; set; }
 
         public override void Update()
         {
