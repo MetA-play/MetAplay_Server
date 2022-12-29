@@ -113,6 +113,7 @@ enum MsgId {
 	C_DELETE_FLOOR_BLOCK = 20;
 	S_DELETE_FLOOR_BLOCK = 21;
 	S_PLAYER_DEAD = 22;
+	S_GAME_END = 23;
 }
 
 // ------------------------------------------------------ Packet ------------------------------------------------------ \\
@@ -215,4 +216,8 @@ message S_DeleteFloorBlock {
 
 message S_PlayerDead {
 	int32 PlayerId = 1;
+}
+
+message S_GameEnd {
+	int32 WinnerId = 1;
 }

@@ -46,7 +46,9 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SDeleteFloorBlock, MakePacket<S_DeleteFloorBlock>);
 		_handler.Add((ushort)MsgId.SDeleteFloorBlock, PacketHandler.S_DeleteFloorBlockHandler);		
 		_onRecv.Add((ushort)MsgId.SPlayerDead, MakePacket<S_PlayerDead>);
-		_handler.Add((ushort)MsgId.SPlayerDead, PacketHandler.S_PlayerDeadHandler);
+		_handler.Add((ushort)MsgId.SPlayerDead, PacketHandler.S_PlayerDeadHandler);		
+		_onRecv.Add((ushort)MsgId.SGameEnd, MakePacket<S_GameEnd>);
+		_handler.Add((ushort)MsgId.SGameEnd, PacketHandler.S_GameEndHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)
