@@ -38,7 +38,11 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.CHitSoccerball, MakePacket<C_HitSoccerball>);
 		_handler.Add((ushort)MsgId.CHitSoccerball, PacketHandler.C_HitSoccerballHandler);		
 		_onRecv.Add((ushort)MsgId.CSyncPos, MakePacket<C_SyncPos>);
-		_handler.Add((ushort)MsgId.CSyncPos, PacketHandler.C_SyncPosHandler);
+		_handler.Add((ushort)MsgId.CSyncPos, PacketHandler.C_SyncPosHandler);		
+		_onRecv.Add((ushort)MsgId.CCollideObstacle, MakePacket<C_CollideObstacle>);
+		_handler.Add((ushort)MsgId.CCollideObstacle, PacketHandler.C_CollideObstacleHandler);		
+		_onRecv.Add((ushort)MsgId.CDeleteFloorBlock, MakePacket<C_DeleteFloorBlock>);
+		_handler.Add((ushort)MsgId.CDeleteFloorBlock, PacketHandler.C_DeleteFloorBlockHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

@@ -109,6 +109,10 @@ enum MsgId {
 	C_HIT_SOCCERBALL = 16;
 	C_SYNC_POS = 17;
 	S_SYNC_POS = 18;
+	C_COLLIDE_OBSTACLE = 19;
+	C_DELETE_FLOOR_BLOCK = 20;
+	S_DELETE_FLOOR_BLOCK = 21;
+	S_PLAYER_DEAD = 22;
 }
 
 // ------------------------------------------------------ Packet ------------------------------------------------------ \\
@@ -161,7 +165,6 @@ message C_Move {
 	ObjectState State = 3;
 }
 
-
 message S_Move {
 	int32 Id = 1;
 	int32 inputFlag = 2;
@@ -195,4 +198,21 @@ message S_SyncPos{
 	int32 Id = 1;
 	ObjectState State = 2;
 	TransformInfo Transform = 3;
+}
+
+message C_CollideObstacle {
+}
+
+message C_DeleteFloorBlock {
+	int32 FloorIndex = 1;
+	int32 BlockIndex = 2;
+}
+
+message S_DeleteFloorBlock {
+	int32 FloorIndex = 1;
+	int32 BlockIndex = 2;
+}
+
+message S_PlayerDead {
+	int32 PlayerId = 1;
 }

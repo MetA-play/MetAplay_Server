@@ -9,26 +9,19 @@ namespace MetAplay
 {
     public class Player : GameObject
     {
-        int input;
-        public int inputFlag { get { return input; } set {
-                input = value;
-                float x = ((inputFlag >> 27) == 1) ? 1 : ((inputFlag >> 27) == 2) ? -1 : 0;
-                float z = ((inputFlag >> 23 & 0b1111) == 1) ? 1 : ((inputFlag >> 23 & 0b1111) == 2) ? -1 : 0;
-                //Console.WriteLine($"x: {x}   z:{z}");
-            } 
-        }
+
         public int speed = 5;
+        public int inputFlag;
+        public int speed;
         public ClientSession Session { get; set; }
         public GameRoom Room { get; set; }
         public Player() : base()
         {
             ObjectType = GameObjectType.Player;
-
         }
 
-
         public UserInfo UserData { get { return Session.UserData; } set { Session.UserData = value; } }
-
+        public bool IsDead { get; set; }
 
         public override void Update()
         {
