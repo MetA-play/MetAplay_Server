@@ -13,22 +13,22 @@ namespace MetAplay
         {
             SpawnPoints = new List<TransformInfo>()
             {
-                new TransformInfo() { Pos = new Vector() { X = -14, Y = 66, Z = 0 } },
-                new TransformInfo() { Pos = new Vector() { X = -10.5f, Y = 66, Z = -10 } },
-                new TransformInfo() { Pos = new Vector() { X = 0, Y = 66, Z = -16 } },
-                new TransformInfo() { Pos = new Vector() { X = 10.5f, Y = 66, Z = -10 } },
-                new TransformInfo() { Pos = new Vector() { X = 14, Y = 66, Z = 0 } },
-                new TransformInfo() { Pos = new Vector() { X = 10.5f, Y = 66, Z = 10 } },
-                new TransformInfo() { Pos = new Vector() { X = 0, Y = 66, Z = 16 } },
-                new TransformInfo() { Pos = new Vector() { X = -10.5f, Y = 66, Z = 10 } }
+                new TransformInfo() { Pos = new Vector() { X = -6, Y = 3, Z = 18 } },
+                new TransformInfo() { Pos = new Vector() { X = -2, Y = 3, Z = 18 } },
+                new TransformInfo() { Pos = new Vector() { X = 2, Y = 3, Z = 18 } },
+                new TransformInfo() { Pos = new Vector() { X = 6, Y = 3, Z = 18 } },
+                new TransformInfo() { Pos = new Vector() { X = -6, Y = 3, Z = 14 } },
+                new TransformInfo() { Pos = new Vector() { X = -2, Y = 3, Z = 14 } },
+                new TransformInfo() { Pos = new Vector() { X = 2, Y = 3, Z = 14 } },
+                new TransformInfo() { Pos = new Vector() { X = 6, Y = 3, Z = 14 } }
             };
         }
 
         public override void Init(GameRoom room)
         {
             base.Init(room);
-            
-
+            GameName = GameType.SpeedRun;
+            SetSpawnPoint();
         }
 
         public override void Start()
