@@ -24,6 +24,20 @@ namespace MetAplay
             };
         }
 
+        private TransformInfo[] GameSpawnPoints = new TransformInfo[]
+        {
+            new TransformInfo() { Pos = new Vector() { X = 0, Y = 3, Z = 11 } },
+            new TransformInfo() { Pos = new Vector() { X = 40, Y = 3, Z = 95 } },
+            new TransformInfo() { Pos = new Vector() { X = 130, Y = 3, Z = 95 } },
+            new TransformInfo() { Pos = new Vector() { X = 153, Y = 3, Z = 165 } },
+            new TransformInfo() { Pos = new Vector() { X = 120, Y = 3, Z = 247 } },
+            new TransformInfo() { Pos = new Vector() { X = 34, Y = 3, Z = 247 } },
+            new TransformInfo() { Pos = new Vector() { X = -32, Y = 3, Z = 295 } },
+            new TransformInfo() { Pos = new Vector() { X = -21, Y = 3, Z = 348 } },
+            new TransformInfo() { Pos = new Vector() { X = 46, Y = 3, Z = 355 } },
+            new TransformInfo() { Pos = new Vector() { X = 68, Y = 3, Z = 436 } }
+        };
+
         public override void Init(GameRoom room)
         {
             base.Init(room);
@@ -48,8 +62,7 @@ namespace MetAplay
 
         public void CollideObstacle(int playerId)
         {
-            Player player = Room.FindPlayerById(playerId);
-            player.GetSlow(3000);
+            
         }
 
         public void OnTouchEndLine(int playerId)

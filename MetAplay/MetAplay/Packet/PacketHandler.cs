@@ -108,4 +108,15 @@ public class PacketHandler
         if (room == null) return;
         room.Push(room.Content.PlayerDead, clientSession.MyPlayer.Id);
     }
+
+    public static void C_CollideObstacleHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+
+        GameRoom room = clientSession.MyPlayer.Room;
+        if (room == null) return;
+        SpeedRun game = room.Content as SpeedRun;
+        if (game == null) return;
+        room.Push(game.CollideObstacle, clientSession.MyPlayer.Id);
+    }
 }
