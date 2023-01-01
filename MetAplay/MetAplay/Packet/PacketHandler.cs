@@ -69,6 +69,7 @@ public class PacketHandler
         player.Info.Transform.Pos.X = 15;
         player.Info.Transform.Pos.Y = 0;
         player.Info.Transform.Pos.Z = 118;
+        player.Session.MyPlayer = player;
         Lobby.Instance.Push(Lobby.Instance.EnterGame, player);
 
     }

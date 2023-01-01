@@ -17,7 +17,20 @@ namespace MetAplay
     {
 
         public UserInfo UserData { get; set; }
-        public Player MyPlayer { get; set; }
+        Player myPlayer;
+        public Player MyPlayer 
+        { get 
+            { 
+                return myPlayer;
+            } 
+            set 
+            {
+                if(value == null)
+                    Console.WriteLine("null insert");
+                Console.WriteLine("Player Change");
+                myPlayer = value ; 
+            }
+        }
         public int SessionId { get; set; }
 
         public void Send(IMessage packet)
@@ -53,11 +66,10 @@ namespace MetAplay
 
         public override void OnDisconnected(EndPoint endPoint)
         {
-            GameRoom room = MyPlayer.Room;
-            if(MyPlayer.Room == null)
+            if(myPlayer.Room == null)
                 Lobby.Instance.Push(Lobby.Instance.LeaveGame, MyPlayer.Info.Id);
             else
-                room.Push(room.LeaveGame, MyPlayer.Info.Id);
+                myPlayer.Room.Push(myPlayer.Room.LeaveGame, myPlayer.Info.Id);
 
             SessionManager.Instance.Remove(this);
 

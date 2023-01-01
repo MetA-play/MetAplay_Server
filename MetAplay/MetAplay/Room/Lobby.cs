@@ -27,7 +27,6 @@ namespace MetAplay
             GameRoom room = RoomManager.Instance.Add(setting);
             roomObj.Room = room;
             roomObj.Info.Transform.Pos = player.Info.Transform.Pos;
-            roomObj.Transform.Pos.Y += 2.5f;
             _roomObjs.Add(roomObj.Id, roomObj);
             EnterGame(roomObj);
 
@@ -81,7 +80,6 @@ namespace MetAplay
                 player.Info.UserData = player.Session.UserData;
                 _players.Add(gameObject.Id, player);
 
-                player.Session.MyPlayer = player;
 
                 {
                     {
@@ -90,7 +88,7 @@ namespace MetAplay
                         player.Session.Send(enterGamePacket);
 
                         S_Spawn spawn = new S_Spawn();
-                        foreach (Player p in _players.Values)
+                        foreach (Player p in _players.Values)   
                         {
                             if (p != player)
                                 spawn.Objects.Add(p.Info);
