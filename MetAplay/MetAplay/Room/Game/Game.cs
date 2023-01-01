@@ -62,14 +62,6 @@ namespace MetAplay
         public virtual void End()
         {
             if (Room == null || State != GameState.Playing) return;
-
-
-            S_GameEnd endGamePacket = new S_GameEnd();
-            endGamePacket.WinnerId = Room.Players.Find(p => p.IsDead == false).Id;
-            Room.Broadcast(endGamePacket);
-
-            Console.WriteLine($"게임 종료 Winner: {endGamePacket.WinnerId}");
-
             State = GameState.Ending;
         }
 

@@ -88,6 +88,10 @@ namespace MetAplay
 
         public override void End()
         {
+            S_GameEnd endGamePacket = new S_GameEnd();
+            endGamePacket.WinnerId = Room.Players.Find(p => p.IsDead == false).Id;
+            Room.Broadcast(endGamePacket);
+            Console.WriteLine($"게임 종료 Winner: {endGamePacket.WinnerId}");
             base.End();
         }
     }
