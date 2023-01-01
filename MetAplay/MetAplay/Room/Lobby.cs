@@ -27,6 +27,7 @@ namespace MetAplay
             GameRoom room = RoomManager.Instance.Add(setting);
             roomObj.Room = room;
             roomObj.Info.Transform.Pos = player.Info.Transform.Pos;
+            roomObj.Transform.Pos.Y += 2.5f;
             _roomObjs.Add(roomObj.Id, roomObj);
             EnterGame(roomObj);
 
@@ -57,9 +58,13 @@ namespace MetAplay
                 return;
 
             S_JoinRoomRes res = new S_JoinRoomRes();
+            res.Info = new RoomInfo();
             res.Info.Id = roomId;
             player.Session.Send(res);
 
+            player.Transform.Pos.X = 0;
+            player.Transform.Pos.Y = 0;
+            player.Transform.Pos.Z = 0;
             room.EnterGame(player);
         }
 
@@ -75,6 +80,8 @@ namespace MetAplay
                 Player player = gameObject as Player;
                 player.Info.UserData = player.Session.UserData;
                 _players.Add(gameObject.Id, player);
+
+                player.Session.MyPlayer = player;
 
                 {
                     {
@@ -98,31 +105,33 @@ namespace MetAplay
                     }
                 }
 
-                {
-
-
-                    S_Spawn spawn = new S_Spawn();
-
-                    if (gameObject.ObjectType == GameObjectType.Room)
-                    {
-                        RoomObject roomObj = gameObject as RoomObject;
-                        roomObj.Info.Transform.Scale.Y = roomObj.Room.RoomId;
-                        spawn.Objects.Add(roomObj.Info);
-                    }
-                    else
-                        spawn.Objects.Add(gameObject.Info);
-
-                    foreach (Player p in _players.Values)
-                    {
-                        if (p.Id != gameObject.Id)
-                            p.Session.Send(spawn);
-                    }
-                }
+               
             }
             else if (gameObject.ObjectType == GameObjectType.SoccerBall)
             {
                 SoccerBall ball = gameObject as SoccerBall;
                 _soccerBalls.Add(ball.Id, ball);
+            }
+
+            {
+
+
+                S_Spawn spawn = new S_Spawn();
+
+                if (gameObject.ObjectType == GameObjectType.Room)
+                {
+                    RoomObject roomObj = gameObject as RoomObject;
+                    roomObj.Info.Transform.Scale.Y = roomObj.Room.RoomId;
+                    spawn.Objects.Add(roomObj.Info);
+                }
+                else
+                    spawn.Objects.Add(gameObject.Info);
+
+                foreach (Player p in _players.Values)
+                {
+                    if (p.Id != gameObject.Id)
+                        p.Session.Send(spawn);
+                }
             }
         }
 

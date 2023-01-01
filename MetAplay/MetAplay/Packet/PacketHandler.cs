@@ -66,7 +66,6 @@ public class PacketHandler
 
         Player player = ObjectManager.Instance.Add<Player>();
         player.Session = clientSession;
-        clientSession.MyPlayer = player;
         player.Info.Transform.Pos.X = 15;
         player.Info.Transform.Pos.Y = 0;
         player.Info.Transform.Pos.Z = 118;
@@ -88,14 +87,13 @@ public class PacketHandler
         ClientSession clientSession = session as ClientSession;
         C_SyncPos sync = packet as C_SyncPos;
 
-        if(clientSession.MyPlayer.Session!= null)
+        if(clientSession.MyPlayer.Room!= null)
         {
             clientSession.MyPlayer.Room.Push(clientSession.MyPlayer.Room.MoveHandle,clientSession.MyPlayer ,sync);
         }
         else
         {
             Lobby.Instance.Push(Lobby.Instance.MoveHandle, clientSession.MyPlayer, sync);
-
         }
     }
     public static void C_CollideObstacleHandler(PacketSession session, IMessage packet)
@@ -105,5 +103,11 @@ public class PacketHandler
     public static void C_DeleteFloorBlockHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
+    }
+    public static void C_PlayerDeadHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+
+        Lobby.Instance.Push(Lobby.Instance.MoveHandle, clientSession.MyPlayer, new C_SyncPos() { State = ObjectState.Move, Transform = new TransformInfo() { Pos = new Vector() { X = 0, Y = 0, Z = 0 } } });
     }
 }
