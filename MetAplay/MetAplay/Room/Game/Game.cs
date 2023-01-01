@@ -49,7 +49,6 @@ namespace MetAplay
                 syncPosPacket.Id = player.Id;
                 syncPosPacket.Transform = player.Transform;
                 Room.Broadcast(syncPosPacket);
-                Console.WriteLine($"Move Player({syncPosPacket.Id}) To SpawnPoint : ({syncPosPacket.Transform.Pos.X}, {syncPosPacket.Transform.Pos.Y}, {syncPosPacket.Transform.Pos.Z})");
             }
         }
 
@@ -92,6 +91,7 @@ namespace MetAplay
         public void GameOverCheck()
         {
             int leavePlayerCount = Room.Players.Count(p => p.IsDead == false);
+            Console.WriteLine($"남은 플레이어 수 : {leavePlayerCount}");
 
             if (leavePlayerCount == 1)
             {

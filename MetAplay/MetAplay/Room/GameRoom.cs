@@ -76,6 +76,7 @@ namespace MetAplay
 
                 {
                     S_Spawn spawnPacket = new S_Spawn();
+                    spawnPacket.Objects.Add(player.Info);
                     foreach (Player p in _players.Values)
                         if (p.Id != player.Id) p.Session.Send(spawnPacket);
                 }
@@ -102,6 +103,20 @@ namespace MetAplay
                 despawnPacket.ObjectId.Add(gameObjectId);
                 foreach (Player p in _players.Values)
                     if (p.Id != player.Id) p.Session.Send(despawnPacket);
+            }
+        }
+
+        public void BackLobby()
+        {
+            foreach (Player player in _players.Values)
+            {
+                S_LeaveGame leaveGamePacket = new S_LeaveGame();
+                player.Session.Send(leaveGamePacket);
+            }
+
+            foreach (Player player in _players.Values)
+            {
+                
             }
         }
     }

@@ -32,7 +32,7 @@ namespace MetAplay
 
     public class DoNotFall : Game
     {
-        private FloorBlockController FBC;
+        private FloorBlockController FBC = new FloorBlockController();
 
         private void SetSpawnPoint()
         {
@@ -55,10 +55,7 @@ namespace MetAplay
             GameName = GameType.DoNotFall;
             SetSpawnPoint();
 
-            FBC = ObjectManager.Instance.Add<FloorBlockController>();
-            Objects.Add(FBC);
             FBC.JoinedRoom = Room;
-            FBC.Info.PrefabName = "FloorBlocks";
         }
 
         public override void Start()
