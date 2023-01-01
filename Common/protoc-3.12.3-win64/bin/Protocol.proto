@@ -124,6 +124,7 @@ enum MsgId {
 	C_PLAYER_DEAD = 21;
 	S_PLAYER_DEAD = 22;
 	S_GAME_END = 23;
+	C_COLLIDE_OBSTACLE = 24;
 }
 
 // ------------------------------------------------------ Packet ------------------------------------------------------ \\
@@ -230,4 +231,7 @@ message S_PlayerDead {
 
 message S_GameEnd {
 	int32 WinnerId = 1;
+}
+
+message C_CollideObstacle {
 }
