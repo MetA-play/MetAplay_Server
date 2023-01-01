@@ -119,4 +119,11 @@ public class PacketHandler
         if (game == null) return;
         room.Push(game.CollideObstacle, clientSession.MyPlayer.Id);
     }
+
+    public static void C_SetSpawnPointHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+        C_SetSpawnPoint setSpawnPointPacket = new C_SetSpawnPoint();
+        clientSession.MyPlayer.SpawnPoint = setSpawnPointPacket.SpawnPoint;
+    }
 }

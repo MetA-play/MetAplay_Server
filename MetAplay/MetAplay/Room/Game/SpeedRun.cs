@@ -62,7 +62,10 @@ namespace MetAplay
 
         public void CollideObstacle(int playerId)
         {
-            
+            S_SyncPos syncPosPacket = new S_SyncPos();
+            syncPosPacket.Id = playerId;
+            syncPosPacket.Transform = Room.FindPlayerById(playerId).SpawnPoint;
+            Room.Broadcast(syncPosPacket);
         }
 
         public void OnTouchEndLine(int playerId)
