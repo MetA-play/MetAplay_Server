@@ -55,12 +55,5 @@ namespace MetAplay
             Transform.Pos.X = dirVec.X;
             Transform.Pos.Z = dirVec.Z;
         }
-
-        public void GetSlow(int tick)
-        {
-            int prevSpeed = speed;
-            speed = (int)(speed * 0.5f);
-            Room.PushAfter(tick, () => { speed = prevSpeed; });
-        }
     }
 }

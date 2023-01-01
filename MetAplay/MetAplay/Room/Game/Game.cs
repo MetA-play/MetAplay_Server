@@ -49,6 +49,7 @@ namespace MetAplay
                 syncPosPacket.Id = player.Id;
                 syncPosPacket.Transform = player.Transform;
                 Room.Broadcast(syncPosPacket);
+                Console.WriteLine($"플레이어 순간이동: {syncPosPacket.Transform}");
             }
         }
 

@@ -111,17 +111,19 @@ public class PacketHandler
 
     public static void C_CollideObstacleHandler(PacketSession session, IMessage packet)
     {
+        Console.WriteLine("CollideObstacleHandler");
         ClientSession clientSession = session as ClientSession;
 
         GameRoom room = clientSession.MyPlayer.Room;
         if (room == null) return;
         SpeedRun game = room.Content as SpeedRun;
         if (game == null) return;
-        room.Push(game.CollideObstacle, clientSession.MyPlayer.Id);
+        room.Push(game.CollideObstacle, clientSession.MyPlayer);
     }
 
     public static void C_SetSpawnPointHandler(PacketSession session, IMessage packet)
     {
+        Console.WriteLine("SetSpawnPointHandler");
         ClientSession clientSession = session as ClientSession;
         C_SetSpawnPoint setSpawnPointPacket = new C_SetSpawnPoint();
         clientSession.MyPlayer.SpawnPoint = setSpawnPointPacket.SpawnPoint;

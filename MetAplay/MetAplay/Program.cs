@@ -31,7 +31,7 @@ namespace MetAplay
 
         static void Main(string[] args)
         {
-            GameRoom room = RoomManager.Instance.Add(new RoomSetting() { Name = "Temp", MaxPlayer = 4, GameType = GameType.DoNotFall });
+            GameRoom room = RoomManager.Instance.Add(new RoomSetting() { Name = "Temp", MaxPlayer = 8, GameType = GameType.DoNotFall });
             room.Init();
             TickRoom(room, 250);
 
