@@ -12,7 +12,15 @@ namespace MetAplay
         public static Lobby Instance { get; private set; } = new Lobby();
 
         Dictionary<int, RoomObject> _roomObjs = new Dictionary<int, RoomObject>();
+        Dictionary<int, SoccerBall> _soccerBalls = new Dictionary<int, SoccerBall>();
 
+        public override void Update()
+        {
+            foreach (SoccerBall ball in _soccerBalls.Values)
+                ball.Update();
+            base.Update();
+
+        }
         public void CreateRoomHandle(Player player, RoomSetting setting)
         {
             RoomObject roomObj = ObjectManager.Instance.Add<RoomObject>();
@@ -49,9 +57,13 @@ namespace MetAplay
                 return;
 
             S_JoinRoomRes res = new S_JoinRoomRes();
+            res.Info = new RoomInfo();
             res.Info.Id = roomId;
             player.Session.Send(res);
 
+            player.Transform.Pos.X = 0;
+            player.Transform.Pos.Y = 0;
+            player.Transform.Pos.Z = 0;
             room.EnterGame(player);
         }
 
@@ -68,6 +80,7 @@ namespace MetAplay
                 player.Info.UserData = player.Session.UserData;
                 _players.Add(gameObject.Id, player);
 
+
                 {
                     {
                         S_EnterGame enterGamePacket = new S_EnterGame();
@@ -75,37 +88,47 @@ namespace MetAplay
                         player.Session.Send(enterGamePacket);
 
                         S_Spawn spawn = new S_Spawn();
-                        foreach (Player p in _players.Values)
+                        foreach (Player p in _players.Values)   
                         {
                             if (p != player)
                                 spawn.Objects.Add(p.Info);
-                            foreach (RoomObject obj in _roomObjs.Values)
-                                spawn.Objects.Add(obj.Info);
+
                         }
+                        foreach (RoomObject obj in _roomObjs.Values)
+                            spawn.Objects.Add(obj.Info);
+                        foreach (SoccerBall ball in _soccerBalls.Values)
+                            spawn.Objects.Add(ball.Info);
 
                         player.Session.Send(spawn);
                     }
                 }
 
+               
+            }
+            else if (gameObject.ObjectType == GameObjectType.SoccerBall)
+            {
+                SoccerBall ball = gameObject as SoccerBall;
+                _soccerBalls.Add(ball.Id, ball);
+            }
+
+            {
+
+
+                S_Spawn spawn = new S_Spawn();
+
+                if (gameObject.ObjectType == GameObjectType.Room)
                 {
+                    RoomObject roomObj = gameObject as RoomObject;
+                    roomObj.Info.Transform.Scale.Y = roomObj.Room.RoomId;
+                    spawn.Objects.Add(roomObj.Info);
+                }
+                else
+                    spawn.Objects.Add(gameObject.Info);
 
-
-                    S_Spawn spawn = new S_Spawn();
-
-                    if (gameObject.ObjectType == GameObjectType.Room)
-                    {
-                        RoomObject roomObj = gameObject as RoomObject;
-                        roomObj.Info.Transform.Scale.Y = roomObj.Room.RoomId;
-                        spawn.Objects.Add(roomObj.Info);
-                    }
-                    else
-                        spawn.Objects.Add(gameObject.Info);
-
-                    foreach (Player p in _players.Values)
-                    {
-                        if (p.Id != gameObject.Id)
-                            p.Session.Send(spawn);
-                    }
+                foreach (Player p in _players.Values)
+                {
+                    if (p.Id != gameObject.Id)
+                        p.Session.Send(spawn);
                 }
             }
         }
@@ -133,6 +156,17 @@ namespace MetAplay
                 if (p.Id != gameObjectId)
                     p.Session.Send(despawn);
             }
+        }
+
+        public void SoccerballHandle(C_HitSoccerball hitBall)
+        {
+            SoccerBall ball = null;
+
+            if (_soccerBalls.TryGetValue(hitBall.ObjectId, out ball) == false)
+                return;
+
+            ball.KickIt(hitBall.HitterTransform.Pos);
+            
         }
     }
 }

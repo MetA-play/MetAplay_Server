@@ -2,6 +2,7 @@ using Google.Protobuf.Protocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace MetAplay
     public class GameRoom : BaseRoom
     {
 
-        public GameRoom() 
+        public GameRoom()
         {
             Content = new Game();
         }
@@ -23,17 +24,20 @@ namespace MetAplay
         public Game Content { get; set; }
         public bool IsStart { get { return Content.State == GameState.Playing; } }
 
-        public List<Player> Players { get
+        public List<Player> Players
+        {
+            get
             {
                 return _players.Values.ToList();
-            } }
+            }
+        }
 
         public override void Update()
         {
             Content.Update();
             base.Update();
         }
-        
+
         public override void EnterGame(GameObject gameObject)
         {
             if (gameObject == null) return;
@@ -53,21 +57,28 @@ namespace MetAplay
                     player.Session.Send(enterGamePacket);
 
                     S_Spawn spawnPacket = new S_Spawn();
+
                     foreach (Player p in _players.Values)
-                        if (p != player)    
-                            spawnPacket.Objects.Add(p.Info);
+                        if (p != player) spawnPacket.Objects.Add(p.Info);
+
                     player.Session.Send(spawnPacket);
                 }
 
-                {
-                    S_Spawn spawnPacket = new S_Spawn();
-                    foreach (Player p in _players.Values)
-                        if (p.Id != player.Id) p.Session.Send(spawnPacket);
-                }
+
             }
             else if (type.Equals(GameObjectType.None))
             {
 
+            }
+
+            {
+                S_Spawn spawn = new S_Spawn();
+                spawn.Objects.Add(gameObject.Info);
+                foreach (Player p in _players.Values)
+                {
+                    if (p.Id != gameObject.Id)
+                        p.Session.Send(spawn);
+                }
             }
         }
 

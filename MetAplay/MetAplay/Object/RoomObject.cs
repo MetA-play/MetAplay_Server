@@ -14,6 +14,9 @@ namespace MetAplay
             ObjectType = GameObjectType.Room;
         }
         public GameRoom Room { get; set; }
-    
+
+        public override TransformInfo Transform { get => base.Transform; set 
+            { Console.WriteLine("Transform Chagne"); base.Transform = value; } }
+
     }
 }

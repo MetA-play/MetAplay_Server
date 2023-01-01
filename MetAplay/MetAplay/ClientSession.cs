@@ -17,7 +17,20 @@ namespace MetAplay
     {
 
         public UserInfo UserData { get; set; }
-        public Player MyPlayer { get; set; }
+        Player myPlayer;
+        public Player MyPlayer 
+        { get 
+            { 
+                return myPlayer;
+            } 
+            set 
+            {
+                if(value == null)
+                    Console.WriteLine("null insert");
+                Console.WriteLine("Player Change");
+                myPlayer = value ; 
+            }
+        }
         public int SessionId { get; set; }
 
         public void Send(IMessage packet)
@@ -35,18 +48,15 @@ namespace MetAplay
         public override void OnConnected(EndPoint endPoint)
         {
             Console.WriteLine($"OnConnected : {endPoint}");
-            Player player = ObjectManager.Instance.Add<Player>();
+           /* Player player = ObjectManager.Instance.Add<Player>();
             player.Session = this;
             MyPlayer = player;
-            player.Info.Transform.Pos.X = 1;
-            player.Info.Transform.Pos.Y = 1;
-            player.Info.Transform.Pos.Z = 1;
+            player.Info.Transform.Pos.X = 15;
+            player.Info.Transform.Pos.Y = 0;
+            player.Info.Transform.Pos.Z = 118;
+            Lobby.Instance.Push(Lobby.Instance.EnterGame, player);*/
 
-            UserData = new UserInfo();
-            UserData.NickName = "dsafsdfas";
-            UserData.HeadPartsIdx = 11;
-            UserData.FootPartsIdx = 11;
-            Lobby.Instance.Push(Lobby.Instance.EnterGame,player);
+
         }
 
         public override void OnRecvPacket(ArraySegment<byte> buffer)
@@ -56,11 +66,10 @@ namespace MetAplay
 
         public override void OnDisconnected(EndPoint endPoint)
         {
-            GameRoom room = MyPlayer.Room;
-            if(room == null)
+            if(myPlayer.Room == null)
                 Lobby.Instance.Push(Lobby.Instance.LeaveGame, MyPlayer.Info.Id);
             else
-                room.Push(room.LeaveGame, MyPlayer.Info.Id);
+                myPlayer.Room.Push(myPlayer.Room.LeaveGame, myPlayer.Info.Id);
 
             SessionManager.Instance.Remove(this);
 

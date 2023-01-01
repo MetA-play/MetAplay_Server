@@ -40,6 +40,11 @@ namespace MetAplay
             _listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
             Console.WriteLine("Listening...");
 
+            SoccerBall ball = ObjectManager.Instance.Add<SoccerBall>();
+            ball.Transform.Pos.X = 15;
+            ball.Transform.Pos.Y = 2.49f;
+            ball.Transform.Pos.Z =140;
+            Lobby.Instance.Push(Lobby.Instance.EnterGame, ball);
 
             //FlushRoom();
             //JobTimer.Instance.Push(FlushRoom);
