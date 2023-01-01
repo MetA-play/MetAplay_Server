@@ -44,7 +44,9 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.CPlayerDead, MakePacket<C_PlayerDead>);
 		_handler.Add((ushort)MsgId.CPlayerDead, PacketHandler.C_PlayerDeadHandler);		
 		_onRecv.Add((ushort)MsgId.CCollideObstacle, MakePacket<C_CollideObstacle>);
-		_handler.Add((ushort)MsgId.CCollideObstacle, PacketHandler.C_CollideObstacleHandler);
+		_handler.Add((ushort)MsgId.CCollideObstacle, PacketHandler.C_CollideObstacleHandler);		
+		_onRecv.Add((ushort)MsgId.CSetSpawnPoint, MakePacket<C_SetSpawnPoint>);
+		_handler.Add((ushort)MsgId.CSetSpawnPoint, PacketHandler.C_SetSpawnPointHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)
