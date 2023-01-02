@@ -36,7 +36,6 @@ namespace MetAplay
             res.Info = new RoomInfo();
             res.Info.Setting = setting;
             res.Info.Id = room.RoomId;
-            res.ObjectId = roomObj.Id;
             player.Session.Send(res);
             LeaveGame(player.Id);
         }
