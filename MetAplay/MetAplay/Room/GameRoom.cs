@@ -80,13 +80,6 @@ namespace MetAplay
 
                     player.Session.Send(spawnPacket);
                 }
-
-                {
-                    S_Spawn spawnPacket = new S_Spawn();
-                    spawnPacket.Objects.Add(player.Info);
-                    foreach (Player p in _players.Values)
-                        if (p.Id != player.Id) p.Session.Send(spawnPacket);
-                }
             }
             else if (type.Equals(GameObjectType.None))
             {

@@ -23,7 +23,7 @@ public class PacketHandler
         ClientSession clientSession = session as ClientSession;
         C_JoinRoomReq req = packet as C_JoinRoomReq;
         Console.WriteLine("Join Try");
-        Lobby.Instance.Push(Lobby.Instance.JoinRoomHandle, req.RoomId,clientSession.MyPlayer);
+        Lobby.Instance.Push(Lobby.Instance.JoinRoomHandle, req.RoomId ,clientSession.MyPlayer);
 
     }
 

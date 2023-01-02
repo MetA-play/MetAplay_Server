@@ -41,6 +41,10 @@ namespace MetAplay
                 Room.Broadcast(spawnPacket);
             }
 
+            S_UpdateGameStateRes res = new S_UpdateGameStateRes();
+            res.State = State;
+            Room.Broadcast(res);
+
             int index = 0;
             foreach (Player player in Room.Players)
             {
@@ -49,7 +53,7 @@ namespace MetAplay
                 syncPosPacket.Id = player.Id;
                 syncPosPacket.Transform = player.Transform;
                 Room.Broadcast(syncPosPacket);
-                Console.WriteLine($"플레이어 순간이동: {syncPosPacket.Transform}");
+                Console.WriteLine($"{player.Id}, 플레이어 순간이동: {syncPosPacket.Transform}");
             }
         }
 
@@ -66,7 +70,7 @@ namespace MetAplay
         }
 
         public void UpdateGameState(GameState state)
-        {
+        {   
             if (State == GameState.Ending) return;
 
             if (state == GameState.Playing)
@@ -74,10 +78,6 @@ namespace MetAplay
 
             if (state == GameState.Ending)
                 End();
-
-            S_UpdateGameStateRes res = new S_UpdateGameStateRes();
-            res.State = state;
-            Room.Broadcast(res);
         }
         
         public void PlayerDead(int playerId)

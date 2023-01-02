@@ -26,7 +26,7 @@ namespace MetAplay
             RoomObject roomObj = ObjectManager.Instance.Add<RoomObject>();
             GameRoom room = RoomManager.Instance.Add(setting);
             Program.TickRoom(room, 250);
-            room.Push(room.Init);
+            room.Init();
             roomObj.Room = room;
             roomObj.Info.Transform.Pos = player.Info.Transform.Pos;
             _roomObjs.Add(roomObj.Id, roomObj);
@@ -61,7 +61,10 @@ namespace MetAplay
             S_JoinRoomRes res = new S_JoinRoomRes();
             res.Info = new RoomInfo();
             res.Info.Id = roomId;
+            res.Info.Setting = room.Setting;
             player.Session.Send(res);
+
+            LeaveGame(player.Id);
 
             player.Transform.Pos.X = 0;
             player.Transform.Pos.Y = 0;
