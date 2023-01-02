@@ -30,8 +30,6 @@ namespace MetAplay
             if (Room == null || State != GameState.Waiting) return;
             State = GameState.Playing;
 
-            Console.WriteLine("게임 시작");
-
             // Init에서 등록된 오브젝트가 있다면 스폰
             if (Objects.Count > 0)
             {
@@ -53,7 +51,6 @@ namespace MetAplay
                 syncPosPacket.Id = player.Id;
                 syncPosPacket.Transform = player.Transform;
                 Room.Broadcast(syncPosPacket);
-                Console.WriteLine($"{player.Id}, 플레이어 순간이동: {syncPosPacket.Transform}");
             }
         }
 
@@ -96,7 +93,6 @@ namespace MetAplay
         public void GameOverCheck()
         {
             int leavePlayerCount = Room.Players.Count(p => p.IsDead == false);
-            Console.WriteLine($"남은 플레이어 수 : {leavePlayerCount}");
 
             if (leavePlayerCount == 1)
             {

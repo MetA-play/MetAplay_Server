@@ -43,9 +43,10 @@ enum SceneType {
 }
 
 enum GameType {
-	AvoidLog = 0;
-	DoNotFall = 1;
-	SpeedRun = 2;
+	PreParing = 0;
+	AvoidLog = 1;
+	DoNotFall = 2;
+	SpeedRun = 3;
 }
 
 enum GameObjectType {

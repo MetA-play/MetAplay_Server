@@ -74,25 +74,26 @@ namespace Google.Protobuf.Protocol {
             "HQoJU19HYW1lRW5kEhAKCFdpbm5lcklkGAEgASgFIhMKEUNfQ29sbGlkZU9i",
             "c3RhY2xlIj4KD0NfU2V0U3Bhd25Qb2ludBIrCgpTcGF3blBvaW50GAEgASgL",
             "MhcuUHJvdG9jb2wuVHJhbnNmb3JtSW5mbyoqCglTY2VuZVR5cGUSCAoETWFp",
-            "bhAAEgkKBUxvYmJ5EAESCAoER2FtZRACKjUKCEdhbWVUeXBlEgwKCEF2b2lk",
-            "TG9nEAASDQoJRG9Ob3RGYWxsEAESDAoIU3BlZWRSdW4QAipACg5HYW1lT2Jq",
-            "ZWN0VHlwZRIICgROb25lEAASCgoGUGxheWVyEAESCAoEUm9vbRACEg4KClNv",
-            "Y2NlckJhbGwQAyo+CgtPYmplY3RTdGF0ZRIICgRJZGxlEAASCAoETW92ZRAB",
-            "EggKBEp1bXAQAhIICgRTdHVuEAMSBwoDRGllEAQqMQoJR2FtZVN0YXRlEgsK",
-            "B1dhaXRpbmcQABILCgdQbGF5aW5nEAESCgoGRW5kaW5nEAIqMwoHTW92ZURp",
-            "chIJCgVGcm9udBAAEggKBExlZnQQARIJCgVSaWdodBACEggKBEJhY2sQAyrs",
-            "AwoFTXNnSWQSFQoRQ19DUkVBVEVfUk9PTV9SRVEQABIVChFTX0NSRUFURV9S",
-            "T09NX1JFUxABEhMKD0NfSk9JTl9ST09NX1JFURACEhMKD1NfSk9JTl9ST09N",
-            "X1JFUxADEhAKDFNfRU5URVJfR0FNRRAFEhAKDFNfTEVBVkVfR0FNRRAGEgsK",
-            "B1NfU1BBV04QBxINCglTX0RFU1BBV04QCBIKCgZDX01PVkUQCRIKCgZTX01P",
-            "VkUQChIKCgZDX0NIQVQQCxIKCgZTX0NIQVQQDBIbChdDX1VQREFURV9HQU1F",
-            "X1NUQVRFX1JFURANEhsKF1NfVVBEQVRFX0dBTUVfU1RBVEVfUkVTEA4SEgoO",
-            "Q19TRVRfVVNFUklORk8QDxIUChBDX0hJVF9TT0NDRVJCQUxMEBASDgoKQ19T",
-            "WU5DX1BPUxAREg4KClNfU1lOQ19QT1MQEhIYChRDX0RFTEVURV9GTE9PUl9C",
-            "TE9DSxATEhgKFFNfREVMRVRFX0ZMT09SX0JMT0NLEBQSEQoNQ19QTEFZRVJf",
-            "REVBRBAVEhEKDVNfUExBWUVSX0RFQUQQFhIOCgpTX0dBTUVfRU5EEBcSFgoS",
-            "Q19DT0xMSURFX09CU1RBQ0xFEBgSFQoRQ19TRVRfU1BBV05fUE9JTlQQGUIb",
-            "qgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
+            "bhAAEgkKBUxvYmJ5EAESCAoER2FtZRACKkQKCEdhbWVUeXBlEg0KCVByZVBh",
+            "cmluZxAAEgwKCEF2b2lkTG9nEAESDQoJRG9Ob3RGYWxsEAISDAoIU3BlZWRS",
+            "dW4QAypACg5HYW1lT2JqZWN0VHlwZRIICgROb25lEAASCgoGUGxheWVyEAES",
+            "CAoEUm9vbRACEg4KClNvY2NlckJhbGwQAyo+CgtPYmplY3RTdGF0ZRIICgRJ",
+            "ZGxlEAASCAoETW92ZRABEggKBEp1bXAQAhIICgRTdHVuEAMSBwoDRGllEAQq",
+            "MQoJR2FtZVN0YXRlEgsKB1dhaXRpbmcQABILCgdQbGF5aW5nEAESCgoGRW5k",
+            "aW5nEAIqMwoHTW92ZURpchIJCgVGcm9udBAAEggKBExlZnQQARIJCgVSaWdo",
+            "dBACEggKBEJhY2sQAyrsAwoFTXNnSWQSFQoRQ19DUkVBVEVfUk9PTV9SRVEQ",
+            "ABIVChFTX0NSRUFURV9ST09NX1JFUxABEhMKD0NfSk9JTl9ST09NX1JFURAC",
+            "EhMKD1NfSk9JTl9ST09NX1JFUxADEhAKDFNfRU5URVJfR0FNRRAFEhAKDFNf",
+            "TEVBVkVfR0FNRRAGEgsKB1NfU1BBV04QBxINCglTX0RFU1BBV04QCBIKCgZD",
+            "X01PVkUQCRIKCgZTX01PVkUQChIKCgZDX0NIQVQQCxIKCgZTX0NIQVQQDBIb",
+            "ChdDX1VQREFURV9HQU1FX1NUQVRFX1JFURANEhsKF1NfVVBEQVRFX0dBTUVf",
+            "U1RBVEVfUkVTEA4SEgoOQ19TRVRfVVNFUklORk8QDxIUChBDX0hJVF9TT0ND",
+            "RVJCQUxMEBASDgoKQ19TWU5DX1BPUxAREg4KClNfU1lOQ19QT1MQEhIYChRD",
+            "X0RFTEVURV9GTE9PUl9CTE9DSxATEhgKFFNfREVMRVRFX0ZMT09SX0JMT0NL",
+            "EBQSEQoNQ19QTEFZRVJfREVBRBAVEhEKDVNfUExBWUVSX0RFQUQQFhIOCgpT",
+            "X0dBTUVfRU5EEBcSFgoSQ19DT0xMSURFX09CU1RBQ0xFEBgSFQoRQ19TRVRf",
+            "U1BBV05fUE9JTlQQGUIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.SceneType), typeof(global::Google.Protobuf.Protocol.GameType), typeof(global::Google.Protobuf.Protocol.GameObjectType), typeof(global::Google.Protobuf.Protocol.ObjectState), typeof(global::Google.Protobuf.Protocol.GameState), typeof(global::Google.Protobuf.Protocol.MoveDir), typeof(global::Google.Protobuf.Protocol.MsgId), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -144,9 +145,10 @@ namespace Google.Protobuf.Protocol {
   }
 
   public enum GameType {
-    [pbr::OriginalName("AvoidLog")] AvoidLog = 0,
-    [pbr::OriginalName("DoNotFall")] DoNotFall = 1,
-    [pbr::OriginalName("SpeedRun")] SpeedRun = 2,
+    [pbr::OriginalName("PreParing")] PreParing = 0,
+    [pbr::OriginalName("AvoidLog")] AvoidLog = 1,
+    [pbr::OriginalName("DoNotFall")] DoNotFall = 2,
+    [pbr::OriginalName("SpeedRun")] SpeedRun = 3,
   }
 
   public enum GameObjectType {
@@ -749,7 +751,7 @@ namespace Google.Protobuf.Protocol {
 
     /// <summary>Field number for the "gameType" field.</summary>
     public const int GameTypeFieldNumber = 3;
-    private global::Google.Protobuf.Protocol.GameType gameType_ = global::Google.Protobuf.Protocol.GameType.AvoidLog;
+    private global::Google.Protobuf.Protocol.GameType gameType_ = global::Google.Protobuf.Protocol.GameType.PreParing;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Google.Protobuf.Protocol.GameType GameType {
       get { return gameType_; }
@@ -782,7 +784,7 @@ namespace Google.Protobuf.Protocol {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (MaxPlayer != 0) hash ^= MaxPlayer.GetHashCode();
-      if (GameType != global::Google.Protobuf.Protocol.GameType.AvoidLog) hash ^= GameType.GetHashCode();
+      if (GameType != global::Google.Protobuf.Protocol.GameType.PreParing) hash ^= GameType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -804,7 +806,7 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(16);
         output.WriteInt32(MaxPlayer);
       }
-      if (GameType != global::Google.Protobuf.Protocol.GameType.AvoidLog) {
+      if (GameType != global::Google.Protobuf.Protocol.GameType.PreParing) {
         output.WriteRawTag(24);
         output.WriteEnum((int) GameType);
       }
@@ -822,7 +824,7 @@ namespace Google.Protobuf.Protocol {
       if (MaxPlayer != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxPlayer);
       }
-      if (GameType != global::Google.Protobuf.Protocol.GameType.AvoidLog) {
+      if (GameType != global::Google.Protobuf.Protocol.GameType.PreParing) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) GameType);
       }
       if (_unknownFields != null) {
@@ -842,7 +844,7 @@ namespace Google.Protobuf.Protocol {
       if (other.MaxPlayer != 0) {
         MaxPlayer = other.MaxPlayer;
       }
-      if (other.GameType != global::Google.Protobuf.Protocol.GameType.AvoidLog) {
+      if (other.GameType != global::Google.Protobuf.Protocol.GameType.PreParing) {
         GameType = other.GameType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
