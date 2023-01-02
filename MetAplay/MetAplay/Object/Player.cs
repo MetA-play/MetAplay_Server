@@ -19,6 +19,8 @@ namespace MetAplay
             ObjectType = GameObjectType.Player;
         }
 
+        public TransformInfo SpawnPoint { get; set; }
+
         public UserInfo UserData { get { return Session.UserData; } set { Session.UserData = value; } }
         public bool IsDead { get; set; }
 

@@ -24,9 +24,25 @@ namespace MetAplay
         public Game Content { get; set; }
         public bool IsStart { get { return Content.State == GameState.Playing; } }
 
-        public List<Player> Players
+        public void Init()
         {
-            get
+            switch (Setting.GameType)
+            {
+                case GameType.AvoidLog:
+                    Content = new AvoidLog();
+                    break;
+                case GameType.DoNotFall:
+                    Content = new DoNotFall();
+                    break;
+                case GameType.SpeedRun:
+                    Content = new SpeedRun();
+                    break;
+            }
+
+            Content.Init(this);
+        }
+
+        public List<Player> Players { get
             {
                 return _players.Values.ToList();
             }
@@ -59,6 +75,7 @@ namespace MetAplay
                 {
                     S_EnterGame enterGamePacket = new S_EnterGame();
                     enterGamePacket.Player = player.Info;
+                    enterGamePacket.Player.UserData = player.UserData;
                     player.Session.Send(enterGamePacket);
 
                     S_Spawn spawnPacket = new S_Spawn();
@@ -69,7 +86,12 @@ namespace MetAplay
                     player.Session.Send(spawnPacket);
                 }
 
-
+                {
+                    S_Spawn spawnPacket = new S_Spawn();
+                    spawnPacket.Objects.Add(player.Info);
+                    foreach (Player p in _players.Values)
+                        if (p.Id != player.Id) p.Session.Send(spawnPacket);
+                }
             }
             else if (type.Equals(GameObjectType.None))
             {
@@ -103,6 +125,20 @@ namespace MetAplay
                 despawnPacket.ObjectId.Add(gameObjectId);
                 foreach (Player p in _players.Values)
                     if (p.Id != player.Id) p.Session.Send(despawnPacket);
+            }
+        }
+
+        public void BackLobby()
+        {
+            foreach (Player player in _players.Values)
+            {
+                S_LeaveGame leaveGamePacket = new S_LeaveGame();
+                player.Session.Send(leaveGamePacket);
+            }
+
+            foreach (Player player in _players.Values)
+            {
+                
             }
         }
     }

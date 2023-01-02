@@ -51,13 +51,7 @@ namespace MetAplay
             // TODO 
             while (true)
             {
-                //테스트용
-                Lobby.Instance.Update();
-                for (int i = 0; i < 5; i++)
-                {
-                    if (RoomManager.Instance.Find(i) != null)
-                        RoomManager.Instance.Find(i).Update();
-                }
+                
             }
         }
     }

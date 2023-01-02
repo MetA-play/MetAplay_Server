@@ -1,12 +1,10 @@
 ﻿using Google.Protobuf.Protocol;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace MetAplay
 {
-
     public class GameObject
     {
         public GameObjectType ObjectType { get; protected set; } = GameObjectType.None;
@@ -29,6 +27,7 @@ namespace MetAplay
 
         public GameObject()
         {
+            Info = new ObjectInfo();
             Info.Transform = new TransformInfo();
             Info.Transform.Pos = new Vector();
             Info.Transform.Rot = new Vector();
@@ -37,9 +36,14 @@ namespace MetAplay
 
         public virtual void Update()
         {
+
         }
-
-
-      
+        
+        public void SetPosition(float x, float y, float z)
+        {
+            Info.Transform.Pos.X = x;
+            Info.Transform.Pos.Y = y;
+            Info.Transform.Pos.Z = z;
+        }
     }
 }
