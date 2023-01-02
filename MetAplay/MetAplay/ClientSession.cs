@@ -48,15 +48,13 @@ namespace MetAplay
         public override void OnConnected(EndPoint endPoint)
         {
             Console.WriteLine($"OnConnected : {endPoint}");
-           /* Player player = ObjectManager.Instance.Add<Player>();
-            player.Session = this;
-            MyPlayer = player;
-            player.Info.Transform.Pos.X = 15;
-            player.Info.Transform.Pos.Y = 0;
-            player.Info.Transform.Pos.Z = 118;
-            Lobby.Instance.Push(Lobby.Instance.EnterGame, player);*/
-
-
+            //Player player = ObjectManager.Instance.Add<Player>();
+            //player.Session = this;
+            //MyPlayer = player;
+            //player.Info.Transform.Pos.X = 15;
+            //player.Info.Transform.Pos.Y = 0;
+            //player.Info.Transform.Pos.Z = 118;
+            //Lobby.Instance.Push(Lobby.Instance.EnterGame, player);
         }
 
         public override void OnRecvPacket(ArraySegment<byte> buffer)

@@ -32,6 +32,11 @@ namespace MetAplay
             }
         }
 
+        public void Init()
+        {
+            Content.Init(this);
+        }
+
         public override void Update()
         {
             Content.Update();

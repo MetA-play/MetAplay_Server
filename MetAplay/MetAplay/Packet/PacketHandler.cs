@@ -54,6 +54,10 @@ public class PacketHandler
     public static void C_UpdateGameStateReqHandler(PacketSession session, IMessage packet)
     {
         ClientSession clientSession = session as ClientSession;
+        C_UpdateGameStateReq req = packet as C_UpdateGameStateReq;
+
+        GameRoom room = clientSession.MyPlayer.Room;
+        if (room == null) return;
 
     }
 
@@ -110,5 +114,10 @@ public class PacketHandler
         ClientSession clientSession = session as ClientSession;
 
         Lobby.Instance.Push(Lobby.Instance.MoveHandle, clientSession.MyPlayer, new C_SyncPos() { State = ObjectState.Move, Transform = new TransformInfo() { Pos = new Vector() { X = 0, Y = 0, Z = 0 } } });
+    }
+
+    public static void C_SetSpawnPointHandler(PacketSession session, IMessage packet)
+    {
+
     }
 }
