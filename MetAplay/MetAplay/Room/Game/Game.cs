@@ -74,6 +74,10 @@ namespace MetAplay
 
             if (state == GameState.Ending)
                 End();
+
+            S_UpdateGameStateRes res = new S_UpdateGameStateRes();
+            res.State = state;
+            Room.Broadcast(res);
         }
         
         public void PlayerDead(int playerId)

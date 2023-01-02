@@ -55,10 +55,10 @@ public class PacketHandler
     {
         ClientSession clientSession = session as ClientSession;
         C_UpdateGameStateReq req = packet as C_UpdateGameStateReq;
-
+        
         GameRoom room = clientSession.MyPlayer.Room;
         if (room == null) return;
-
+        room.Push(room.Content.UpdateGameState, req.State);
     }
 
     public static void C_SetUserinfoHandler(PacketSession session, IMessage packet)
@@ -101,58 +101,6 @@ public class PacketHandler
             Lobby.Instance.Push(Lobby.Instance.MoveHandle, clientSession.MyPlayer, sync);
         }
     }
-    public static void C_CollideObstacleHandler(PacketSession session, IMessage packet)
-    {
-        ClientSession clientSession = session as ClientSession;
-    }
-    public static void C_DeleteFloorBlockHandler(PacketSession session, IMessage packet)
-    {
-        ClientSession clientSession = session as ClientSession;
-    }
-    public static void C_PlayerDeadHandler(PacketSession session, IMessage packet)
-    {
-        ClientSession clientSession = session as ClientSession;
-
-        Lobby.Instance.Push(Lobby.Instance.MoveHandle, clientSession.MyPlayer, new C_SyncPos() { State = ObjectState.Move, Transform = new TransformInfo() { Pos = new Vector() { X = 0, Y = 0, Z = 0 } } });
-    }
-
-    public static void C_SetSpawnPointHandler(PacketSession session, IMessage packet)
-    {
-
-        C_UpdateGameStateReq statePacket = packet as C_UpdateGameStateReq;
-
-        if (clientSession.MyPlayer.Room.Content == null) return;
-        clientSession.MyPlayer.Room.Push(clientSession.MyPlayer.Room.Content.UpdateGameState, statePacket.State);
-    }
-
-    public static void C_SetUserinfoHandler(PacketSession session, IMessage packet)
-    {
-        ClientSession clientSession = session as ClientSession;
-        C_SetUserinfo info = packet as C_SetUserinfo;
-
-        clientSession.UserData = info.Info;
-    }
-
-    public static void C_HitSoccerballHandler(PacketSession session, IMessage packet)
-    {
-
-    }
-
-    public static void C_SyncPosHandler(PacketSession session, IMessage packet)
-    {
-        ClientSession clientSession = session as ClientSession;
-        C_SyncPos sync = packet as C_SyncPos;
-
-        if (clientSession.MyPlayer.Room != null)
-        {
-            clientSession.MyPlayer.Room.Push(clientSession.MyPlayer.Room.MoveHandle, clientSession.MyPlayer, sync);
-        }
-        else
-        {
-            Lobby.Instance.Push(Lobby.Instance.MoveHandle, clientSession.MyPlayer, sync);
-
-        }
-    }
 
     public static void C_DeleteFloorBlockHandler(PacketSession session, IMessage packet)
     {
@@ -189,9 +137,8 @@ public class PacketHandler
 
     public static void C_SetSpawnPointHandler(PacketSession session, IMessage packet)
     {
-        Console.WriteLine("SetSpawnPointHandler");
         ClientSession clientSession = session as ClientSession;
-        C_SetSpawnPoint setSpawnPointPacket = new C_SetSpawnPoint();
+        C_SetSpawnPoint setSpawnPointPacket = packet as C_SetSpawnPoint;
         clientSession.MyPlayer.SpawnPoint = setSpawnPointPacket.SpawnPoint;
     }
 }

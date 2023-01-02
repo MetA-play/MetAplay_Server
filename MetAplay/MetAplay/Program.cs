@@ -6,9 +6,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
-using Google.Protobuf.WellKnownTypes;
 using ServerCore;
 
 namespace MetAplay
@@ -31,10 +31,9 @@ namespace MetAplay
 
         static void Main(string[] args)
         {
-            // DNS (Domain Name System)
             string host = Dns.GetHostName();
             IPHostEntry ipHost = Dns.GetHostEntry(host);
-            IPAddress ipAddr = ipHost.AddressList[0];
+            IPAddress ipAddr = IPAddress.Parse("192.168.214.234");
             IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
 
             _listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
@@ -51,7 +50,8 @@ namespace MetAplay
             // TODO 
             while (true)
             {
-                
+                Lobby.Instance.Update();
+                Thread.Sleep(100);
             }
         }
     }
