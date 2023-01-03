@@ -65,6 +65,7 @@ namespace MetAplay
 
         public void OnTouchEndLine(int playerId)
         {
+            if (State == GameState.Ending) return;
             S_GameEnd endGamePacket = new S_GameEnd();
             endGamePacket.WinnerId = playerId;
             Room.Broadcast(endGamePacket);
