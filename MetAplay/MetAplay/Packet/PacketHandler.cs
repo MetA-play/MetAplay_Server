@@ -125,7 +125,6 @@ public class PacketHandler
 
     public static void C_CollideObstacleHandler(PacketSession session, IMessage packet)
     {
-        Console.WriteLine("CollideObstacleHandler");
         ClientSession clientSession = session as ClientSession;
 
         GameRoom room = clientSession.MyPlayer.Room;
@@ -140,5 +139,16 @@ public class PacketHandler
         ClientSession clientSession = session as ClientSession;
         C_SetSpawnPoint setSpawnPointPacket = packet as C_SetSpawnPoint;
         clientSession.MyPlayer.SpawnPoint = setSpawnPointPacket.SpawnPoint;
+    }
+
+    public static void C_CollideEndLineHandler(PacketSession session, IMessage packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+
+        GameRoom room = clientSession.MyPlayer.Room;
+        if (room == null) return;
+        SpeedRun game = room.Content as SpeedRun;
+        if (game == null) return;
+        room.Push(game.OnTouchEndLine, clientSession.MyPlayer.Id);
     }
 }

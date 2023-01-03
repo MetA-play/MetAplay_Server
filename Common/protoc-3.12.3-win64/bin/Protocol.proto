@@ -127,6 +127,7 @@ enum MsgId {
 	S_GAME_END = 23;
 	C_COLLIDE_OBSTACLE = 24;
 	C_SET_SPAWN_POINT = 25;
+	C_COLLIDE_END_LINE = 26;
 }
 
 // ------------------------------------------------------ Packet ------------------------------------------------------ \\
@@ -240,4 +241,7 @@ message C_CollideObstacle {
 
 message C_SetSpawnPoint {
 	TransformInfo SpawnPoint = 1;
+}
+
+message C_CollideEndLine {
 }

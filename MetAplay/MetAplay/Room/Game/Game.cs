@@ -64,6 +64,7 @@ namespace MetAplay
         {
             if (Room == null || State != GameState.Playing) return;
             State = GameState.Ending;
+            Room.PushAfter(5000, Room.BackLobby);
         }
 
         public void UpdateGameState(GameState state)

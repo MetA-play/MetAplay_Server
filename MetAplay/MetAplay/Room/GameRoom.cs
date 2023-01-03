@@ -40,6 +40,15 @@ namespace MetAplay
             }
 
             Content.Init(this);
+            PushAfter(1000, SendRoomInfo);
+        }
+
+        private void SendRoomInfo()
+        {
+            S_JoinRoomRes joinRoomRes = new S_JoinRoomRes();
+            joinRoomRes.Info = Info;
+            Broadcast(joinRoomRes);
+            PushAfter(1000, SendRoomInfo);
         }
 
         public List<Player> Players { get
@@ -118,16 +127,12 @@ namespace MetAplay
 
         public void BackLobby()
         {
-            foreach (Player player in _players.Values)
+            foreach (Player player in Players)
             {
-                S_LeaveGame leaveGamePacket = new S_LeaveGame();
-                player.Session.Send(leaveGamePacket);
+                LeaveGame(player.Id);
             }
 
-            foreach (Player player in _players.Values)
-            {
-                
-            }
+            RoomManager.Instance.Remove(RoomId);
         }
     }
 }
