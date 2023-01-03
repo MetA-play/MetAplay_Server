@@ -56,7 +56,6 @@ namespace MetAplay
 
         public void CollideObstacle(Player player)
         {
-            Console.WriteLine("CollideObstacle");
             S_SyncPos syncPosPacket = new S_SyncPos();
             syncPosPacket.Id = player.Id;
             syncPosPacket.Transform = player.SpawnPoint;
