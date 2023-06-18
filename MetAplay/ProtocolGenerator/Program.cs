@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Xml;
 
-namespace PacketGenerator
+namespace ProtocolGenerator
 {
     class Program
     {

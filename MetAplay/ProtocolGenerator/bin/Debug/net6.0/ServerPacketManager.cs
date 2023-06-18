@@ -22,7 +22,17 @@ class PacketManager
 	public Action<PacketSession, IMessage, ushort> CustomHandler { get; set; }
 
 	public void Register()
-	{
+	{		
+		_onRecv.Add((ushort)MsgId.CCreateroomReq, MakePacket<C_CreateroomReq>);
+		_handler.Add((ushort)MsgId.CCreateroomReq, PacketHandler.C_CreateroomReqHandler);		
+		_onRecv.Add((ushort)MsgId.CJoinroomReq, MakePacket<C_JoinroomReq>);
+		_handler.Add((ushort)MsgId.CJoinroomReq, PacketHandler.C_JoinroomReqHandler);		
+		_onRecv.Add((ushort)MsgId.CMove, MakePacket<C_Move>);
+		_handler.Add((ushort)MsgId.CMove, PacketHandler.C_MoveHandler);		
+		_onRecv.Add((ushort)MsgId.CChat, MakePacket<C_Chat>);
+		_handler.Add((ushort)MsgId.CChat, PacketHandler.C_ChatHandler);		
+		_onRecv.Add((ushort)MsgId.CUpdateGameStateReq, MakePacket<C_UpdateGameStateReq>);
+		_handler.Add((ushort)MsgId.CUpdateGameStateReq, PacketHandler.C_UpdateGameStateReqHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

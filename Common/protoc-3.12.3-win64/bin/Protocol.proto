@@ -3,81 +3,245 @@ package Protocol;
 
 import "google/protobuf/timestamp.proto";
 
-option csharp_namespace = "Google.Protobuf.Protocol"; //C#∆ƒ¿œ¿« ≥◊¿”Ω∫∆‰¿ÃΩ∫ ¿Ã∏ß\
+option csharp_namespace = "Google.Protobuf.Protocol"; // C#ÌååÏùºÏùò ÎÑ§ÏûÑÏä§ÌéòÏù¥Ïä§ Ïù¥Î¶Ñ
 
 
+// ---------------------------------------------------- User ---------------------------------------------------- \\
+message MetColor{
+	float r=  1;
+	float g = 2;
+	float b = 3;
+}
 
-enum ObjectState {
-  IDLE = 0;
-  MOVE = 1;
-  JUMP = 2;
-  STUN = 3;
-  DIE = 4;
+message UserInfo {
+	string NickName = 1;
+	int32 headPartsIdx = 2;
+	int32 bodyPartsIdx = 3;
+	int32 FootPartsIdx = 4;
+	MetColor bodyColor = 5;
+	MetColor cloakColor = 6;
+}
+
+// ---------------------------------------------------- Room ---------------------------------------------------- \\
+message RoomSetting {
+	string Name = 1;
+	int32 MaxPlayer = 2;
+	GameType gameType = 3;
+}
+
+message RoomInfo {
+	int32 Id = 1;
+	int32 CurrentPersonnel = 2;
+	RoomSetting Setting = 3;
+}
+
+// ---------------------------------------------------- Type ---------------------------------------------------- \\
+enum SceneType {
+	Main = 0;
+	Lobby = 1;
+	Game = 2;
+}
+
+enum GameType {
+	PreParing = 0;
+	AvoidLog = 1;
+	DoNotFall = 2;
+	SpeedRun = 3;
 }
 
 enum GameObjectType {
-  NONE = 0;
-  PLAYER = 1;
+	None = 0;
+	Player = 1;
+	Room = 2;
+	SoccerBall = 3;
 }
 
-enum MoveDir{
-	FRONT = 0;
-	LEFT = 1;
-	RIGHT = 2;
-	BACK = 3;
+// ------------------------------------------- State ------------------------------------------- \\
+enum ObjectState {
+	Idle = 0;
+	Move = 1;
+	Jump = 2;
+	Stun = 3;
+	Die = 4;
 }
-message Vector{
+
+enum GameState {
+	Waiting = 0;
+	Playing = 1;
+	Ending = 2;
+}
+
+// ------------------------------------------- Object ------------------------------------------- \\
+enum MoveDir {
+	Front = 0;
+	Left = 1;
+	Right = 2;
+	Back = 3;
+}
+
+message Vector {
 	float X = 1;
 	float Y = 2;
 	float Z = 3;
 }
 
-message TransformInfo{
+message TransformInfo {
 	MoveDir Dir = 1;
 	Vector Pos = 2;
 	Vector Rot = 3;
 	Vector Scale = 4;
 }
 
-message ObjectInfo{
+message ObjectInfo {
 	int32 Id = 1;
 	ObjectState State = 2;
 	TransformInfo Transform = 3;
+	string PrefabName = 4;
+	UserInfo UserData = 5;
 }
 
-
-enum MsgId{
-	S_ENTER_GAME = 0;
-	S_SPAWN = 1;
-	S_DESPAWN = 2;
-	S_LEAVE_GAME = 3;
-	C_MOVE = 4;
-	S_MOVE = 5;
+// ---------------------------------------------------- Message Id ---------------------------------------------------- \\
+enum MsgId {
+	C_CREATE_ROOM_REQ = 0;
+	S_CREATE_ROOM_RES = 1;
+	C_JOIN_ROOM_REQ = 2;
+	S_JOIN_ROOM_RES = 3;
+	S_ENTER_GAME = 5;
+	S_LEAVE_GAME = 6;
+	S_SPAWN = 7;
+	S_DESPAWN = 8;
+	C_MOVE = 9;
+	S_MOVE = 10;
+	C_CHAT = 11;
+	S_CHAT = 12;
+	C_UPDATE_GAME_STATE_REQ = 13;
+	S_UPDATE_GAME_STATE_RES = 14;
+	C_SET_USERINFO = 15;
+	C_HIT_SOCCERBALL = 16;
+	C_SYNC_POS = 17;
+	S_SYNC_POS = 18;
+	C_DELETE_FLOOR_BLOCK = 19;
+	S_DELETE_FLOOR_BLOCK = 20;
+	C_PLAYER_DEAD = 21;
+	S_PLAYER_DEAD = 22;
+	S_GAME_END = 23;
+	C_COLLIDE_OBSTACLE = 24;
+	C_SET_SPAWN_POINT = 25;
+	C_COLLIDE_END_LINE = 26;
 }
 
-message S_EnterGame{
-	ObjectInfo player = 1;
+// ------------------------------------------------------ Packet ------------------------------------------------------ \\
+message C_Chat {
+	string Content = 1;
 }
 
-message S_Spawn{
+message S_Chat {
+	int32 PlayerId = 1;
+	string Content = 2;
+}
+
+// -------------------------------------- Lobby -------------------------------------- \\
+message C_CreateRoomReq {
+	RoomSetting Setting = 1;
+}
+
+message S_CreateRoomRes {
+	int32 ObjectId = 1;
+	RoomInfo Info = 2;
+}
+
+message C_JoinRoomReq {
+	int32 RoomId = 1;
+}
+
+message S_JoinRoomRes {
+	RoomInfo Info = 1;
+}
+
+// -------------------------------------- InGame -------------------------------------- \\
+message S_EnterGame {
+	ObjectInfo Player = 1;
+}
+
+message S_LeaveGame {
+}
+
+message S_Spawn {
 	repeated ObjectInfo Objects = 1;
 }
-message S_Despawn{
-	repeated int32 objectId = 1;
+
+message S_Despawn {
+	repeated int32 ObjectId = 1;
 }
 
-message S_LeaveGame{
+message C_Move {
+	int32 inputFlag = 1;
+	TransformInfo Transform = 2;
+	ObjectState State = 3;
 }
 
+message S_Move {
+	int32 Id = 1;
+	int32 inputFlag = 2;
+	TransformInfo Transform = 3;
+	ObjectState State = 4;
+}
 
-message C_Move{
+message C_UpdateGameStateReq {
+	GameState State = 1;
+}
+
+message S_UpdateGameStateRes {
+	GameState State = 1;
+}
+
+message C_SetUserinfo{
+	UserInfo Info = 1;
+}
+
+message C_HitSoccerball{
+	int32 ObjectId = 1;
+	TransformInfo hitterTransform = 2;
+}
+
+message C_SyncPos{
 	ObjectState State = 1;
 	TransformInfo Transform = 2;
 }
 
-message S_Move{
+message S_SyncPos{
 	int32 Id = 1;
 	ObjectState State = 2;
 	TransformInfo Transform = 3;
 }
 
+message C_DeleteFloorBlock {
+	int32 FloorIndex = 1;
+	int32 BlockIndex = 2;
+}
+
+message S_DeleteFloorBlock {
+	int32 FloorIndex = 1;
+	int32 BlockIndex = 2;
+}
+
+message C_PlayerDead {
+}
+
+message S_PlayerDead {
+	int32 PlayerId = 1;
+}
+
+message S_GameEnd {
+	int32 WinnerId = 1;
+}
+
+message C_CollideObstacle {
+}
+
+message C_SetSpawnPoint {
+	TransformInfo SpawnPoint = 1;
+}
+
+message C_CollideEndLine {
+}

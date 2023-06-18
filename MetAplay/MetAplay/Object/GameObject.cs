@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Server.Game
+namespace MetAplay
 {
     public class GameObject
     {
@@ -14,18 +14,36 @@ namespace Server.Game
             set { Info.Id = value; }
         }
 
-        public GameRoom Room { get; set; }
+        public GameRoom JoinedRoom { get; set; }
 
         public ObjectInfo Info { get; set; } = new ObjectInfo();
 
+        public virtual TransformInfo Transform
+        {
+            get => Info.Transform;
+            set => Info.Transform = value;
+        }
+        public int speed;
 
         public GameObject()
         {
+            Info = new ObjectInfo();
+            Info.Transform = new TransformInfo();
+            Info.Transform.Pos = new Vector();
+            Info.Transform.Rot = new Vector();
+            Info.Transform.Scale  = new Vector();
         }
 
         public virtual void Update()
         {
 
+        }
+        
+        public void SetPosition(float x, float y, float z)
+        {
+            Info.Transform.Pos.X = x;
+            Info.Transform.Pos.Y = y;
+            Info.Transform.Pos.Z = z;
         }
     }
 }

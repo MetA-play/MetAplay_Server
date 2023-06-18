@@ -8,16 +8,29 @@ using ServerCore;
 using System.Net;
 using Google.Protobuf.Protocol;
 using Google.Protobuf;
-using Server.Game;
-using System.Numerics;
 using System.Runtime.Serialization;
-using MetAplay.Object;
+using MetAplay;
 
-namespace Server
+namespace MetAplay
 {
     public class ClientSession : PacketSession
     {
-        public Player MyPlayer { get; set; }
+
+        public UserInfo UserData { get; set; }
+        Player myPlayer;
+        public Player MyPlayer 
+        { get 
+            { 
+                return myPlayer;
+            } 
+            set 
+            {
+                if(value == null)
+                    Console.WriteLine("null insert");
+                Console.WriteLine("Player Change");
+                myPlayer = value ; 
+            }
+        }
         public int SessionId { get; set; }
 
         public void Send(IMessage packet)
@@ -35,7 +48,13 @@ namespace Server
         public override void OnConnected(EndPoint endPoint)
         {
             Console.WriteLine($"OnConnected : {endPoint}");
-
+            //Player player = ObjectManager.Instance.Add<Player>();
+            //player.Session = this;
+            //MyPlayer = player;
+            //player.Info.Transform.Pos.X = 15;
+            //player.Info.Transform.Pos.Y = 0;
+            //player.Info.Transform.Pos.Z = 118;
+            //Lobby.Instance.Push(Lobby.Instance.EnterGame, player);
         }
 
         public override void OnRecvPacket(ArraySegment<byte> buffer)
@@ -45,16 +64,17 @@ namespace Server
 
         public override void OnDisconnected(EndPoint endPoint)
         {
-            //GameRoom room = RoomManager.Instance.Find(1);
-            //room.Push(room.LeaveGame, MyPlayer.Info.ObjectId);
+            if(myPlayer.Room == null)
+                Lobby.Instance.Push(Lobby.Instance.LeaveGame, MyPlayer.Info.Id);
+            else
+                myPlayer.Room.Push(myPlayer.Room.LeaveGame, myPlayer.Info.Id);
 
-            //SessionManager.Instance.Remove(this);
+            SessionManager.Instance.Remove(this);
 
             Console.WriteLine($"OnDisconnected : {endPoint}");
         }
 
-        public override void OnSend
-            (int numOfBytes)
+        public override void OnSend(int numOfBytes)
         {
             //Console.WriteLine($"Transferred bytes: {numOfBytes}");
         }
