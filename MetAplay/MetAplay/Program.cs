@@ -33,7 +33,7 @@ namespace MetAplay
         {
             string host = Dns.GetHostName();
             IPHostEntry ipHost = Dns.GetHostEntry(host);
-            IPAddress ipAddr = IPAddress.Parse("192.168.214.234");
+            IPAddress ipAddr = IPAddress.Parse("192.168.42.235");
             IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
 
             _listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
